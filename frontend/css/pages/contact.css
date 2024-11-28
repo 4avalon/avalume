@@ -1,0 +1,44 @@
+/* Estilos para a seção Contact */
+#contact-section {
+  min-height: 100vh; /* Ocupa pelo menos uma altura de viewport */
+  background-color: #dff6df; /* Verde claro suave */
+  padding: 60px 30px; /* Maior espaçamento para melhor layout */
+  text-align: left;
+  font-family: 'Arial', sans-serif; /* Fonte padrão para consistência */
+  line-height: 1.6; /* Melhor espaçamento entre as linhas */
+  border-left: 5px solid #228b22; /* Destaque na borda esquerda */
+  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.1); /* Leve sombra interna */
+  border-radius: 8px; /* Bordas arredondadas */
+}
+
+#contact-section h2 {
+  font-size: 2.5em; /* Título maior */
+  color: #006400; /* Verde escuro */
+  margin-bottom: 20px;
+  text-transform: uppercase; /* Texto em caixa alta */
+  letter-spacing: 1px; /* Espaçamento entre letras para mais destaque */
+}
+
+#contact-section p {
+  font-size: 1.2em; /* Texto ligeiramente maior */
+  color: #2f4f2f; /* Verde mais escuro para contraste */
+  text-align: justify; /* Texto alinhado para melhor legibilidade */
+  margin-bottom: 15px;
+}
+
+/* Botões dentro da seção Contact (se existirem) */
+#contact-section button {
+  background-color: #006400; /* Verde escuro */
+  color: white;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#contact-section button:hover {
+  background-color: #228b22; /* Verde mais claro ao passar o mouse */
+  transform: scale(1.05); /* Leve aumento no tamanho */
+}

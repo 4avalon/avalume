@@ -1,0 +1,103 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Estilo geral do corpo */
+body {
+  font-family: 'Arial', sans-serif; /* Fonte padrão */
+  font-size: 16px; /* Tamanho de fonte base */
+  line-height: 1.6; /* Espaçamento entre linhas */
+  color: #333; /* Cor do texto principal */
+  background-color: #f9f9f9; /* Cor de fundo geral */
+}
+
+/* Links */
+a {
+  text-decoration: none; /* Remove sublinhado */
+  color: #007acc; /* Azul padrão para links */
+}
+
+a:hover {
+  color: #005f99; /* Azul mais escuro no hover */
+  text-decoration: underline; /* Adiciona sublinhado ao passar o mouse */
+}
+
+/* Botões */
+button {
+  background-color: #007acc; /* Fundo azul */
+  color: white; /* Texto branco */
+  border: none; /* Sem borda */
+  border-radius: 4px; /* Borda arredondada */
+  padding: 10px 15px; /* Espaçamento interno */
+  cursor: pointer; /* Indica que o botão é clicável */
+  font-size: 1em; /* Tamanho do texto */
+}
+
+button:hover {
+  background-color: #005f99; /* Azul mais escuro no hover */
+}
+
+/* Layout geral */
+.container {
+  max-width: 1200px; /* Largura máxima */
+  margin: 0 auto; /* Centraliza horizontalmente */
+  padding: 20px; /* Espaçamento interno */
+}
+
+/* Cabeçalhos */
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: 20px; /* Espaçamento inferior */
+  font-weight: 600; /* Peso da fonte */
+}
+
+/* Listas */
+ul {
+  list-style-type: none; /* Remove marcadores de lista */
+  padding: 0;
+}
+
+ul li {
+  margin-bottom: 10px; /* Espaçamento entre itens */
+}
+
+/* Imagens */
+img {
+  max-width: 100%; /* Imagem não excede o tamanho do container */
+  height: auto; /* Mantém a proporção */
+  display: block; /* Remove espaços em branco ao redor */
+}
+
+/* Formulários */
+input, textarea, select {
+  width: 100%; /* Largura total */
+  padding: 10px; /* Espaçamento interno */
+  margin-bottom: 20px; /* Espaçamento inferior */
+  border: 1px solid #ccc; /* Borda cinza clara */
+  border-radius: 4px; /* Bordas arredondadas */
+  font-size: 1em; /* Tamanho do texto */
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none; /* Remove o contorno padrão */
+  border-color: #007acc; /* Realce na borda */
+  box-shadow: 0 0 5px rgba(0, 122, 204, 0.5); /* Adiciona um leve brilho */
+}
+
+/* Rodapé */
+footer {
+  text-align: center; /* Centraliza o texto */
+  padding: 20px; /* Espaçamento interno */
+  background-color: #333; /* Fundo escuro */
+  color: white; /* Texto branco */
+}
+
+footer a {
+  color: #007acc; /* Azul padrão para links */
+}
+
+footer a:hover {
+  color: #005f99; /* Azul mais escuro no hover */
+}

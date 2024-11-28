@@ -1,0 +1,23 @@
+/* Definições de variáveis de tema */
+
+/* Tema padrão (claro) */
+:root {
+  --background-color: #ffffff;
+  --primary-color: #007acc;
+  --secondary-color: #004d99;
+  --text-color: #333333;
+  --border-color: #dddddd;
+  --link-color: #0066cc;
+  --hover-color: #005299;
+}
+
+/* Tema escuro */
+[data-theme='dark'] {
+  --background-color: #1e1e1e;
+  --primary-color: #1a73e8;
+  --secondary-color: #003366;
+  --text-color: #e5e5e5;
+  --border-color: #333333;
+  --link-color: #4e9eff;
+  --hover-color: #3b82f6;
+}

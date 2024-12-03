@@ -1,0 +1,121 @@
+# **Documentação: Exemplo 5 - Sistema de Busca com Navegação Dinâmica**
+
+---
+
+## **O que é?**
+Este exemplo implementa um sistema de busca integrado com navegação dinâmica, utilizando a estrutura do projeto **Avalume**. O sistema permite:
+- **Pesquisa em tempo real**: Indexa o conteúdo das páginas carregadas dinamicamente.
+- **Navegação integrada**: Os resultados da busca permitem navegar ou rolar diretamente para o conteúdo relacionado.
+- **Interface intuitiva**: Exibe resultados em um dropdown estilizado.
+
+---
+
+## **Por que implementar?**
+- **Melhoria na experiência do usuário**: Facilita a navegação e localização de conteúdo, especialmente em projetos com múltiplas páginas dinâmicas.
+- **Integração completa com a arquitetura existente**: Funciona tanto no modo `router` quanto no `routerLandpage`.
+- **Flexibilidade e escalabilidade**: Permite fácil adaptação a novos conteúdos ou páginas.
+
+---
+
+## **Como funciona?**
+1. **Estrutura básica (HTML)**:
+   - O input de busca e botão são colocados ao lado do menu de navegação.
+   - O dropdown de resultados aparece abaixo do menu.
+   
+2. **Estilização (CSS)**:
+   - O input e botão de pesquisa ficam posicionados ao lado do menu.
+   - O dropdown e os resultados são estilizados para uma interface limpa e moderna.
+
+3. **Lógica de busca (JavaScript)**:
+   - O sistema indexa dinamicamente o conteúdo das páginas no `pagesConfig`.
+   - A busca é realizada no conteúdo indexado, retornando links para navegação.
+   - Funciona tanto para rolar a página (Landpage) quanto para carregar páginas (Router).
+
+---
+
+## **Estrutura em forma de script**
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./frontend/css/styles.css">
+  <link rel="stylesheet" href="./frontend/css/components/search.css">
+  <title>Avalume - Exemplo 5</title>
+</head>
+<body>
+  <!-- Cabeçalho -->
+  <header>
+    <nav id="nav-container"></nav> <!-- Menu gerado dinamicamente -->
+    <div id="search-container">
+      <input type="text" id="search-input" placeholder="Buscar..." />
+      <button id="search-button">Pesquisar</button>
+    </div>
+  </header>
+
+  <!-- Dropdown e resultados -->
+  <div id="search-results-container">
+    <div id="search-dropdown">
+      <button id="close-search-dropdown">X</button>
+      <div id="search-results">
+        <p>Digite algo para buscar ou clique no botão.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Conteúdo dinâmico -->
+  <div id="dynamic-content"></div>
+
+  <!-- Rodapé -->
+  <footer id="footer-container"></footer>
+
+  <!-- Scripts -->
+  <script type="module" src="./frontend/js/routerLandpage.js"></script>
+  <script type="module" src="./frontend/js/components/searchHandler.js"></script>
+</body>
+</html>
+
+///////////////
+Problemas e Soluções
+1. Problema: Elementos não aparecem ou ficam fora de lugar
+
+    Motivo: Conflitos de posicionamento no CSS (menu e input estavam desalinhados).
+    Solução:
+        Usar position: absolute no #search-container para alinhar ao lado do menu.
+        Ajustar right, top, e transform no CSS para posicionar corretamente.
+
+2. Problema: O dropdown de resultados não funciona no modo Router
+
+    Motivo: O click no link não estava simulando corretamente a navegação.
+    Solução:
+        No searchHandler.js, adicione uma função para disparar o evento de clique no menu correspondente:
+
+        searchResults.addEventListener('click', (event) => {
+          const target = event.target.closest('a[data-page]');
+          if (target) {
+            event.preventDefault();
+            const page = target.getAttribute('data-page');
+            const link = document.querySelector(`[data-page="${page}"]`);
+            if (link) link.click();
+          }
+        });
+
+3. Problema: O CSS não aplica corretamente ao dropdown ou input
+
+    Motivo: Estilos globais conflitavam com os componentes dinâmicos.
+    Solução:
+        Criar um arquivo dedicado (search.css) e carregar junto com o HTML.
+
+4. Problema: O Enter não dispara a busca
+
+    Solução:
+        Adicione um evento keydown no search-input:
+
+searchInput.addEventListener('keydown', (event) => {
+  if (event.key === 'Enter') {
+    const query = searchInput.value.trim().toLowerCase();
+    performSearch(query);
+    event.preventDefault();
+  }
+});

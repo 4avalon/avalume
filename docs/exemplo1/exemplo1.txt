@@ -1,0 +1,128 @@
+ Criação do Cabeçalho (Nav) e Rodapé (Footer) - Avalume
+O que foi feito
+
+    Criação de um menu de navegação (Nav):
+        Incluímos um menu funcional com links para "Home", "About" e "Contact".
+        O menu apresenta uma logo centralizada e um layout responsivo.
+
+    Criação de um rodapé (Footer):
+        Desenvolvemos um rodapé estiloso com direitos autorais e links para redes sociais (Twitter, Facebook e Instagram).
+
+    Separação dos estilos (CSS):
+        Modularizamos os estilos, criando arquivos CSS específicos para o nav (menu) e o footer.
+
+    Dinamização com JavaScript:
+        Carregamos os arquivos nav.html e footer.html dinamicamente no index.html usando um script em JavaScript.
+
+Como foi feito
+
+    Estrutura do HTML:
+        Criamos os arquivos nav.html e footer.html para armazenar o código HTML do menu e do rodapé.
+        No index.html, utilizamos placeholders (<header id="nav-container"></header> e <footer id="footer-container"></footer>) para carregar os conteúdos dinamicamente.
+
+    JavaScript:
+        Adicionamos o arquivo loadComponents.js na pasta frontend/js.
+        O script utiliza a função fetch() para buscar os arquivos HTML e inseri-los nos respectivos placeholders.
+
+    Código exemplo do script:
+
+const loadHTML = async (containerId, filePath) => {
+  try {
+    const response = await fetch(filePath);
+    if (!response.ok) {
+      throw new Error(`Erro ao carregar o arquivo ${filePath}`);
+    }
+    const content = await response.text();
+    document.getElementById(containerId).innerHTML = content;
+  } catch (error) {
+    console.error(error.message);
+  }
+};
+
+loadHTML('nav-container', './frontend/html/components/nav.html');
+loadHTML('footer-container', './frontend/html/components/footer.html');
+
+Estilização (CSS):
+
+    Modularizamos os estilos em três arquivos:
+        styles.css: Estilos gerais do projeto.
+        nav.css: Estilos específicos para o menu.
+        footer.css: Estilos específicos para o rodapé.
+    Aplicamos cores, efeitos de hover e responsividade para melhorar a estética.
+
+Exemplo de estilo do nav.css:
+
+nav {
+  background-color: #2c3e50;
+  color: white;
+  padding: 15px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+nav a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+
+Organização da Estrutura de Arquivos:
+
+    Criamos uma árvore de diretórios organizada:
+
+        /frontend
+          /html
+            /components
+              nav.html
+              footer.html
+          /css
+            styles.css
+            components
+              nav.css
+              footer.css
+          /js
+            loadComponents.js
+        index.html
+
+Por que foi feito
+
+    Organização e Reutilização:
+        Separar o nav e o footer em arquivos independentes facilita a reutilização do código em outras páginas do projeto.
+
+    Facilidade de Manutenção:
+        Com CSS modularizado, cada componente possui seu próprio estilo, tornando o projeto mais organizado e fácil de alterar.
+
+    Modularização e Dinamismo:
+        Carregar os componentes dinamicamente com JavaScript ajuda a reduzir duplicação de código e melhora a escalabilidade.
+
+    Responsividade e Estética:
+        Criamos um design responsivo e moderno para melhorar a experiência do usuário em diferentes dispositivos.
+
+Onde foi feito
+
+    Todo o trabalho foi realizado na pasta frontend do projeto Avalume, com a seguinte estrutura:
+
+    /frontend
+      /html
+        /components
+          nav.html
+          footer.html
+      /css
+        styles.css
+        components
+          nav.css
+          footer.css
+      /js
+        loadComponents.js
+    index.html
+
+O código está funcional e organizado, pronto para ser reutilizado e expandido em outras partes do projeto.

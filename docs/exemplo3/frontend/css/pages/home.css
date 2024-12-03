@@ -1,0 +1,18 @@
+/* Estilos para a seção Home */
+#home-section {
+  min-height: 100vh; /* Ocupa pelo menos uma altura de viewport */
+    display: flex; /* Centraliza o conteúdo */
+  background-color: #f0f8ff;
+  padding: 50px;
+  text-align: center;
+}
+
+#home-section h1 {
+  font-size: 2.5em;
+  color: #333;
+}
+
+#home-section p {
+  font-size: 1.2em;
+  color: #666;
+}

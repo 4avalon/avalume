@@ -1,0 +1,140 @@
+Exemplo 2 - Troca de Conteúdo Dinâmica com Menu
+O que foi feito
+
+    Implementação de troca dinâmica do conteúdo principal da página através de cliques no menu.
+    Adição de um script para carregar arquivos HTML correspondentes (home.html, about.html, contact.html) no <main>.
+    Integração do nav.html carregado dinamicamente com a reaplicação de eventos de clique para garantir o funcionamento do menu.
+
+Como foi feito
+
+    Criação de Páginas HTML:
+        Foram criados arquivos HTML para as páginas home, about e contact, contendo conteúdo exclusivo e organizado na pasta frontend/html/pages.
+
+    Carregamento do nav.html:
+        O arquivo nav.html foi carregado dinamicamente no <header> por meio do script loadComponents.js.
+        Após o carregamento, eventos de clique foram reaplicados nos links do menu para garantir seu funcionamento.
+
+    Lógica de Roteamento:
+        O script router.js intercepta os cliques nos links do menu, busca o HTML correspondente e insere o conteúdo no <main>.
+
+Por que foi feito
+
+    Modularidade:
+        Facilitar a separação de responsabilidades e a manutenção do projeto.
+    Interatividade:
+        Criar uma experiência fluida para o usuário, onde o conteúdo é carregado sem recarregar toda a página.
+    Escalabilidade:
+        Permitir que mais páginas e funcionalidades sejam adicionadas facilmente no futuro.
+
+Onde foi feito
+
+    Arquivos Envolvidos:
+        HTML:
+            frontend/html/components/nav.html
+            frontend/html/components/footer.html
+            frontend/html/pages/home.html
+            frontend/html/pages/about.html
+            frontend/html/pages/contact.html
+        JavaScript:
+            frontend/js/components/loadComponents.js: Carrega dinamicamente o footer.html.
+            frontend/js/components/router.js: Gerencia o carregamento dinâmico das páginas.
+        CSS:
+            frontend/css/styles.css
+            frontend/css/components/nav.css
+            frontend/css/components/footer.css
+
+    Estrutura Atualizada:
+
+    /frontend
+      /html
+        /components
+          nav.html
+          footer.html
+        /pages
+          home.html
+          about.html
+          contact.html
+      /css
+        styles.css
+        components
+          nav.css
+          footer.css
+      /js
+        components
+          loadComponents.js
+          router.js
+    index.html
+
+Destaques do Código
+
+    router.js:
+        Gerencia os eventos de clique no menu e carrega o conteúdo correspondente:
+
+const loadPage = async (page) => {
+  try {
+    const response = await fetch(`./frontend/html/pages/${page}.html`);
+    if (!response.ok) {
+      throw new Error(`Erro ao carregar a página ${page}`);
+    }
+    const content = await response.text();
+    document.querySelector('main').innerHTML = content;
+  } catch (error) {
+    console.error(error.message);
+  }
+};
+
+const setupMenuEvents = () => {
+  const menuLinks = document.querySelectorAll('nav a[data-page]');
+  menuLinks.forEach((link) => {
+    link.addEventListener('click', (event) => {
+      event.preventDefault();
+      const page = link.getAttribute('data-page');
+      loadPage(page);
+    });
+  });
+};
+
+document.addEventListener('DOMContentLoaded', async () => {
+  await loadHTML('nav-container', './frontend/html/components/nav.html');
+  setupMenuEvents();
+  loadPage('home');
+});
+
+loadComponents.js:
+
+    Carrega o footer.html dinamicamente:
+
+const loadHTML = async (containerId, filePath) => {
+  try {
+    const response = await fetch(filePath);
+    if (!response.ok) {
+      throw new Error(`Erro ao carregar o arquivo ${filePath}`);
+    }
+    const content = await response.text();
+    document.getElementById(containerId).innerHTML = content;
+  } catch (error) {
+    console.error(error.message);
+  }
+};
+
+// Carregar o footer dinamicamente
+loadHTML('footer-container', './frontend/html/components/footer.html');
+
+
+
+
+
+
+
+O que estava dando errado e como foi consertado
+
+    O problema:
+        Ao carregar o nav.html dinamicamente usando o loadComponents.js, o menu deixava de funcionar porque os event listeners configurados no router.js não eram aplicados ao conteúdo carregado dinamicamente.
+        Isso acontece porque, quando o script tenta configurar os eventos, os elementos do nav ainda não estão presentes no DOM.
+
+    A solução:
+        Foi adicionada uma função chamada setupMenuEvents no router.js, responsável por reaplicar os eventos de clique nos links do menu sempre que o nav.html fosse carregado.
+        Após o carregamento dinâmico do nav.html com a função loadHTML, essa função (setupMenuEvents) é chamada para garantir que os eventos sejam configurados no conteúdo recém-inserido.
+
+    Resultado:
+        Com essa abordagem, o menu agora funciona perfeitamente, mesmo sendo carregado dinamicamente. O conteúdo do <main> muda de acordo com o link clicado, mantendo a fluidez e a modularidade do projeto.

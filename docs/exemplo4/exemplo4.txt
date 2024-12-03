@@ -1,0 +1,173 @@
+Documentação do Exemplo 4: Router com Carregamento Dinâmico e Landpage
+
+Este exemplo 4 apresenta um sistema completo para carregar conteúdo dinamicamente em uma aplicação web, com suporte para roteamento individual (route.js) e carregamento de múltiplas seções em uma única página (landpage.js). A lógica é baseada em modularidade, carregamento eficiente de recursos (HTML, CSS, JS) e configuração automatizada de scripts.
+Arquitetura
+1. Configuração Base (pagesConfig)
+
+O arquivo pagesConfig contém a definição de cada página, incluindo:
+
+    Nome da página (page).
+    Caminhos para HTML, CSS e JS específicos da página.
+    Nome da função de configuração (setupFunction) associada ao script.
+
+Exemplo de Configuração:
+
+const pagesConfig = [
+  {
+    page: 'home',
+    htmlPath: './frontend/html/pages/home.html',
+    cssPath: './frontend/css/pages/home.css',
+  },
+  {
+    page: 'form',
+    htmlPath: './frontend/html/pages/form.html',
+    cssPath: './frontend/css/pages/form.css',
+    scriptPath: './frontend/js/pages/formHandler.js',
+    setupFunctionName: 'setupFormEvents',
+  },
+  // Outras páginas...
+];
+
+2. Funções Utilitárias (utils.js)
+
+As funções reutilizáveis para carregar recursos:
+
+    loadHTML(containerId, filePath) Carrega conteúdo HTML de um arquivo para um container no DOM.
+
+export const loadHTML = async (containerId, filePath) => {
+  const response = await fetch(filePath);
+  if (!response.ok) throw new Error(`Erro ao carregar o arquivo ${filePath}`);
+  const content = await response.text();
+  document.getElementById(containerId).innerHTML = content;
+};
+
+loadCSS(filePath) Adiciona dinamicamente um arquivo CSS ao <head>, evitando carregamentos duplicados.
+
+export const loadCSS = (filePath) => {
+  const existingLink = document.querySelector(`link[href="${filePath}"]`);
+  if (!existingLink) {
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = filePath;
+    document.head.appendChild(link);
+  }
+};
+
+loadScriptForPage(pageConfig) Carrega um script específico da página e executa a função de configuração (setup) associada.
+
+    export const loadScriptForPage = (pageConfig) => {
+      const { scriptPath, setupFunctionName } = pageConfig;
+      if (!scriptPath) return;
+
+      const existingScript = document.querySelector(`script[src="${scriptPath}"]`);
+      if (!existingScript) {
+        const script = document.createElement('script');
+        script.src = scriptPath;
+        script.onload = () => {
+          if (setupFunctionName && typeof window[setupFunctionName] === 'function') {
+            window[setupFunctionName]();
+          }
+        };
+        document.body.appendChild(script);
+      }
+    };
+
+3. Router.js (Carregamento por Página)
+
+Responsável por carregar uma página de cada vez. Ideal para aplicações que dependem de navegação tradicional.
+
+Lógica Principal:
+
+const loadPage = async (page) => {
+  const pageConfig = pagesConfig.find((config) => config.page === page);
+  if (!pageConfig) throw new Error(`Página '${page}' não encontrada.`);
+
+  // Carregar HTML
+  const content = await fetch(pageConfig.htmlPath).then((res) => res.text());
+  document.querySelector('#dynamic-content').innerHTML = `<section id="${page}-section">${content}</section>`;
+
+  // Carregar CSS
+  if (pageConfig.cssPath) loadCSS(pageConfig.cssPath);
+
+  // Carregar Script e Setup
+  loadScriptForPage(pageConfig);
+};
+
+4. Landpage.js (Carregamento de Múltiplas Seções)
+
+Responsável por carregar todas as páginas em uma única tela (modo "landpage").
+
+Lógica Principal:
+
+const loadLandpage = async () => {
+  const dynamicContent = document.querySelector('#dynamic-content');
+  dynamicContent.innerHTML = '';
+
+  for (const pageConfig of pagesConfig) {
+    const content = await fetch(pageConfig.htmlPath).then((res) => res.text());
+    const section = document.createElement('section');
+    section.id = `${pageConfig.page}-section`;
+    section.innerHTML = content;
+    dynamicContent.appendChild(section);
+
+    if (pageConfig.cssPath) loadCSS(pageConfig.cssPath);
+    if (pageConfig.scriptPath) loadScriptForPage(pageConfig);
+  }
+};
+
+5. Configuração Inicial
+
+Ambos os modos (router e landpage) carregam o cabeçalho, rodapé e estilos globais:
+
+Exemplo:
+
+document.addEventListener('DOMContentLoaded', async () => {
+  await loadHTML('nav-container', './frontend/html/components/nav.html');
+  await loadHTML('footer-container', './frontend/html/components/footer.html');
+  loadCSS('./frontend/css/components/nav.css');
+  loadCSS('./frontend/css/components/footer.css');
+
+  // Escolher entre carregar uma página ou todas
+  const isLandpage = true; // Alternar entre modo router e landpage
+  if (isLandpage) {
+    await loadLandpage();
+  } else {
+    await loadPage('home'); // Página inicial no modo router
+  }
+});
+
+Características Principais
+
+    Modularidade:
+        Separação clara entre HTML, CSS, e JS para cada página.
+        Funções reutilizáveis e configuração centralizada.
+
+    Flexibilidade:
+        Suporte para dois modos: navegação por página (route.js) e página única (landpage.js).
+
+    Escalabilidade:
+        Facilmente extensível adicionando novas entradas ao pagesConfig.
+
+    Desempenho:
+        Carregamento assíncrono otimiza a experiência do usuário.
+
+Exemplo de Configuração de Página
+
+Para adicionar uma nova página:
+
+    Crie o HTML, CSS e JS específicos.
+    Adicione ao pagesConfig:
+
+    {
+      page: 'newpage',
+      htmlPath: './frontend/html/pages/newpage.html',
+      cssPath: './frontend/css/pages/newpage.css',
+      scriptPath: './frontend/js/pages/newpage.js',
+      setupFunctionName: 'setupNewPage',
+    }
+
+    Implemente a lógica no setupNewPage (se necessário).
+
+Conclusão
+
+Este exemplo é um modelo flexível e eficiente que pode ser usado em diversos tipos de aplicações, desde single-page applications (SPAs) até sites com navegação tradicional. Se precisar de mais melhorias ou customizações, é só falar! 🚀

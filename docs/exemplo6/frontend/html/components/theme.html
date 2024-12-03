@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="data:,">
+  <title>Theme Preview - Avalume</title>
+
+    <!-- Atualizado para refletir o novo local -->
+<link rel="stylesheet" href="../../css/styles.css">
+<link rel="stylesheet" href="../../css/theme.css">
+
+  <style>
+    /* Estilo específico para visualização */
+    .theme-preview-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      padding: 50px;
+      margin: auto;
+      max-width: 1200px;
+    }
+
+    .theme-block {
+      border: 2px solid var(--border-color);
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .theme-block h2 {
+      margin-bottom: 10px;
+      color: var(--text-color);
+    }
+
+    .theme-color {
+      height: 100px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Cabeçalho -->
+  <header>
+    <nav id="nav-container">
+      <div class="logo">Avalume</div>
+      <button id="theme-toggle-button">Alternar Tema</button>
+    </nav>
+  </header>
+
+  <!-- Conteúdo -->
+  <main>
+    <h1 style="text-align: center;">Preview de Cores e Temas</h1>
+    <p style="text-align: center;">Esta página exibe as cores do tema atual usando as variáveis CSS.</p>
+    
+    <div class="theme-preview-container">
+      <!-- Exemplo de Cores -->
+      <div class="theme-block">
+        <div class="theme-color" style="background-color: var(--background-color);"></div>
+        <h2>Background</h2>
+        <p>Cor de fundo principal</p>
+      </div>
+
+      <div class="theme-block">
+        <div class="theme-color" style="background-color: var(--primary-color);"></div>
+        <h2>Primary</h2>
+        <p>Cor principal do tema</p>
+      </div>
+
+      <div class="theme-block">
+        <div class="theme-color" style="background-color: var(--secondary-color);"></div>
+        <h2>Secondary</h2>
+        <p>Cor secundária do tema</p>
+      </div>
+
+      <div class="theme-block">
+        <div class="theme-color" style="background-color: var(--text-color);"></div>
+        <h2>Text</h2>
+        <p>Cor do texto principal</p>
+      </div>
+
+      <div class="theme-block">
+        <div class="theme-color" style="background-color: var(--link-color);"></div>
+        <h2>Link</h2>
+        <p>Cor padrão dos links</p>
+      </div>
+
+      <div class="theme-block">
+        <div class="theme-color" style="background-color: var(--hover-color);"></div>
+        <h2>Hover</h2>
+        <p>Cor dos links ao passar o mouse</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Rodapé -->
+  <footer>
+    <p style="text-align: center;">© 2024 Avalume. Teste de Tema.</p>
+  </footer>
+
+  <!-- Scripts -->
+
+<script type="module" src="../../js/components/themeHandler.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,17 @@
+/* Estilos para a seção About */
+#about-section {
+    min-height: 100vh; /* Ocupa pelo menos uma altura de viewport */
+  background-color: #fff0f5;
+  padding: 50px;
+  text-align: left;
+}
+
+#about-section h2 {
+  font-size: 2em;
+  color: #444;
+}
+
+#about-section p {
+  font-size: 1em;
+  color: #555;
+}

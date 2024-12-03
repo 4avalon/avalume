@@ -1,0 +1,83 @@
+/* Estilos para a seção Contact */
+#contact-section {
+  min-height: 100vh; /* Ocupa pelo menos uma altura de viewport */
+  background-color: var(--foreground-color); /* Fundo dinâmico secundário */
+  padding: 60px 30px; /* Maior espaçamento para melhor layout */
+  text-align: left;
+  font-family: 'Arial', sans-serif; /* Fonte padrão para consistência */
+  line-height: 1.8; /* Melhor espaçamento entre as linhas */
+  border-left: 5px solid var(--primary-color); /* Destaque na borda esquerda */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para maior destaque */
+  border-radius: 10px; /* Bordas suavemente arredondadas */
+}
+
+/* Títulos */
+#contact-section h2 {
+  font-size: 2.5em; /* Título maior */
+  color: var(--primary-color); /* Cor dinâmica */
+  margin-bottom: 20px;
+  text-transform: uppercase; /* Texto em caixa alta */
+  letter-spacing: 1px; /* Espaçamento entre letras */
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1); /* Sombra suave no texto */
+}
+
+/* Parágrafos */
+#contact-section p {
+  font-size: 1.2em; /* Texto ligeiramente maior */
+  color: var(--text-color); /* Texto dinâmico */
+  text-align: justify; /* Texto alinhado para melhor legibilidade */
+  margin-bottom: 20px;
+}
+
+/* Botões */
+#contact-section button {
+  background-color: var(--primary-color); /* Fundo dinâmico */
+  color: var(--background-color); /* Texto claro */
+  padding: 12px 25px; /* Tamanho maior do botão */
+  font-size: 1.1rem; /* Texto maior */
+  border: none;
+  border-radius: 8px; /* Bordas arredondadas */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  box-shadow: var(--box-shadow); /* Sombra inicial */
+}
+
+#contact-section button:hover {
+  background-color: var(--hover-color); /* Fundo dinâmico ao passar o mouse */
+  transform: scale(1.1); /* Efeito de zoom leve */
+  box-shadow: var(--box-shadow-hover); /* Sombra maior */
+}
+
+/* Ícones de Contato (Se Usados) */
+#contact-section .contact-options {
+  display: flex;
+  gap: 20px; /* Espaçamento entre opções */
+  flex-wrap: wrap; /* Ajusta itens em telas menores */
+  margin-top: 20px;
+}
+
+#contact-section .contact-item {
+  background-color: var(--background-color); /* Fundo dinâmico */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: var(--box-shadow); /* Sombra para destaque */
+  flex: 1 1 calc(33.33% - 20px); /* Três itens por linha */
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#contact-section .contact-item:hover {
+  transform: translateY(-5px); /* Leve movimento para cima */
+  box-shadow: var(--box-shadow-hover); /* Destaque ao passar o mouse */
+}
+
+#contact-section .contact-item i {
+  font-size: 2rem; /* Tamanho dos ícones */
+  color: var(--primary-color); /* Cor dinâmica */
+  margin-bottom: 10px;
+}
+
+#contact-section .contact-item p {
+  font-size: 1.1rem;
+  color: var(--text-color); /* Cor do texto dinâmico */
+}

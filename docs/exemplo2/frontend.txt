@@ -1,0 +1,249 @@
+// frontend\css\components\footer.css
+
+/* Estilo do Footer */
+footer {
+  background-color: #2c3e50; /* Azul escuro elegante */
+  color: #ecf0f1; /* Branco suave */
+  text-align: center;
+  padding: 20px 0;
+  font-size: 0.9rem;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Links no Footer */
+footer a {
+  text-decoration: none;
+  color: #3498db; /* Azul claro */
+  margin: 0 10px;
+  transition: color 0.3s ease;
+}
+
+footer a:hover {
+  color: #1abc9c; /* Verde claro */
+}
+
+
+
+// frontend\css\components\nav.css
+
+/* Estilo do Nav */
+nav {
+  background-color: #2c3e50; /* Azul escuro elegante */
+  color: white;
+  padding: 15px 20px;
+  display: flex;
+  flex-direction: column; /* Adicionado para centralizar logo e menu */
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Logo */
+nav .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ecf0f1; /* Branco suave */
+  text-transform: uppercase;
+  margin-bottom: 10px; /* Espaço entre logo e menu */
+}
+
+/* Links do menu */
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center; /* Centraliza os itens */
+  gap: 20px;
+}
+
+nav a {
+  text-decoration: none;
+  color: white;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Efeito ao passar o mouse */
+nav a:hover {
+  background-color: #34495e; /* Azul mais claro */
+  color: #ecf0f1; /* Branco suave */
+}
+
+
+
+// frontend\css\styles.css
+
+/* Estilo Geral */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0;
+}
+
+/* Estilo do Nav */
+nav {
+  background-color: #004080; /* Azul escuro */
+  color: white;
+  padding: 10px 20px;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 20px;
+}
+
+nav a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  padding: 5px 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+nav a:hover {
+  background-color: #0066cc; /* Azul claro */
+}
+
+/* Estilo do Main */
+main {
+  padding: 20px;
+  background-color: #e0f7fa; /* Azul claro pastel */
+  color: #004d40; /* Verde escuro */
+}
+
+/* Estilo do Footer */
+footer {
+  background-color: #333; /* Cinza escuro */
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  border-top: 2px solid #0066cc; /* Azul claro */
+}
+
+
+
+// frontend\html\components\footer.html
+
+<footer>
+  <p>&copy; 2024 Avalume. Todos os direitos reservados.</p>
+  <p>
+    <a href="https://twitter.com">Twitter</a> | 
+    <a href="https://facebook.com">Facebook</a> | 
+    <a href="https://instagram.com">Instagram</a>
+  </p>
+</footer>
+
+
+
+// frontend\html\components\nav.html
+
+<nav>
+  <div class="logo">Avalume</div>
+  <ul>
+    <li><a href="#" data-page="home">Home</a></li>
+    <li><a href="#" data-page="about">About</a></li>
+    <li><a href="#" data-page="contact">Contact</a></li>
+  </ul>
+</nav>
+
+
+
+// frontend\html\pages\about.html
+
+<section>
+  <h1>Sobre Nós</h1>
+  <p>Este é o conteúdo da página Sobre Nós. About</p>
+</section>
+
+
+
+// frontend\html\pages\contact.html
+
+<section>
+  <h1>Fale Conosco</h1>
+  <p>Este é o conteúdo da página de contato. Contact</p>
+</section>
+
+
+
+// frontend\html\pages\home.html
+
+<section>
+  <h1>Bem-vindo à Home 777</h1>
+  <p>Este é o conteúdo da página inicial. Bem feito não?</p>
+</section>
+
+
+
+// frontend\js\components\loadComponents.js
+
+// Função para carregar HTML em elementos específicos
+const loadHTML = async (containerId, filePath) => {
+  try {
+    const response = await fetch(filePath);
+    if (!response.ok) {
+      throw new Error(`Erro ao carregar o arquivo ${filePath}`);
+    }
+    const content = await response.text();
+    document.getElementById(containerId).innerHTML = content;
+  } catch (error) {
+    console.error(error.message);
+  }
+};
+
+// Carregar o footer dinamicamente
+loadHTML('footer-container', './frontend/html/components/footer.html');
+
+
+
+// frontend\js\components\router.js
+
+// Função para carregar páginas dinamicamente
+const loadPage = async (page) => {
+  try {
+    const response = await fetch(`./frontend/html/pages/${page}.html`);
+    if (!response.ok) {
+      throw new Error(`Erro ao carregar a página ${page}`);
+    }
+    const content = await response.text();
+    document.querySelector('main').innerHTML = content;
+  } catch (error) {
+    console.error(error.message);
+  }
+};
+
+// Função para configurar os eventos no menu
+const setupMenuEvents = () => {
+  const menuLinks = document.querySelectorAll('nav a[data-page]');
+  menuLinks.forEach((link) => {
+    link.addEventListener('click', (event) => {
+      event.preventDefault(); // Evita o comportamento padrão do link
+      const page = link.getAttribute('data-page');
+      loadPage(page); // Carrega a página correspondente
+    });
+  });
+};
+
+// Configuração inicial do roteamento
+document.addEventListener('DOMContentLoaded', async () => {
+  // Carrega o nav.html dinamicamente
+  await loadHTML('nav-container', './frontend/html/components/nav.html');
+
+  // Configura os eventos no menu após o carregamento dinâmico do nav
+  setupMenuEvents();
+
+  // Carrega a página inicial por padrão
+  loadPage('home');
+});
+

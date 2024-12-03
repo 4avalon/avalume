@@ -1,0 +1,54 @@
+ Exemplo 3: Formulário Carregado Dinamicamente
+O que foi feito
+
+Foi implementado um formulário de contato carregado dinamicamente em uma página específica dentro do projeto Avalume. O formulário captura nome, e-mail e mensagem do usuário, valida os dados localmente e os redireciona para o WhatsApp com as informações preenchidas.
+Como foi feito
+
+    Estrutura HTML:
+        O formulário foi removido do index.html e colocado em um arquivo separado (form.html) dentro da pasta frontend/html/pages/.
+        O index.html foi configurado para carregar dinamicamente o conteúdo do formulário em um elemento <div id="dynamic-content"></div>.
+
+    Estilos CSS:
+        Os estilos do formulário foram aplicados através de um arquivo específico (form.css) na pasta frontend/css/pages/.
+
+    JavaScript:
+        Criamos um arquivo formHandler.js dentro da pasta frontend/js/pages/ para tratar os eventos do formulário (validação e envio dos dados via WhatsApp).
+        Atualizamos o roteador (router.js) para carregar dinamicamente o formulário e o script correspondente quando a página "Formulário" fosse acessada.
+
+    Logs de Depuração:
+        Foram adicionados logs no router.js e no formHandler.js para acompanhar o carregamento dinâmico do conteúdo e a configuração dos eventos no formulário.
+
+Onde foi feito
+
+    Arquivo form.html: frontend/html/pages/
+    Estilo do formulário: frontend/css/pages/form.css
+    Script de manipulação do formulário: frontend/js/pages/formHandler.js
+    Atualizações no roteador: frontend/js/components/router.js
+
+Por que foi feito
+
+    Para modularizar o código e garantir que as páginas e funcionalidades sejam carregadas dinamicamente de forma organizada.
+    Para melhorar a manutenção e escalabilidade do projeto, separando cada funcionalidade em seu respectivo arquivo.
+    Para facilitar a reutilização do código e a adição de novos componentes ou páginas no futuro.
+
+Problema encontrado
+
+O formulário não estava funcionando corretamente ao ser carregado dinamicamente. Especificamente:
+
+    O evento de submit não era configurado adequadamente após o carregamento dinâmico.
+    O formHandler.js não estava sendo carregado no momento correto, o que causava a ausência de funcionalidade no formulário.
+
+Como foi resolvido
+
+    Adição de Logs:
+        Foram adicionados logs em várias partes do código para identificar onde o processo estava falhando.
+        Descobrimos que o formHandler.js não estava sendo carregado corretamente após a página "Formulário" ser renderizada.
+
+    Ajuste no Roteador:
+        Alteramos o router.js para incluir uma verificação específica para a página "form". Quando essa página é carregada, além do HTML, o script formHandler.js é adicionado dinamicamente ao DOM.
+
+    Execução do Script:
+        Garantimos que a função de configuração do formulário (setupFormEvents) fosse chamada após o carregamento do conteúdo dinâmico. Isso garantiu que os eventos fossem configurados corretamente no formulário.
+
+    Testes:
+        Realizamos vários testes para garantir que o formulário funcionasse tanto estaticamente quanto dinamicamente, sem interferir em outras funcionalidades do projeto.

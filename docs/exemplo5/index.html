@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="data:,">
+  <title>Landpage - Avalume</title>
+
+  <!-- Estilos globais -->
+  <link rel="stylesheet" href="./frontend/css/styles.css">
+  <link rel="stylesheet" href="./frontend/css/components/search.css">
+
+</head>
+<body>
+  <!-- Navegação -->
+
+
+
+<header>
+  <nav id="nav-container"></nav> <!-- Menu Dinâmico -->
+  <div id="search-container">
+    <input type="text" id="search-input" placeholder="Buscar..." />
+    <button id="search-button">Pesquisar</button>
+  </div>
+</header>
+
+
+
+<!-- Dropdown e Resultados -->
+<div id="search-results-container">
+  <div id="search-dropdown">
+    <button id="close-search-dropdown">X</button>
+    <div id="search-results">
+      <p>Digite algo para buscar ou clique no botão.</p>
+    </div>
+  </div>
+</div>
+
+  <!-- Conteúdo Dinâmico -->
+  <div id="dynamic-content">
+    <!-- Conteúdo carregado dinamicamente -->
+  </div>
+
+  <!-- Rodapé -->
+  <footer id="footer-container"></footer>
+
+  <!-- Scripts -->
+  <script type="module" src="./frontend/js/router.js"></script>
+  <script type="module" src="./frontend/js/components/searchHandler.js"></script>
+
+
+
+</body>
+</html>

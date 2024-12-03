@@ -1,0 +1,51 @@
+/* Estilo do Nav */
+nav {
+  background-color: #2c3e50; /* Azul escuro elegante */
+  color: white;
+  padding: 15px 20px;
+  display: flex;
+  flex-direction: column; /* Adicionado para centralizar logo e menu */
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Logo */
+nav .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ecf0f1; /* Branco suave */
+  text-transform: uppercase;
+  margin-bottom: 10px; /* Espaço entre logo e menu */
+}
+
+/* Links do menu */
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center; /* Centraliza os itens */
+  gap: 20px;
+}
+
+nav a {
+  text-decoration: none;
+  color: white;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Efeito ao passar o mouse */
+nav a:hover {
+  background-color: #34495e; /* Azul mais claro */
+  color: #ecf0f1; /* Branco suave */
+}
+nav a.active {
+  background-color: #3498db; /* Azul claro */
+  color: white;
+  font-weight: bold;
+  border-bottom: 2px solid white; /* Exemplo de efeito */
+}

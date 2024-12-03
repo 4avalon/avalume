@@ -1,0 +1,29 @@
+/* Estilos para a seção About */
+#about-section {
+  min-height: 100vh; /* Ocupa pelo menos uma altura de viewport */
+  background-color: #aab7c1; /* Cor de fundo azul claro suave */
+  padding: 60px 30px; /* Aumentei o padding para melhor espaçamento */
+  text-align: left;
+  font-family: 'Arial', sans-serif; /* Fonte padrão */
+  line-height: 1.6; /* Maior espaçamento entre as linhas */
+  border-left: 5px solid #004d99; /* Adicionei um destaque à esquerda */
+}
+
+#about-section h2 {
+  font-size: 2.5em; /* Maior tamanho do título */
+  color: #ff0000; /* Cor red */
+  margin-bottom: 20px;
+  text-transform: uppercase; /* Texto em caixa alta */
+}
+#about-section h1 {
+  font-size: 2em; /* Maior tamanho do título */
+  color: #ff0000; /* Cor red */
+  margin-bottom: 20px;
+  text-transform: uppercase; /* Texto em caixa alta */
+}
+
+#about-section p {
+  font-size: 1.1em; /* Texto um pouco maior */
+  color: #333; /* Cor mais escura para melhor contraste */
+  text-align: justify; /* Justifica o texto para maior legibilidade */
+}

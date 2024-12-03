@@ -1,0 +1,5 @@
+Avalume é o nome escolhido para o novo projeto, que será um espaço focado no aprendizado de programação. O objetivo inicial é criar exemplos práticos das funcionalidades que irão compor o projeto Modelo. O Avalume servirá como base para experimentar e testar ideias, enquanto mantém o foco na criação de conteúdo estruturado e funcional.
+
+No futuro, Avalume poderá incluir elementos de gamificação, como "espaços" chamados CodeQuest e Syntaxia, onde os usuários explorarão desafios e aprenderão de forma interativa. Além disso, haverá avatares que evoluem conforme o progresso do usuário, ganhando poderes, defesas e stats, com a possibilidade de duelos entre eles.
+
+Embora o foco principal seja construir os exemplos agora, ideias como avatares, gamificação e outros recursos inovadores serão deixadas como "pegadas" para futuras implementações. Isso garante que o projeto cresça de forma modular, organizado e com potencial para se expandir em algo ainda maior.

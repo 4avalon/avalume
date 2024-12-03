@@ -1,0 +1,45 @@
+
+/* Estilos para a seção Home */
+
+#home-section {
+  min-height: 100vh; /* Ocupa pelo menos uma altura de viewport */
+  display: flex; /* Define layout flexível */
+  flex-direction: column; /* Alinha os elementos verticalmente */
+  justify-content: center; /* Centraliza verticalmente */
+  align-items: center; /* Centraliza horizontalmente */
+  background-color: var(--background-color); /* Corrigido */
+  padding: 50px; /* Espaçamento interno */
+  text-align: center; /* Centraliza o texto */
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave para profundidade */
+}
+
+/* Estilos para o título da seção */
+#home-section h1 {
+  font-size: 3em; /* Aumenta o tamanho do título */
+  color: var(--primary-color); /* Usar variável do tema */
+  margin-bottom: 20px; /* Espaço abaixo do título */
+  font-family: 'Arial', sans-serif; /* Tipografia mais limpa */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Sombra suave no texto */
+}
+
+/* Estilos para o parágrafo da seção */
+#home-section p {
+  font-size: 1.5em; /* Texto maior para maior legibilidade */
+  color: var(--text-color); /* Usar variável do tema */
+  max-width: 800px; /* Limita a largura máxima do texto */
+  line-height: 1.8; /* Espaçamento entre linhas */
+  font-family: 'Georgia', serif; /* Tipografia elegante */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Sombra suave no texto */
+}
+
+/* Estilo responsivo para telas menores */
+@media (max-width: 768px) {
+  #home-section h1 {
+    font-size: 2em; /* Ajusta o tamanho do título em telas menores */
+  }
+
+  #home-section p {
+    font-size: 1.2em; /* Ajusta o tamanho do texto em telas menores */
+    padding: 0 20px; /* Reduz o espaçamento lateral */
+  }
+}

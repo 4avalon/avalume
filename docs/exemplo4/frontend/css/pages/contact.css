@@ -1,0 +1,17 @@
+/* Estilos para a seção Contact */
+#contact-section {
+    min-height: 100vh; /* Ocupa pelo menos uma altura de viewport */
+  background-color: #e6ffe6;
+  padding: 50px;
+  text-align: left;
+}
+
+#contact-section h2 {
+  font-size: 2em;
+  color: #2a4;
+}
+
+#contact-section p {
+  font-size: 1em;
+  color: #3a5;
+}

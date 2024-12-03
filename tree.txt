@@ -1,0 +1,91 @@
+cd /d "C:/Users/roger/OneDrive/Documentos/Servidor_Local_Phy/Avalon/Projetos/avalume"
+
+REM Lista os arquivos apenas no diretório raiz do projeto
+Lista de Arquivos no Diretório Principal:
+.gitignore
+2.html
+backend.txt
+exemplo6.txt
+frontend.txt
+index.html
+README.txt
+saveAsText.js
+tree.txt
+node_modules
+backend
+frontend
+
+REM Lista os arquivos na pasta frontend
+Lista de Arquivos na Pasta "frontend":
+├── assets
+│   ├── carousel
+│   │   ├── img1.jpg
+│   │   ├── img2.jpg
+│   │   ├── img3.jpg
+│   │   ├── img4.jpg
+│   │   ├── img5.jpg
+│   │   └── img6.jpg
+│   ├── fonts
+│   ├── icons
+│   ├── img
+│   └── videos
+├── css
+│   ├── dynamics
+│   │   ├── modal.css
+│   │   └── search.css
+│   ├── globals
+│   │   ├── footer.css
+│   │   ├── nav.css
+│   │   ├── reset.css
+│   │   ├── styles.css
+│   │   ├── theme.css
+│   │   └── variables.css
+│   └── pages
+│       ├── about.css
+│       ├── AdmConfig.css
+│       ├── carousel.css
+│       ├── contact.css
+│       ├── form.css
+│       └── home.css
+├── html
+│   ├── dynamics
+│   │   ├── modal.html
+│   │   ├── notification.html
+│   │   └── search.html
+│   ├── globals
+│   │   ├── footer.html
+│   │   ├── nav.html
+│   │   └── themeToggle.html
+│   └── pages
+│       ├── about.html
+│       ├── AdmConfig.html
+│       ├── carousel.html
+│       ├── contact.html
+│       ├── form.html
+│       └── home.html
+└── js
+    ├── core
+    │   ├── config.js
+    │   ├── middleware
+    │   │   ├── authMiddleware.js
+    │   │   ├── loadMiddleware.js
+    │   │   └── permissionsMiddleware.js
+    │   ├── router.js
+    │   └── utils.js
+    ├── dynamics
+    │   ├── modalHandler.js
+    │   └── searchHandler.js
+    ├── globals
+    │   ├── footerHandler.js
+    │   ├── navHandler.js
+    │   └── themeHandler.js
+    ├── pages
+    │   ├── AdmConfig.js
+    │   ├── carouselHandler.js
+    │   └── formHandler.js
+    └── utils
+        └── utils.js
+
+REM Lista os arquivos na pasta backend
+Lista de Arquivos na Pasta "backend":
+

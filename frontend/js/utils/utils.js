@@ -19,18 +19,18 @@ export const loadHTML = async (containerId, filePath) => {
 
 // Função para carregar arquivos CSS dinamicamente
 export const loadCSS = (filePath) => {
-  //console.log(`[loadCSS] Tentando carregar CSS: ${filePath}`);
   const existingLink = document.querySelector(`link[href="${filePath}"]`);
   if (!existingLink) {
     const link = document.createElement('link');
     link.rel = 'stylesheet';
     link.href = filePath;
     document.head.appendChild(link);
-    //console.log(`[loadCSS] Arquivo CSS '${filePath}' carregado.`);
+    console.log(`[Utils] CSS carregado: ${filePath}`);
   } else {
-    //console.log(`[loadCSS] Arquivo CSS '${filePath}' já está carregado.`);
+    console.log(`[Utils] CSS já carregado: ${filePath}`);
   }
 };
+
 
 // Função para carregar e configurar o script necessário para uma página específica
 export const loadScriptForPage = (pageConfig) => {
@@ -66,3 +66,5 @@ export const loadScriptForPage = (pageConfig) => {
     }
   }
 };
+
+

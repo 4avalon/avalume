@@ -6,49 +6,142 @@
   <link rel="icon" href="data:,">
   <title>Landpage - Avalume</title>
 
-  <!-- Estilos globais -->
-  <link rel="stylesheet" href="./frontend/css/styles.css">
-  <link rel="stylesheet" href="./frontend/css/components/search.css">
-
+  <!-- Estilos Globais -->
+  <link rel="stylesheet" href="./frontend/css/globals/reset.css">
+  <link rel="stylesheet" href="./frontend/css/globals/styles.css">
+  <link rel="stylesheet" href="./frontend/css/globals/theme.css">
 </head>
 <body>
-  <!-- Navegação -->
+  <header>
+    <nav id="nav-container"></nav> <!-- Menu Dinâmico -->
+    <div id="search-container">
+      <input type="text" id="search-input" placeholder="Buscar...">
+      <button id="search-button">Pesquisar</button>
+    </div>
+  </header>
 
-
-
-<header>
-  <nav id="nav-container"></nav> <!-- Menu Dinâmico -->
-  <div id="search-container">
-    <input type="text" id="search-input" placeholder="Buscar..." />
-    <button id="search-button">Pesquisar</button>
-  </div>
-</header>
-
-
-
-<!-- Dropdown e Resultados -->
-<div id="search-results-container">
-  <div id="search-dropdown">
-    <button id="close-search-dropdown">X</button>
-    <div id="search-results">
-      <p>Digite algo para buscar ou clique no botão.</p>
+  <!-- Dropdown e Resultados -->
+  <div id="search-results-container">
+    <div id="search-dropdown">
+      <button id="close-search-dropdown">X</button>
+      <div id="search-results">
+        <p>Digite algo para buscar ou clique no botão.</p>
+      </div>
     </div>
   </div>
-</div>
 
   <!-- Conteúdo Dinâmico -->
-  <div id="dynamic-content">
-    <!-- Conteúdo carregado dinamicamente -->
-  </div>
+  <main id="dynamic-content"></main>
 
   <!-- Rodapé -->
   <footer id="footer-container"></footer>
 
   <!-- Scripts -->
-  <script type="module" src="./frontend/js/router.js"></script>
-  <script type="module" src="./frontend/js/components/searchHandler.js"></script>
+  <script>
+    /**
+     * Config.js - Configurações Globais
+     */
+    const appConfig = {
+      siteMode: 'landpage',
+      theme: 'light',
+      enableSearch: true,
+      enableModal: true,
+      logLevel: 'debug',
+    };
 
+    const log = (message, level = 'info') => {
+      const levels = ['debug', 'info', 'warn', 'error'];
+      if (levels.indexOf(level) >= levels.indexOf(appConfig.logLevel)) {
+        console[level](`[${level.toUpperCase()}] ${message}`);
+      }
+    };
+  </script>
 
+  <script>
+    /**
+     * Utils.js - Utilitários
+     */
+    const utils = {
+      async loadHTML(containerId, filePath) {
+        try {
+          const response = await fetch(filePath);
+          if (!response.ok) throw new Error(`Erro ao carregar ${filePath}`);
+          const container = document.getElementById(containerId);
+          if (container) {
+            container.innerHTML = await response.text();
+            log(`HTML carregado em '${containerId}' a partir de ${filePath}`, 'debug');
+          } else {
+            throw new Error(`Container com ID '${containerId}' não encontrado`);
+          }
+        } catch (error) {
+          log(`Erro ao carregar HTML: ${error.message}`, 'error');
+        }
+      },
 
+      loadCSS(filePath) {
+        if (!document.querySelector(`link[href="${filePath}"]`)) {
+          const link = document.createElement('link');
+          link.rel = 'stylesheet';
+          link.href = filePath;
+          document.head.appendChild(link);
+          log(`CSS carregado de ${filePath}`, 'debug');
+        }
+      },
+    };
+  </script>
+
+  <script>
+    /**
+     * NavHandler.js - Gerenciador de Navegação
+     */
+    const navHandler = {
+      generateMenu() {
+        const menuConfig = [
+          { page: 'home', label: 'Home', href: '#home-section' },
+          { page: 'about', label: 'About Us', href: '#about-section' },
+          { page: 'contact', label: 'Contact', href: '#contact-section' },
+          { page: 'form', label: 'Form', href: '#form-section' },
+          { page: 'carousel', label: 'Carousel', href: '#carousel-section' },
+        ];
+
+        const navContainer = document.getElementById('nav-container');
+        if (!navContainer) {
+          log('Elemento de navegação não encontrado', 'error');
+          return;
+        }
+
+        const ul = document.createElement('ul');
+        menuConfig.forEach((item) => {
+          const li = document.createElement('li');
+          const a = document.createElement('a');
+          a.href = item.href;
+          a.textContent = item.label;
+          li.appendChild(a);
+          ul.appendChild(li);
+        });
+
+        navContainer.appendChild(ul);
+        log('Menu gerado com sucesso', 'info');
+      },
+    };
+  </script>
+
+  <script>
+    /**
+     * Inicialização
+     */
+    document.addEventListener('DOMContentLoaded', async () => {
+      log('Inicializando aplicação...', 'info');
+
+      // Carregar Navegação e Rodapé
+      await utils.loadHTML('footer-container', './frontend/html/globals/footer.html');
+      utils.loadCSS('./frontend/css/globals/footer.css');
+
+      // Gerar menu
+      navHandler.generateMenu();
+
+      log('Aplicação inicializada com sucesso!', 'info');
+    });
+  </script>
 </body>
 </html>

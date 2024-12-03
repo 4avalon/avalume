@@ -7,6 +7,7 @@ const backendDir = path.join(projectDir, 'backend');
 const frontendDir = path.join(projectDir, 'frontend');
 const backendOutputFile = path.join(projectDir, 'backend.txt');
 const frontendOutputFile = path.join(projectDir, 'frontend.txt');
+const treeOutputFile = path.join(projectDir, 'tree.txt');
 
 // Extensões permitidas
 const allowedExtensions = ['.html', '.css', '.js'];
@@ -36,9 +37,67 @@ function generateOutput(fileList, outputFile, projectDir) {
     console.log(`Estrutura salva em ${outputFile}`);
 }
 
+// Função para listar arquivos no diretório raiz
+function listRootFiles(dir) {
+    return fs.readdirSync(dir, { withFileTypes: true })
+        .filter(item => !item.isDirectory())
+        .map(file => file.name);
+}
+
+// Função para criar a estrutura de 'tree' (arquivos e subdiretórios)
+function generateTree(dir, prefix = '') {
+    const entries = fs.readdirSync(dir, { withFileTypes: true });
+    let treeOutput = '';
+
+    entries.forEach((entry, index) => {
+        const isLast = index === entries.length - 1;
+        const connector = isLast ? '└── ' : '├── ';
+        treeOutput += `${prefix}${connector}${entry.name}\n`;
+
+        if (entry.isDirectory()) {
+            const subDir = path.join(dir, entry.name);
+            const subPrefix = `${prefix}${isLast ? '    ' : '│   '}`;
+            treeOutput += generateTree(subDir, subPrefix); // Recurse para subdiretórios
+        }
+    });
+
+    return treeOutput;
+}
+
+// Função para gerar o arquivo tree.txt
+function generateTreeFile(treeFile, projectDir) {
+    let treeContent = `cd /d "${projectDir}"\n\n`;
+
+    // Lista os arquivos no diretório raiz
+    treeContent += 'REM Lista os arquivos apenas no diretório raiz do projeto\n';
+    treeContent += 'Lista de Arquivos no Diretório Principal:\n';
+    treeContent += listRootFiles(projectDir).join('\n') + '\n';
+    treeContent += 'node_modules\nbackend\nfrontend\n\n';
+
+    // Lista os arquivos na pasta frontend
+    if (fs.existsSync(frontendDir)) {
+        treeContent += 'REM Lista os arquivos na pasta frontend\n';
+        treeContent += 'Lista de Arquivos na Pasta "frontend":\n';
+        treeContent += generateTree(frontendDir) + '\n';
+    }
+
+    // Lista os arquivos na pasta backend
+    if (fs.existsSync(backendDir)) {
+        treeContent += 'REM Lista os arquivos na pasta backend\n';
+        treeContent += 'Lista de Arquivos na Pasta "backend":\n';
+        treeContent += generateTree(backendDir) + '\n';
+    }
+
+    fs.writeFileSync(treeFile, treeContent);
+    console.log(`Estrutura tree salva em ${treeFile}`);
+}
+
 // Gera os arquivos para backend e frontend
 const backendFiles = listFiles(backendDir);
 const frontendFiles = listFiles(frontendDir);
 
 generateOutput(backendFiles, backendOutputFile, projectDir);
 generateOutput(frontendFiles, frontendOutputFile, projectDir);
+
+// Gera o arquivo tree.txt
+generateTreeFile(treeOutputFile, projectDir);

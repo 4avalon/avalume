@@ -1,90 +1,4 @@
-// frontend\css\components\footer.css
-
-/* Estilo do Footer */
-footer {
-  background-color: #2c3e50; /* Azul escuro elegante */
-  color: #ecf0f1; /* Branco suave */
-  text-align: center;
-  padding: 20px 0;
-  font-size: 0.9rem;
-  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
-}
-
-/* Links no Footer */
-footer a {
-  text-decoration: none;
-  color: #3498db; /* Azul claro */
-  margin: 0 10px;
-  transition: color 0.3s ease;
-}
-
-footer a:hover {
-  color: #1abc9c; /* Verde claro */
-}
-
-
-
-// frontend\css\components\nav.css
-
-/* Estilo do Nav */
-nav {
-  background-color: #2c3e50; /* Azul escuro elegante */
-  color: white;
-  padding: 15px 20px;
-  display: flex;
-  flex-direction: column; /* Adicionado para centralizar logo e menu */
-  align-items: center;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-nav.scrolled {
-  background-color: rgba(0, 0, 0, 0.8);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-/* Logo */
-nav .logo {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #ecf0f1; /* Branco suave */
-  text-transform: uppercase;
-  margin-bottom: 10px; /* Espaço entre logo e menu */
-}
-
-/* Links do menu */
-nav ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center; /* Centraliza os itens */
-  gap: 20px;
-}
-
-nav a {
-  text-decoration: none;
-  color: white;
-  font-size: 1rem;
-  font-weight: 500;
-  padding: 10px 15px;
-  border-radius: 5px;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-/* Efeito ao passar o mouse */
-nav a:hover {
-  background-color: #34495e; /* Azul mais claro */
-  color: #ecf0f1; /* Branco suave */
-}
-nav a.active {
-  background-color: #3498db; /* Azul claro */
-  color: white;
-  font-weight: bold;
-  border-bottom: 2px solid white; /* Exemplo de efeito */
-}
-
-
-
-// frontend\css\components\search.css
+// frontend\css\dynamics\modal.css
 
 /* Estilo geral do header */
 header {
@@ -206,270 +120,271 @@ header {
 
 
 
-// frontend\css\pages\about.css
+// frontend\css\dynamics\search.css
 
-/* Estilos para a seção About */
-#about-section {
-  min-height: 100vh; /* Ocupa pelo menos uma altura de viewport */
-  background-color: #aab7c1; /* Cor de fundo azul claro suave */
-  padding: 60px 30px; /* Aumentei o padding para melhor espaçamento */
-  text-align: left;
-  font-family: 'Arial', sans-serif; /* Fonte padrão */
-  line-height: 1.6; /* Maior espaçamento entre as linhas */
-  border-left: 5px solid #004d99; /* Adicionei um destaque à esquerda */
-}
-
-#about-section h2 {
-  font-size: 2.5em; /* Maior tamanho do título */
-  color: #ff0000; /* Cor red */
-  margin-bottom: 20px;
-  text-transform: uppercase; /* Texto em caixa alta */
-}
-#about-section h1 {
-  font-size: 2em; /* Maior tamanho do título */
-  color: #ff0000; /* Cor red */
-  margin-bottom: 20px;
-  text-transform: uppercase; /* Texto em caixa alta */
-}
-
-#about-section p {
-  font-size: 1.1em; /* Texto um pouco maior */
-  color: #333; /* Cor mais escura para melhor contraste */
-  text-align: justify; /* Justifica o texto para maior legibilidade */
-}
-
-
-
-// frontend\css\pages\carousel.css
-
-/* Contêiner principal do carrossel */
-.carousel-container {
-  position: relative;
-  width: 80%;
-  max-width: 800px;
-  height: 400px;
-  margin: 0 auto;
-  overflow: hidden;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+/* Estilo geral do header */
+header {
   display: flex;
+  justify-content: space-between; /* Posiciona o menu e a busca em lados opostos */
   align-items: center;
-  background-color: #f0f0f0;
+  padding: 10px 20px; /* Espaçamento interno */
+  background-color: #001a33; /* Fundo azul escuro */
 }
 
-/* Faixa do carrossel */
-.carousel-track {
+/* Estilo para o menu dinâmico */
+#nav-container {
+  flex: 1; /* Faz o menu ocupar o espaço disponível */
   display: flex;
-  transition: transform 0.5s ease-in-out;
+  align-items: center; /* Alinha verticalmente os itens do menu */
 }
 
-/* Cada slide do carrossel */
-.carousel-slide {
-  min-width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+/* Estilos para o container de busca */
+#search-container {
+  display: flex; /* Alinha o input e o botão horizontalmente */
+  align-items: center; /* Centraliza os elementos verticalmente */
+  gap: 10px; /* Espaçamento entre o input e o botão */
 }
 
-/* Imagens dentro do slide */
-.carousel-slide img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: cover;
+/* Estilo para o input */
+#search-input {
+  width: 200px; /* Tamanho fixo para o input */
+  padding: 8px;
+  font-size: 1rem;
+  border: 2px solid #008000;
   border-radius: 5px;
+  transition: border-color 0.3s ease;
 }
 
-/* Botões de navegação */
-.carousel-prev,
-.carousel-next {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.5);
+#search-input:focus {
+  outline: none;
+  border-color: #00cc44; /* Cor do foco */
+}
+
+/* Estilo para o botão de pesquisa */
+#search-button {
+  padding: 8px 16px;
+  font-size: 1rem;
+  background-color: #004d00;
   color: white;
-  border: none;
-  padding: 15px;
+  border: 2px solid #004d00;
+  border-radius: 5px;
   cursor: pointer;
-  border-radius: 50%;
-  z-index: 10;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
-.carousel-prev {
-  left: 10px;
+#search-button:hover {
+  background-color: #007f00;
+  border-color: #007f00;
 }
 
-.carousel-next {
-  right: 10px;
+/* Dropdown de resultados */
+#search-results-container {
+  margin-top: 10px; /* Espaçamento acima do dropdown */
+  width: 100%; /* Faz o dropdown ocupar toda a largura disponível */
+  padding: 10px;
+  background-color: #001a33; /* Fundo azul escuro */
+  border: 1px solid #004d00;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
+  z-index: 1000;
 }
 
-/* Indicadores */
-.carousel-indicators {
-  position: absolute;
-  bottom: 15px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 8px;
+/* Botão de fechar no dropdown */
+#close-search-dropdown {
+  float: right;
+  background: transparent;
+  border: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  color: #ff5c5c; /* Vermelho */
+  transition: color 0.3s ease;
 }
 
-.carousel-indicator {
-  width: 12px;
-  height: 12px;
-  background-color: rgba(255, 255, 255, 0.5);
-  border-radius: 50%;
+#close-search-dropdown:hover {
+  color: #ff0000; /* Vermelho intenso ao passar o mouse */
+}
+
+/* Resultados no dropdown */
+#search-results {
+  margin-top: 10px;
+  max-height: 200px; /* Define uma altura máxima para o dropdown */
+  overflow-y: auto; /* Adiciona rolagem se necessário */
+  text-align: left;
+}
+
+/* Estilo dos itens de resultado */
+.search-item {
+  padding: 10px;
+  margin: 5px 0;
+  background-color: #004080; /* Fundo azul */
+  border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
-.carousel-indicator.active {
-  background-color: rgba(255, 255, 255, 0.9);
-}
-
-
-
-// frontend\css\pages\contact.css
-
-/* Estilos para a seção Contact */
-#contact-section {
-  min-height: 100vh; /* Ocupa pelo menos uma altura de viewport */
-  background-color: #dff6df; /* Verde claro suave */
-  padding: 60px 30px; /* Maior espaçamento para melhor layout */
-  text-align: left;
-  font-family: 'Arial', sans-serif; /* Fonte padrão para consistência */
-  line-height: 1.6; /* Melhor espaçamento entre as linhas */
-  border-left: 5px solid #228b22; /* Destaque na borda esquerda */
-  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.1); /* Leve sombra interna */
-  border-radius: 8px; /* Bordas arredondadas */
-}
-
-#contact-section h2 {
-  font-size: 2.5em; /* Título maior */
-  color: #006400; /* Verde escuro */
-  margin-bottom: 20px;
-  text-transform: uppercase; /* Texto em caixa alta */
-  letter-spacing: 1px; /* Espaçamento entre letras para mais destaque */
-}
-
-#contact-section p {
-  font-size: 1.2em; /* Texto ligeiramente maior */
-  color: #2f4f2f; /* Verde mais escuro para contraste */
-  text-align: justify; /* Texto alinhado para melhor legibilidade */
-  margin-bottom: 15px;
-}
-
-/* Botões dentro da seção Contact (se existirem) */
-#contact-section button {
-  background-color: #006400; /* Verde escuro */
+.search-item:hover {
+  background-color: #0059b3; /* Azul mais claro */
   color: white;
-  padding: 10px 20px;
+}
+
+.search-item h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #80dfff; /* Azul claro */
+}
+
+.search-item p {
+  margin: 5px 0 0;
+  font-size: 0.9rem;
+  color: #cceeff; /* Azul ainda mais claro */
+}
+
+
+
+// frontend\css\globals\footer.css
+
+/* Estilo do Footer */
+footer {
+  background-color: #2c3e50; /* Azul escuro elegante */
+  color: #ecf0f1; /* Branco suave */
+  text-align: center;
+  padding: 20px 0;
+  font-size: 0.9rem;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Links no Footer */
+footer a {
+  text-decoration: none;
+  color: #3498db; /* Azul claro */
+  margin: 0 10px;
+  transition: color 0.3s ease;
+}
+
+footer a:hover {
+  color: #1abc9c; /* Verde claro */
+}
+
+
+
+// frontend\css\globals\nav.css
+
+/* Estilo do Nav */
+nav {
+  background-color: #2c3e50; /* Azul escuro elegante */
+  color: white;
+  padding: 15px 20px;
+  display: flex;
+  flex-direction: column; /* Adicionado para centralizar logo e menu */
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+nav.scrolled {
+  background-color: rgba(0, 0, 0, 0.8);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Logo */
+nav .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ecf0f1; /* Branco suave */
+  text-transform: uppercase;
+  margin-bottom: 10px; /* Espaço entre logo e menu */
+}
+
+/* Links do menu */
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center; /* Centraliza os itens */
+  gap: 20px;
+}
+
+nav a {
+  text-decoration: none;
+  color: white;
   font-size: 1rem;
-  border: none;
+  font-weight: 500;
+  padding: 10px 15px;
   border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-#contact-section button:hover {
-  background-color: #228b22; /* Verde mais claro ao passar o mouse */
-  transform: scale(1.05); /* Leve aumento no tamanho */
+/* Efeito ao passar o mouse */
+nav a:hover {
+  background-color: #34495e; /* Azul mais claro */
+  color: #ecf0f1; /* Branco suave */
 }
-
-
-
-// frontend\css\pages\form.css
-
-/* Estilos para a seção Form */
-#form-section {
-    min-height: 100vh; /* Ocupa pelo menos uma altura de viewport */
-  background-color: #f9f9f9;
-  padding: 50px;
-  text-align: left;
-}
-
-#form-section h2 {
-  font-size: 2em;
-  color: #000;
-}
-
-#form-section form {
-  max-width: 600px;
-  margin: auto;
-}
-
-#form-section input,
-#form-section textarea,
-#form-section button {
-  display: block;
-  width: 100%;
-  margin-bottom: 15px;
-  padding: 10px;
-  font-size: 1em;
-}
-
-#form-section button {
-  background-color: #4caf50;
+nav a.active {
+  background-color: #3498db; /* Azul claro */
   color: white;
-  border: none;
-  cursor: pointer;
-}
-
-#form-section button:hover {
-  background-color: #45a049;
+  font-weight: bold;
+  border-bottom: 2px solid white; /* Exemplo de efeito */
 }
 
 
 
-// frontend\css\pages\home.css
+// frontend\css\globals\reset.css
 
+/* Tema claro (padrão) */
+:root {
+  /* Cores base */
+  --background-color: #ffffff; /* Fundo principal */
+  --foreground-color: #f9f9f9; /* Fundo secundário */
+  --primary-color: #007acc; /* Cor primária */
+  --secondary-color: #004d99; /* Cor secundária */
+  --text-color: #333333; /* Texto principal */
+  --text-secondary-color: #555555; /* Texto secundário */
+  --border-color: #dddddd; /* Cor das bordas */
+  --link-color: #0066cc; /* Cor dos links */
+  --hover-color: #005299; /* Cor ao passar o mouse */
 
-/* Estilos para a seção Home */
+  /* Cores de destaque */
+  --accent-color: #ff9800; /* Cor de destaque */
+  --highlight-color: #ffe082; /* Destaque suave */
 
-#home-section {
-  min-height: 100vh; /* Ocupa pelo menos uma altura de viewport */
-  display: flex; /* Define layout flexível */
-  flex-direction: column; /* Alinha os elementos verticalmente */
-  justify-content: center; /* Centraliza verticalmente */
-  align-items: center; /* Centraliza horizontalmente */
-  background-color: #281454; /* Azul claro */
-  padding: 50px; /* Espaçamento interno */
-  text-align: center; /* Centraliza o texto */
-  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave para profundidade */
+  /* Sombras */
+  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra padrão */
+  --box-shadow-hover: 0 6px 10px rgba(0, 0, 0, 0.15); /* Sombra ao passar o mouse */
+
+  /* Gradientes */
+  --gradient-primary: linear-gradient(45deg, #007acc, #005299); /* Gradiente primário */
+  --gradient-secondary: linear-gradient(45deg, #004d99, #003366); /* Gradiente secundário */
 }
 
-/* Estilos para o título da seção */
-#home-section h1 {
-  font-size: 3em; /* Aumenta o tamanho do título */
-  color: #333; /* Cor do texto */
-  margin-bottom: 20px; /* Espaço abaixo do título */
-  font-family: 'Arial', sans-serif; /* Tipografia mais limpa */
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Sombra suave no texto */
-}
+/* Tema escuro */
+[data-theme='dark'] {
+  /* Cores base */
+  --background-color: #1e1e1e; /* Fundo principal */
+  --foreground-color: #2a2a2a; /* Fundo secundário */
+  --primary-color: #1a73e8; /* Cor primária */
+  --secondary-color: #003366; /* Cor secundária */
+  --text-color: #e5e5e5; /* Texto principal */
+  --text-secondary-color: #bbbbbb; /* Texto secundário */
+  --border-color: #444444; /* Cor das bordas */
+  --link-color: #4e9eff; /* Cor dos links */
+  --hover-color: #3b82f6; /* Cor ao passar o mouse */
 
-/* Estilos para o parágrafo da seção */
-#home-section p {
-  font-size: 1.5em; /* Texto maior para maior legibilidade */
-  color: #555; /* Tom levemente mais escuro */
-  max-width: 800px; /* Limita a largura máxima do texto */
-  line-height: 1.8; /* Espaçamento entre linhas */
-  font-family: 'Georgia', serif; /* Tipografia elegante */
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Sombra suave no texto */
-}
+  /* Cores de destaque */
+  --accent-color: #ff9800; /* Cor de destaque */
+  --highlight-color: #ffcc80; /* Destaque suave */
 
-/* Estilo responsivo para telas menores */
-@media (max-width: 768px) {
-  #home-section h1 {
-    font-size: 2em; /* Ajusta o tamanho do título em telas menores */
-  }
+  /* Sombras */
+  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Sombra padrão */
+  --box-shadow-hover: 0 6px 10px rgba(0, 0, 0, 0.4); /* Sombra ao passar o mouse */
 
-  #home-section p {
-    font-size: 1.2em; /* Ajusta o tamanho do texto em telas menores */
-    padding: 0 20px; /* Reduz o espaçamento lateral */
-  }
+  /* Gradientes */
+  --gradient-primary: linear-gradient(45deg, #1a73e8, #3b82f6); /* Gradiente primário */
+  --gradient-secondary: linear-gradient(45deg, #003366, #1a73e8); /* Gradiente secundário */
 }
 
 
 
-// frontend\css\styles.css
+// frontend\css\globals\styles.css
 
 /* Reset básico */
 * {
@@ -577,35 +492,651 @@ footer a:hover {
 
 
 
-// frontend\css\theme.css
+// frontend\css\globals\theme.css
 
-/* Definições de variáveis de tema */
-
-/* Tema padrão (claro) */
+/* Tema claro (padrão) */
 :root {
-  --background-color: #ffffff;
-  --primary-color: #007acc;
-  --secondary-color: #004d99;
-  --text-color: #333333;
-  --border-color: #dddddd;
-  --link-color: #0066cc;
-  --hover-color: #005299;
+  /* Cores base */
+  --background-color: #ffffff; /* Fundo principal */
+  --foreground-color: #f9f9f9; /* Fundo secundário */
+  --primary-color: #007acc; /* Cor primária */
+  --secondary-color: #004d99; /* Cor secundária */
+  --text-color: #333333; /* Texto principal */
+  --text-secondary-color: #555555; /* Texto secundário */
+  --border-color: #dddddd; /* Cor das bordas */
+  --link-color: #0066cc; /* Cor dos links */
+  --hover-color: #005299; /* Cor ao passar o mouse */
+
+  /* Cores de destaque */
+  --accent-color: #ff9800; /* Cor de destaque */
+  --highlight-color: #ffe082; /* Destaque suave */
+
+  /* Sombras */
+  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra padrão */
+  --box-shadow-hover: 0 6px 10px rgba(0, 0, 0, 0.15); /* Sombra ao passar o mouse */
+
+  /* Gradientes */
+  --gradient-primary: linear-gradient(45deg, #007acc, #005299); /* Gradiente primário */
+  --gradient-secondary: linear-gradient(45deg, #004d99, #003366); /* Gradiente secundário */
 }
 
 /* Tema escuro */
 [data-theme='dark'] {
-  --background-color: #1e1e1e;
-  --primary-color: #1a73e8;
-  --secondary-color: #003366;
-  --text-color: #e5e5e5;
-  --border-color: #333333;
-  --link-color: #4e9eff;
-  --hover-color: #3b82f6;
+  /* Cores base */
+  --background-color: #1e1e1e; /* Fundo principal */
+  --foreground-color: #2a2a2a; /* Fundo secundário */
+  --primary-color: #1a73e8; /* Cor primária */
+  --secondary-color: #003366; /* Cor secundária */
+  --text-color: #e5e5e5; /* Texto principal */
+  --text-secondary-color: #bbbbbb; /* Texto secundário */
+  --border-color: #444444; /* Cor das bordas */
+  --link-color: #4e9eff; /* Cor dos links */
+  --hover-color: #3b82f6; /* Cor ao passar o mouse */
+
+  /* Cores de destaque */
+  --accent-color: #ff9800; /* Cor de destaque */
+  --highlight-color: #ffcc80; /* Destaque suave */
+
+  /* Sombras */
+  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Sombra padrão */
+  --box-shadow-hover: 0 6px 10px rgba(0, 0, 0, 0.4); /* Sombra ao passar o mouse */
+
+  /* Gradientes */
+  --gradient-primary: linear-gradient(45deg, #1a73e8, #3b82f6); /* Gradiente primário */
+  --gradient-secondary: linear-gradient(45deg, #003366, #1a73e8); /* Gradiente secundário */
 }
 
 
 
-// frontend\html\components\footer.html
+// frontend\css\globals\variables.css
+
+/* Tema claro (padrão) */
+:root {
+  /* Cores base */
+  --background-color: #ffffff; /* Fundo principal */
+  --foreground-color: #f9f9f9; /* Fundo secundário */
+  --primary-color: #007acc; /* Cor primária */
+  --secondary-color: #004d99; /* Cor secundária */
+  --text-color: #333333; /* Texto principal */
+  --text-secondary-color: #555555; /* Texto secundário */
+  --border-color: #dddddd; /* Cor das bordas */
+  --link-color: #0066cc; /* Cor dos links */
+  --hover-color: #005299; /* Cor ao passar o mouse */
+
+  /* Cores de destaque */
+  --accent-color: #ff9800; /* Cor de destaque */
+  --highlight-color: #ffe082; /* Destaque suave */
+
+  /* Sombras */
+  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra padrão */
+  --box-shadow-hover: 0 6px 10px rgba(0, 0, 0, 0.15); /* Sombra ao passar o mouse */
+
+  /* Gradientes */
+  --gradient-primary: linear-gradient(45deg, #007acc, #005299); /* Gradiente primário */
+  --gradient-secondary: linear-gradient(45deg, #004d99, #003366); /* Gradiente secundário */
+}
+
+/* Tema escuro */
+[data-theme='dark'] {
+  /* Cores base */
+  --background-color: #1e1e1e; /* Fundo principal */
+  --foreground-color: #2a2a2a; /* Fundo secundário */
+  --primary-color: #1a73e8; /* Cor primária */
+  --secondary-color: #003366; /* Cor secundária */
+  --text-color: #e5e5e5; /* Texto principal */
+  --text-secondary-color: #bbbbbb; /* Texto secundário */
+  --border-color: #444444; /* Cor das bordas */
+  --link-color: #4e9eff; /* Cor dos links */
+  --hover-color: #3b82f6; /* Cor ao passar o mouse */
+
+  /* Cores de destaque */
+  --accent-color: #ff9800; /* Cor de destaque */
+  --highlight-color: #ffcc80; /* Destaque suave */
+
+  /* Sombras */
+  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Sombra padrão */
+  --box-shadow-hover: 0 6px 10px rgba(0, 0, 0, 0.4); /* Sombra ao passar o mouse */
+
+  /* Gradientes */
+  --gradient-primary: linear-gradient(45deg, #1a73e8, #3b82f6); /* Gradiente primário */
+  --gradient-secondary: linear-gradient(45deg, #003366, #1a73e8); /* Gradiente secundário */
+}
+
+
+
+// frontend\css\pages\about.css
+
+/* Estilos para a seção About */
+#about-section {
+  min-height: 100vh; /* Ocupa pelo menos uma altura de viewport */
+  background-color: var(--background-color); /* Fundo dinâmico */
+  padding: 80px 40px; /* Maior espaçamento para melhor layout */
+  text-align: left;
+  font-family: 'Arial', sans-serif; /* Fonte padrão */
+  line-height: 1.8; /* Melhor espaçamento entre as linhas */
+  border-left: 5px solid var(--primary-color); /* Destaque com variável */
+  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.1); /* Sombra interna */
+  border-radius: 10px; /* Bordas suaves */
+}
+
+/* Títulos */
+#about-section h1,
+#about-section h2 {
+  font-size: 2.5em; /* Tamanho maior para os títulos */
+  color: var(--primary-color); /* Cor dinâmica para títulos */
+  margin-bottom: 20px;
+  text-transform: uppercase; /* Texto em caixa alta */
+  letter-spacing: 1px; /* Espaçamento entre letras */
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); /* Sombra suave no texto */
+}
+
+/* Parágrafos */
+#about-section p {
+  font-size: 1.2em; /* Texto maior para legibilidade */
+  color: var(--text-color); /* Texto dinâmico */
+  text-align: justify; /* Justifica o texto para maior legibilidade */
+  margin-bottom: 20px;
+  line-height: 1.8; /* Melhor espaçamento entre linhas */
+  letter-spacing: 0.5px; /* Melhora o espaçamento do texto */
+}
+
+/* Lista de itens */
+#about-section ul {
+  list-style-type: disc; /* Marcadores padrão */
+  margin: 20px 0;
+  padding-left: 40px; /* Alinhamento para listas */
+}
+
+#about-section ul li {
+  font-size: 1.1em; /* Tamanho da fonte */
+  color: var(--text-color); /* Cor dinâmica */
+  margin-bottom: 10px;
+}
+
+/* Destaques */
+#about-section strong {
+  color: var(--secondary-color); /* Cor secundária para ênfase */
+  font-weight: bold; /* Destaca o texto */
+}
+
+/* Containers de texto */
+#about-section .container {
+  max-width: 1200px; /* Limita a largura máxima do conteúdo */
+  margin: 0 auto; /* Centraliza o conteúdo */
+}
+
+/* Seções internas */
+#about-section .mission,
+#about-section .history,
+#about-section .call-to-action {
+  margin-top: 40px; /* Espaçamento entre as seções */
+  padding: 20px;
+  background-color: var(--secondary-color); /* Fundo com cor secundária */
+  color: var(--background-color); /* Texto contrastante */
+  border-radius: 8px; /* Bordas suaves */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para destaque */
+}
+
+/* Botão de chamada para ação */
+#about-section .call-to-action .btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 15px 30px;
+  font-size: 1.1em;
+  color: var(--background-color); /* Texto claro */
+  background-color: var(--primary-color); /* Fundo primário */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-transform: uppercase; /* Texto em caixa alta */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#about-section .call-to-action .btn:hover {
+  background-color: var(--hover-color); /* Fundo no hover */
+  transform: scale(1.05); /* Efeito de zoom */
+}
+
+/* Equipe */
+#about-section .team {
+  margin-top: 40px;
+  display: flex;
+  gap: 20px; /* Espaçamento entre os membros */
+  flex-wrap: wrap; /* Ajusta o layout em telas menores */
+}
+
+#about-section .team .member {
+  flex: 1 1 30%; /* Cada membro ocupa 30% do espaço */
+  text-align: center;
+  padding: 20px;
+  background-color: var(--background-color); /* Fundo dinâmico */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+#about-section .team .member img {
+  width: 100px; /* Tamanho fixo da imagem */
+  height: 100px;
+  border-radius: 50%; /* Forma circular */
+  margin-bottom: 15px;
+  object-fit: cover;
+}
+
+#about-section .team .member h3 {
+  font-size: 1.2em;
+  color: var(--primary-color); /* Cor dinâmica */
+  margin-bottom: 5px;
+}
+
+#about-section .team .member p {
+  font-size: 1em;
+  color: var(--text-color); /* Texto dinâmico */
+}
+
+
+
+// frontend\css\pages\AdmConfig.css
+
+
+/* Estilos para a seção Home */
+
+#home-section {
+  min-height: 100vh; /* Ocupa pelo menos uma altura de viewport */
+  display: flex; /* Define layout flexível */
+  flex-direction: column; /* Alinha os elementos verticalmente */
+  justify-content: center; /* Centraliza verticalmente */
+  align-items: center; /* Centraliza horizontalmente */
+  background-color: var(--background-color); /* Corrigido */
+  padding: 50px; /* Espaçamento interno */
+  text-align: center; /* Centraliza o texto */
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave para profundidade */
+}
+
+/* Estilos para o título da seção */
+#home-section h1 {
+  font-size: 3em; /* Aumenta o tamanho do título */
+  color: var(--primary-color); /* Usar variável do tema */
+  margin-bottom: 20px; /* Espaço abaixo do título */
+  font-family: 'Arial', sans-serif; /* Tipografia mais limpa */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Sombra suave no texto */
+}
+
+/* Estilos para o parágrafo da seção */
+#home-section p {
+  font-size: 1.5em; /* Texto maior para maior legibilidade */
+  color: var(--text-color); /* Usar variável do tema */
+  max-width: 800px; /* Limita a largura máxima do texto */
+  line-height: 1.8; /* Espaçamento entre linhas */
+  font-family: 'Georgia', serif; /* Tipografia elegante */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Sombra suave no texto */
+}
+
+/* Estilo responsivo para telas menores */
+@media (max-width: 768px) {
+  #home-section h1 {
+    font-size: 2em; /* Ajusta o tamanho do título em telas menores */
+  }
+
+  #home-section p {
+    font-size: 1.2em; /* Ajusta o tamanho do texto em telas menores */
+    padding: 0 20px; /* Reduz o espaçamento lateral */
+  }
+}
+
+
+
+// frontend\css\pages\carousel.css
+
+/* Contêiner principal do carrossel */
+.carousel-container {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  height: 500px; /* Altura ajustada para maior impacto */
+  margin: 30px auto; /* Espaçamento ao redor */
+  overflow: hidden;
+  border-radius: 20px; /* Bordas mais arredondadas */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3); /* Sombra mais intensa */
+  background-color: var(--foreground-color); /* Fundo dinâmico */
+  display: flex;
+  align-items: center;
+}
+
+/* Faixa do carrossel */
+.carousel-track {
+  display: flex;
+  transition: transform 0.6s ease-in-out; /* Transição mais fluida */
+}
+
+/* Cada slide do carrossel */
+.carousel-slide {
+  min-width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Imagens dentro do slide */
+.carousel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 15px; /* Bordas arredondadas */
+  transition: transform 0.5s ease; /* Transição ao passar o mouse */
+}
+
+.carousel-slide img:hover {
+  transform: scale(1.01); /* Zoom suave ao passar o mouse */
+}
+
+/* Botões de navegação */
+.carousel-prev,
+.carousel-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.6); /* Fundo semi-transparente */
+  color: white;
+  border: none;
+  padding: 15px;
+  cursor: pointer;
+  border-radius: 50%;
+  z-index: 10;
+  font-size: 2rem; /* Aumentei o tamanho da seta */
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.carousel-prev:hover,
+.carousel-next:hover {
+  background-color: var(--primary-color);
+  box-shadow: 0 0 15px var(--primary-color); /* Sombra ao passar o mouse */
+}
+
+.carousel-prev {
+  left: 15px;
+}
+
+.carousel-next {
+  right: 15px;
+}
+
+/* Indicadores */
+.carousel-indicators {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 15px; /* Maior espaçamento entre as bolinhas */
+  z-index: 5;
+}
+
+.carousel-indicator {
+  width: 16px;
+  height: 16px;
+  background-color: var(--border-color); /* Fundo padrão */
+  border: 2px solid var(--primary-color); /* Borda destacada */
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.carousel-indicator:hover {
+  transform: scale(1.3); /* Zoom ao passar o mouse */
+  background-color: var(--primary-color); /* Cor de fundo ao hover */
+  border-color: var(--hover-color); /* Destaque na borda */
+  box-shadow: 0 0 12px var(--primary-color); /* Sombra visível no hover */
+}
+
+.carousel-indicator.active {
+  background-color: var(--primary-color); /* Fundo para indicador ativo */
+  border-color: var(--hover-color); /* Borda destacada */
+  transform: scale(1.8); /* Maior destaque para indicador ativo */
+  box-shadow: 0 0 20px var(--primary-color); /* Sombra mais forte para o ativo */
+}
+
+
+
+// frontend\css\pages\contact.css
+
+/* Estilos para a seção Contact */
+#contact-section {
+  min-height: 100vh; /* Ocupa pelo menos uma altura de viewport */
+  background-color: var(--foreground-color); /* Fundo dinâmico secundário */
+  padding: 60px 30px; /* Maior espaçamento para melhor layout */
+  text-align: left;
+  font-family: 'Arial', sans-serif; /* Fonte padrão para consistência */
+  line-height: 1.8; /* Melhor espaçamento entre as linhas */
+  border-left: 5px solid var(--primary-color); /* Destaque na borda esquerda */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para maior destaque */
+  border-radius: 10px; /* Bordas suavemente arredondadas */
+}
+
+/* Títulos */
+#contact-section h2 {
+  font-size: 2.5em; /* Título maior */
+  color: var(--primary-color); /* Cor dinâmica */
+  margin-bottom: 20px;
+  text-transform: uppercase; /* Texto em caixa alta */
+  letter-spacing: 1px; /* Espaçamento entre letras */
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1); /* Sombra suave no texto */
+}
+
+/* Parágrafos */
+#contact-section p {
+  font-size: 1.2em; /* Texto ligeiramente maior */
+  color: var(--text-color); /* Texto dinâmico */
+  text-align: justify; /* Texto alinhado para melhor legibilidade */
+  margin-bottom: 20px;
+}
+
+/* Botões */
+#contact-section button {
+  background-color: var(--primary-color); /* Fundo dinâmico */
+  color: var(--background-color); /* Texto claro */
+  padding: 12px 25px; /* Tamanho maior do botão */
+  font-size: 1.1rem; /* Texto maior */
+  border: none;
+  border-radius: 8px; /* Bordas arredondadas */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  box-shadow: var(--box-shadow); /* Sombra inicial */
+}
+
+#contact-section button:hover {
+  background-color: var(--hover-color); /* Fundo dinâmico ao passar o mouse */
+  transform: scale(1.1); /* Efeito de zoom leve */
+  box-shadow: var(--box-shadow-hover); /* Sombra maior */
+}
+
+/* Ícones de Contato (Se Usados) */
+#contact-section .contact-options {
+  display: flex;
+  gap: 20px; /* Espaçamento entre opções */
+  flex-wrap: wrap; /* Ajusta itens em telas menores */
+  margin-top: 20px;
+}
+
+#contact-section .contact-item {
+  background-color: var(--background-color); /* Fundo dinâmico */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: var(--box-shadow); /* Sombra para destaque */
+  flex: 1 1 calc(33.33% - 20px); /* Três itens por linha */
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#contact-section .contact-item:hover {
+  transform: translateY(-5px); /* Leve movimento para cima */
+  box-shadow: var(--box-shadow-hover); /* Destaque ao passar o mouse */
+}
+
+#contact-section .contact-item i {
+  font-size: 2rem; /* Tamanho dos ícones */
+  color: var(--primary-color); /* Cor dinâmica */
+  margin-bottom: 10px;
+}
+
+#contact-section .contact-item p {
+  font-size: 1.1rem;
+  color: var(--text-color); /* Cor do texto dinâmico */
+}
+
+
+
+// frontend\css\pages\form.css
+
+/* Estilos para a seção Form */
+#contact-form-section {
+  min-height: 100vh; /* Ocupa pelo menos uma altura de viewport */
+  background-color: var(--foreground-color); /* Fundo dinâmico */
+  padding: 50px;
+  text-align: center;
+  font-family: 'Arial', sans-serif; /* Fonte padrão */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra para destaque */
+  border-radius: 10px;
+}
+
+/* Título da seção */
+#contact-form-section h2 {
+  font-size: 2.5em;
+  color: var(--primary-color); /* Cor dinâmica */
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+/* Subtítulo */
+#contact-form-section p {
+  font-size: 1.2em;
+  color: var(--text-color);
+  margin-bottom: 20px;
+}
+
+/* Formulário */
+#contact-form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: var(--background-color); /* Fundo do formulário */
+  border-radius: 10px; /* Bordas arredondadas */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Leve sombra */
+}
+
+/* Estilos dos campos de entrada */
+#contact-form input,
+#contact-form textarea {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 15px;
+  font-size: 1em;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  background-color: var(--foreground-color); /* Fundo dinâmico */
+  color: var(--text-color); /* Texto dinâmico */
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); /* Sombra interna */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efeitos ao focar nos campos */
+#contact-form input:focus,
+#contact-form textarea:focus {
+  outline: none;
+  border-color: var(--primary-color); /* Borda destacada */
+  box-shadow: 0 0 5px var(--primary-color); /* Efeito de foco */
+}
+
+/* Botão de envio */
+#contact-form button {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  font-size: 1.2em;
+  font-weight: bold;
+  background-color: var(--primary-color); /* Fundo dinâmico */
+  color: var(--background-color); /* Cor do texto */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Efeitos no botão ao passar o mouse */
+#contact-form button:hover {
+  background-color: var(--hover-color); /* Cor de hover dinâmica */
+  transform: scale(1.05); /* Leve efeito de zoom */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra ao hover */
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  #contact-form-section h2 {
+    font-size: 2em;
+  }
+
+  #contact-form {
+    padding: 15px;
+  }
+
+  #contact-form button {
+    font-size: 1em;
+  }
+}
+
+
+
+// frontend\css\pages\home.css
+
+
+/* Estilos para a seção Home */
+
+#home-section {
+  min-height: 100vh; /* Ocupa pelo menos uma altura de viewport */
+  display: flex; /* Define layout flexível */
+  flex-direction: column; /* Alinha os elementos verticalmente */
+  justify-content: center; /* Centraliza verticalmente */
+  align-items: center; /* Centraliza horizontalmente */
+  background-color: var(--background-color); /* Corrigido */
+  padding: 50px; /* Espaçamento interno */
+  text-align: center; /* Centraliza o texto */
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave para profundidade */
+}
+
+/* Estilos para o título da seção */
+#home-section h1 {
+  font-size: 3em; /* Aumenta o tamanho do título */
+  color: var(--primary-color); /* Usar variável do tema */
+  margin-bottom: 20px; /* Espaço abaixo do título */
+  font-family: 'Arial', sans-serif; /* Tipografia mais limpa */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Sombra suave no texto */
+}
+
+/* Estilos para o parágrafo da seção */
+#home-section p {
+  font-size: 1.5em; /* Texto maior para maior legibilidade */
+  color: var(--text-color); /* Usar variável do tema */
+  max-width: 800px; /* Limita a largura máxima do texto */
+  line-height: 1.8; /* Espaçamento entre linhas */
+  font-family: 'Georgia', serif; /* Tipografia elegante */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Sombra suave no texto */
+}
+
+/* Estilo responsivo para telas menores */
+@media (max-width: 768px) {
+  #home-section h1 {
+    font-size: 2em; /* Ajusta o tamanho do título em telas menores */
+  }
+
+  #home-section p {
+    font-size: 1.2em; /* Ajusta o tamanho do texto em telas menores */
+    padding: 0 20px; /* Reduz o espaçamento lateral */
+  }
+}
+
+
+
+// frontend\html\dynamics\modal.html
 
 <footer>
   <p>&copy; 2024 Avalume. Todos os direitos reservados.</p>
@@ -618,7 +1149,7 @@ footer a:hover {
 
 
 
-// frontend\html\components\nav.html
+// frontend\html\dynamics\notification.html
 
 <nav>
   <div class="logo">Avalume</div>
@@ -630,7 +1161,44 @@ footer a:hover {
 
 
 
-// frontend\html\components\theme.html
+// frontend\html\dynamics\search.html
+
+<nav>
+  <div class="logo">Avalume</div>
+  <ul id="menu-list">
+    <!-- Os itens do menu serão gerados aqui dinamicamente -->
+  </ul>
+    <button id="theme-toggle-button">Alternar Tema</button>
+</nav>
+
+
+
+// frontend\html\globals\footer.html
+
+<footer>
+  <p>&copy; 2024 Avalume. Todos os direitos reservados.</p>
+  <p>
+    <a href="https://twitter.com">Twitter</a> | 
+    <a href="https://facebook.com">Facebook</a> | 
+    <a href="https://instagram.com">Instagram</a>
+  </p>
+</footer>
+
+
+
+// frontend\html\globals\nav.html
+
+<nav>
+  <div class="logo">Avalume</div>
+  <ul id="menu-list">
+    <!-- Os itens do menu serão gerados aqui dinamicamente -->
+  </ul>
+    <button id="theme-toggle-button">Alternar Tema</button>
+</nav>
+
+
+
+// frontend\html\globals\themeToggle.html
 
 <!DOCTYPE html>
 <html lang="en">
@@ -745,11 +1313,59 @@ footer a:hover {
 
 // frontend\html\pages\about.html
 
-<section>
-  <h1> 333 Sobre Nós 333</h1>
-  <h1>Teste de Cor!!!</h1>
+<section id="about-section">
+  <div class="container">
+    <!-- Título Principal -->
+    <header>
+      <h1>Sobre Nós</h1>
+      <h2>Quem Somos</h2>
+    </header>
 
-  <p>Este é o conteúdo da página Sobre Nós. About. Nois é cabuloso</p>
+    <!-- Introdução -->
+    <div class="introduction">
+      <p>
+        Somos a <strong>Avalume</strong>, uma plataforma dedicada a ajudar programadores de todos os níveis a aprimorar suas habilidades. Nosso objetivo é transformar o aprendizado em uma experiência prática e interativa, com foco em exemplos reais e projetos dinâmicos.
+      </p>
+    </div>
+
+    <!-- Nossa Missão -->
+    <div class="mission">
+      <h2>Nossa Missão</h2>
+      <p>
+        Capacitar indivíduos e equipes a dominar a programação por meio de aprendizado baseado em projetos, desafios interativos e uma abordagem prática que conecta teoria à aplicação.
+      </p>
+    </div>
+
+    <!-- História -->
+    <div class="history">
+      <h2>Um Pouco da Nossa História</h2>
+      <p>
+        Fundada em 2024, a Avalume começou como uma ideia simples: tornar o aprendizado de programação mais acessível e divertido. Desde então, crescemos para incluir exemplos práticos, ferramentas inovadoras e uma comunidade ativa de entusiastas da tecnologia.
+      </p>
+    </div>
+
+    <!-- Chamada para Ação -->
+    <div class="call-to-action">
+      <h2>Por Que Escolher a Avalume?</h2>
+      <p>
+        Oferecemos mais do que teoria. Aqui você encontra:
+      </p>
+      <ul>
+        <li>Exemplos práticos e focados em problemas reais.</li>
+        <li>Desafios interativos para testar suas habilidades.</li>
+        <li>Uma comunidade que apoia seu crescimento.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+
+// frontend\html\pages\AdmConfig.html
+
+<section>
+  <h1>777 Bem-vindo à Home 777</h1>
+  <p>Este é o conteúdo da página inicial. Bem feito não?</p>
 </section>
 
 
@@ -778,34 +1394,60 @@ footer a:hover {
       <img src="./frontend/assets/carousel/img6.jpg" alt="Imagem 6">
     </div>
   </div>
-  <button class="carousel-prev">&lt;</button>
-  <button class="carousel-next">&gt;</button>
+  <button class="carousel-prev" aria-label="Anterior">&lt;</button>
+  <button class="carousel-next" aria-label="Próximo">&gt;</button>
   <div class="carousel-indicators"></div>
 </div>
 
 
+
 // frontend\html\pages\contact.html
 
-<section>
-  <h1>Fale Conosco</h1>
-  <p>Este é o conteúdo da página de contato. Contact</p>
+<section id="contact-section">
+  <div class="container">
+    <!-- Título Principal -->
+    <h1>Fale Conosco</h1>
+    <h2>Estamos aqui para ajudar!</h2>
+
+    <!-- Descrição -->
+    <p>
+      Tem dúvidas, sugestões ou precisa de suporte? Entre em contato conosco por um dos meios abaixo. Nossa equipe está pronta para atendê-lo!
+    </p>
+
+    <!-- Meios de Contato -->
+    <div class="contact-options">
+      <div class="contact-item">
+        <i class="fas fa-envelope"></i>
+        <p><strong>Email:</strong> suporte@avalume.com</p>
+      </div>
+      <div class="contact-item">
+        <i class="fas fa-phone-alt"></i>
+        <p><strong>Telefone:</strong> +55 (11) 1234-5678</p>
+      </div>
+      <div class="contact-item">
+        <i class="fas fa-map-marker-alt"></i>
+        <p><strong>Endereço:</strong> Rua Exemplo, 123 - São Paulo, SP</p>
+      </div>
+    </div>
+  </div>
 </section>
 
 
 
 // frontend\html\pages\form.html
 
-<section id="contact-form">
-  <h2>Contato</h2>
-  <form id="form">
+<section id="contact-form-section">
+  <h2>Fale Conosco</h2>
+  <p>Envie-nos uma mensagem. Estamos aqui para ajudar!</p>
+  <form id="contact-form">
     <label for="name">Nome:</label>
-    <input type="text" id="name" name="name" placeholder="Seu nome" value="João Silva">
+    <input type="text" id="name" name="name" placeholder="Digite seu nome">
 
     <label for="email">E-mail:</label>
-    <input type="email" id="email" name="email" placeholder="Seu e-mail" value="joao@email.com">
+    <input type="email" id="email" name="email" placeholder="Digite seu e-mail">
 
     <label for="message">Mensagem:</label>
-    <textarea id="message" name="message" placeholder="Sua mensagem">Gostei muito do projeto!</textarea>
+    <textarea id="message" name="message" placeholder="Digite sua mensagem"></textarea>
 
     <button type="submit">Enviar</button>
   </form>
@@ -822,67 +1464,37 @@ footer a:hover {
 
 
 
-// frontend\js\components\loadComponents.js
-
-import { loadHTML, loadCSS } from '../utils.js';
-
-// Função para carregar HTML e CSS juntos, garantindo ordem
-const loadHTMLWithCSS = async (containerId, htmlPath, cssPath) => {
-  try {
-    // Carrega o CSS primeiro
-    if (cssPath) {
-      await loadCSS(cssPath);
-    }
-
-    // Carrega o HTML depois que o CSS for carregado
-    await loadHTML(containerId, htmlPath);
-  } catch (error) {
-    console.error(`[Error] Erro ao carregar HTML ou CSS: ${error.message}`);
-  }
-};
-
-// Função principal para carregar os componentes
-export const loadComponents = async () => {
-  console.log("[LoadComponents] Carregando componentes...");
-
-  // Carregar Navegação
-  await loadHTMLWithCSS('nav-container', './frontend/html/components/nav.html', './frontend/css/components/nav.css');
-
-  // Carregar Rodapé
-  await loadHTMLWithCSS('footer-container', './frontend/html/components/footer.html', './frontend/css/components/footer.css');
-};
+// frontend\js\core\config.js
 
 
 
-// frontend\js\components\menuGenerator.js
 
-// menuGenerator.js
-import { pagesConfig } from '../pagesConfig.js'; // Importa a configuração das páginas
-
-export const generateMenu = () => {
-  const menuList = document.querySelector('#menu-list'); // Seleciona o container do menu
-  if (!menuList) {
-    console.error('Elemento com ID "menu-list" não encontrado no DOM.');
-    return;
-  }
-
-  // Limpa o menu antes de gerar os itens
-  menuList.innerHTML = '';
-
-  // Percorre o pagesConfig e cria os itens do menu
-  pagesConfig.forEach((page) => {
-    const listItem = document.createElement('li');
-    listItem.innerHTML = `<a href="#${page.page}-section" data-page="${page.page}">${capitalize(page.page)}</a>`;
-    menuList.appendChild(listItem);
-  });
-};
-
-// Função auxiliar para capitalizar as primeiras letras dos textos
-const capitalize = (text) => text.charAt(0).toUpperCase() + text.slice(1);
+// frontend\js\core\middleware\authMiddleware.js
 
 
 
-// frontend\js\components\menuScroll.js
+
+// frontend\js\core\middleware\loadMiddleware.js
+
+
+
+
+// frontend\js\core\middleware\permissionsMiddleware.js
+
+
+
+
+// frontend\js\core\router.js
+
+
+
+
+// frontend\js\core\utils.js
+
+
+
+
+// frontend\js\dynamics\modalHandler.js
 
 function setupMenuScroll() {
   const scrollDuration = 2500; // Tempo de rolagem suave em milissegundos
@@ -944,7 +1556,35 @@ export { setupMenuScroll };
 
 
 
-// frontend\js\components\searchHandler.js
+// frontend\js\dynamics\searchHandler.js
+
+// menuGenerator.js
+import { pagesConfig } from '../pagesConfig.js'; // Importa a configuração das páginas
+
+export const generateMenu = () => {
+  const menuList = document.querySelector('#menu-list'); // Seleciona o container do menu
+  if (!menuList) {
+    console.error('Elemento com ID "menu-list" não encontrado no DOM.');
+    return;
+  }
+
+  // Limpa o menu antes de gerar os itens
+  menuList.innerHTML = '';
+
+  // Percorre o pagesConfig e cria os itens do menu
+  pagesConfig.forEach((page) => {
+    const listItem = document.createElement('li');
+    listItem.innerHTML = `<a href="#${page.page}-section" data-page="${page.page}">${capitalize(page.page)}</a>`;
+    menuList.appendChild(listItem);
+  });
+};
+
+// Função auxiliar para capitalizar as primeiras letras dos textos
+const capitalize = (text) => text.charAt(0).toUpperCase() + text.slice(1);
+
+
+
+// frontend\js\globals\footerHandler.js
 
 import { pagesConfig } from '../pagesConfig.js';
 
@@ -1075,39 +1715,141 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 
 
-// frontend\js\components\themeHandler.js
+// frontend\js\globals\navHandler.js
 
-export const themeHandler = (() => {
-  const THEME_KEY = 'avalume-theme';
+// themeHandler.js
 
-  // Aplica o tema no <html> com base no localStorage ou tema padrão
-  const applyTheme = (theme) => {
-    document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem(THEME_KEY, theme);
-  };
+// Chave usada para armazenar o tema no localStorage
+const THEME_KEY = 'avalume-theme';
 
-  // Alterna entre temas (claro e escuro)
-  const toggleTheme = () => {
-    const currentTheme = localStorage.getItem(THEME_KEY) || 'light';
-    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-    applyTheme(newTheme);
-  };
+// Aplica o tema no <html> com base no tema escolhido
+const applyTheme = (theme) => {
+  document.documentElement.setAttribute('data-theme', theme); // Define o tema como atributo no <html>
+  localStorage.setItem(THEME_KEY, theme); // Salva o tema no localStorage
+  console.log(`[ThemeHandler] Tema aplicado: ${theme}`);
+};
 
-  // Inicializa o tema com base no localStorage
-  const initializeTheme = () => {
-    const savedTheme = localStorage.getItem(THEME_KEY) || 'light';
-    applyTheme(savedTheme);
-  };
+// Alterna entre temas claro e escuro
+const toggleTheme = () => {
+  const currentTheme = localStorage.getItem(THEME_KEY) || 'light'; // Obtém o tema atual
+  const newTheme = currentTheme === 'light' ? 'dark' : 'light'; // Alterna o tema
+  applyTheme(newTheme); // Aplica o novo tema
 
-  // Expor funções públicas
-  return {
-    initializeTheme,
-    toggleTheme,
-  };
-})();
+  // Atualiza o texto do botão, se existir
+  const themeToggleButton = document.getElementById('theme-toggle-button');
+  if (themeToggleButton) {
+    themeToggleButton.innerText = newTheme === 'light' ? 'Alternar para Escuro' : 'Alternar para Claro';
+  }
+};
 
-// Inicializa o tema ao carregar a página
-document.addEventListener('DOMContentLoaded', themeHandler.initializeTheme);
+// Inicializa o tema com base no localStorage ou usa o padrão
+const initializeTheme = () => {
+  const savedTheme = localStorage.getItem(THEME_KEY) || 'light'; // Padrão é claro
+  applyTheme(savedTheme); // Aplica o tema salvo
+
+  // Configura o texto do botão de alternância, se existir
+  const themeToggleButton = document.getElementById('theme-toggle-button');
+  if (themeToggleButton) {
+    themeToggleButton.innerText = savedTheme === 'light' ? 'Alternar para Escuro' : 'Alternar para Claro';
+  }
+};
+
+// Exporta as funções para uso em outros arquivos
+export { initializeTheme, toggleTheme };
+
+// Inicializa o tema automaticamente ao carregar a página
+document.addEventListener('DOMContentLoaded', initializeTheme);
+
+
+
+// frontend\js\globals\themeHandler.js
+
+// themeHandler.js
+
+// Chave usada para armazenar o tema no localStorage
+const THEME_KEY = 'avalume-theme';
+
+// Aplica o tema no <html> com base no tema escolhido
+const applyTheme = (theme) => {
+  document.documentElement.setAttribute('data-theme', theme); // Define o tema como atributo no <html>
+  localStorage.setItem(THEME_KEY, theme); // Salva o tema no localStorage
+  console.log(`[ThemeHandler] Tema aplicado: ${theme}`);
+};
+
+// Alterna entre temas claro e escuro
+const toggleTheme = () => {
+  const currentTheme = localStorage.getItem(THEME_KEY) || 'light'; // Obtém o tema atual
+  const newTheme = currentTheme === 'light' ? 'dark' : 'light'; // Alterna o tema
+  applyTheme(newTheme); // Aplica o novo tema
+
+  // Atualiza o texto do botão, se existir
+  const themeToggleButton = document.getElementById('theme-toggle-button');
+  if (themeToggleButton) {
+    themeToggleButton.innerText = newTheme === 'light' ? 'Alternar para Escuro' : 'Alternar para Claro';
+  }
+};
+
+// Inicializa o tema com base no localStorage ou usa o padrão
+const initializeTheme = () => {
+  const savedTheme = localStorage.getItem(THEME_KEY) || 'light'; // Padrão é claro
+  applyTheme(savedTheme); // Aplica o tema salvo
+
+  // Configura o texto do botão de alternância, se existir
+  const themeToggleButton = document.getElementById('theme-toggle-button');
+  if (themeToggleButton) {
+    themeToggleButton.innerText = savedTheme === 'light' ? 'Alternar para Escuro' : 'Alternar para Claro';
+  }
+};
+
+// Exporta as funções para uso em outros arquivos
+export { initializeTheme, toggleTheme };
+
+// Inicializa o tema automaticamente ao carregar a página
+document.addEventListener('DOMContentLoaded', initializeTheme);
+
+
+
+// frontend\js\pages\AdmConfig.js
+
+// Função para configurar eventos no formulário
+  
+  //console.log("[FormHandler] Configurando eventos do formulário...");
+function setupFormEvents() {
+  //console.log("[FormHandler] Configurando eventos do formulário...");
+  const form = document.getElementById('form');
+  if (form) {
+    //console.log("[FormHandler] Formulário encontrado. Adicionando evento de 'submit'.");
+    form.addEventListener('submit', (event) => {
+      event.preventDefault(); // Evita o reload da página
+      //console.log("[FormHandler] Evento de submit capturado.");
+
+      // Captura os valores dos campos
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+      //console.log("[FormHandler] Valores capturados:", { name, email, message });
+
+      // Validação simples
+      if (!name || !email || !message) {
+        alert('Preencha todos os campos antes de enviar.');
+        //console.warn("[FormHandler] Validação falhou. Campos vazios detectados.");
+        return;
+      }
+
+      // Formatação da mensagem para o WhatsApp
+      const whatsappNumber = '5511933360108'; // Substitua pelo número real
+      const textMessage = `Nome: ${name}\nE-mail: ${email}\nMensagem: ${message}`;
+      const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(textMessage)}`;
+      //console.log("[FormHandler] URL do WhatsApp gerada:", whatsappURL);
+
+      // Redireciona para o WhatsApp
+      window.open(whatsappURL, '_blank');
+      //console.log("[FormHandler] Redirecionamento para o WhatsApp iniciado.");
+    });
+  } else {
+    //console.error("[FormHandler] Formulário não encontrado!");
+  }
+}
 
 
 
@@ -1224,181 +1966,7 @@ function setupFormEvents() {
 
 
 
-// frontend\js\pagesConfig.js
-
-// pagesConfig.js
-export const pagesConfig = [
-  {
-    page: 'home',
-    htmlPath: './frontend/html/pages/home.html',
-    cssPath: './frontend/css/pages/home.css',
-  },
-  {
-    page: 'about',
-    htmlPath: './frontend/html/pages/about.html',
-    cssPath: './frontend/css/pages/about.css',
-  },
-  {
-    page: 'contact',
-    htmlPath: './frontend/html/pages/contact.html',
-    cssPath: './frontend/css/pages/contact.css',
-  },
-  {
-    page: 'form',
-    htmlPath: './frontend/html/pages/form.html',
-    cssPath: './frontend/css/pages/form.css',
-    scriptPath: './frontend/js/pages/formHandler.js',
-    setupFunctionName: 'setupFormEvents',
-  },
-  {
-    page: 'carousel',
-    htmlPath: './frontend/html/pages/carousel.html',
-    cssPath: './frontend/css/pages/carousel.css',
-    scriptPath: './frontend/js/pages/carouselHandler.js',
-    setupFunctionName: 'setupCarouselEvents',
-  },
-
-];
-
-
-
-// frontend\js\router.js
-
-import { loadHTML, loadCSS, loadScriptForPage } from './utils.js';
-import { pagesConfig } from './pagesConfig.js';
-import { generateMenu } from './components/menuGenerator.js'; // Importa a geração do menu
-
-
-// Função principal para carregar uma página
-const loadPage = async (page) => {
-  const pageConfig = pagesConfig.find((config) => config.page === page);
-
-  if (!pageConfig) {
-    console.warn(`[Router] Configuração para a página '${page}' não encontrada.`);
-    return;
-  }
-
-  try {
-    // Carregar HTML da página
-    const content = await fetch(pageConfig.htmlPath).then((res) => {
-      if (!res.ok) throw new Error(`Erro ao carregar HTML da página '${page}'`);
-      return res.text();
-    });
-
-    // Encapsular o conteúdo em uma section com ID único
-    const dynamicContent = document.querySelector('#dynamic-content');
-    dynamicContent.innerHTML = `<section id="${page}-section">${content}</section>`;
-
-    // Verifica e carrega o CSS específico da página
-    if (pageConfig.cssPath) {
-      loadCSS(pageConfig.cssPath);
-    }
-
-    // Carregar script específico da página e executar função de setup, se necessário
-    loadScriptForPage(pageConfig);
-  } catch (error) {
-    console.error(`[Router] Erro ao carregar a página '${page}': ${error.message}`);
-  }
-};
-
-// Configuração inicial
-document.addEventListener('DOMContentLoaded', async () => {
-  // Carregar navegação e rodapé
-  await loadHTML('nav-container', './frontend/html/components/nav.html');
-  await loadHTML('footer-container', './frontend/html/components/footer.html');
-
-  // Carregar estilos globais
-  loadCSS('./frontend/css/components/nav.css');
-  loadCSS('./frontend/css/components/footer.css');
-
-  // Gera o menu dinamicamente com base no pagesConfig
-  generateMenu();
-
-  // Configurar eventos de navegação
-  const menuLinks = document.querySelectorAll('nav a[data-page]');
-  menuLinks.forEach((link) => {
-    link.addEventListener('click', (event) => {
-      event.preventDefault();
-      const page = link.getAttribute('data-page');
-      loadPage(page);
-    });
-  });
-
-  // Carregar a página inicial
-  await loadPage('home');
-});
-
-
-
-
-// frontend\js\routerLandpage.js
-
-import { loadHTML, loadCSS, loadScriptForPage } from './utils.js';
-import { pagesConfig } from './pagesConfig.js'; 
-import { generateMenu } from './components/menuGenerator.js'; 
-import { setupMenuScroll } from './components/menuScroll.js'; 
-
-// Função principal para carregar todas as páginas no modo Landpage
-const loadLandpage = async () => {
-  const dynamicContent = document.querySelector('#dynamic-content');
-  dynamicContent.innerHTML = ''; // Limpa o conteúdo antes de carregar as seções
-
-  try {
-    for (const pageConfig of pagesConfig) {
-      // Carregar HTML da página
-      const content = await fetch(pageConfig.htmlPath).then((res) => {
-        if (!res.ok) throw new Error(`Erro ao carregar HTML da página '${pageConfig.page}'`);
-        return res.text();
-      });
-
-      // Adicionar conteúdo encapsulado em uma section
-      const section = document.createElement('section');
-      section.id = `${pageConfig.page}-section`;
-      section.innerHTML = content;
-      dynamicContent.appendChild(section);
-
-      // Carregar CSS específico da página
-      if (pageConfig.cssPath) {
-        loadCSS(pageConfig.cssPath);
-      }
-
-      // Carregar Script específico e executar função de setup
-      if (pageConfig.scriptPath) {
-        loadScriptForPage(pageConfig);
-
-        if (pageConfig.setupFunctionName && typeof window[pageConfig.setupFunctionName] === 'function') {
-          window[pageConfig.setupFunctionName]();
-        }
-      }
-    }
-  } catch (error) {
-    console.error(`[RouterLandpage] Erro durante o carregamento no modo Landpage: ${error.message}`);
-  }
-};
-
-// Configuração inicial
-document.addEventListener('DOMContentLoaded', async () => {
-  // Carregar navegação e rodapé
-  await loadHTML('nav-container', './frontend/html/components/nav.html');
-  await loadHTML('footer-container', './frontend/html/components/footer.html');
-
-  // Carregar estilos globais
-  loadCSS('./frontend/css/components/nav.css');
-  loadCSS('./frontend/css/components/footer.css');
-
-  // Gera o menu dinamicamente com base no pagesConfig
-  generateMenu();
-  
-   // Configura o comportamento de scroll do menu
-  setupMenuScroll();
-
-  // Carregar todo o conteúdo no modo Landpage
-  await loadLandpage();
-});
-
-
-
-// frontend\js\utils.js
+// frontend\js\utils\utils.js
 
 // Função para carregar o conteúdo HTML de um arquivo dentro de um container específico
 export const loadHTML = async (containerId, filePath) => {
@@ -1421,18 +1989,18 @@ export const loadHTML = async (containerId, filePath) => {
 
 // Função para carregar arquivos CSS dinamicamente
 export const loadCSS = (filePath) => {
-  //console.log(`[loadCSS] Tentando carregar CSS: ${filePath}`);
   const existingLink = document.querySelector(`link[href="${filePath}"]`);
   if (!existingLink) {
     const link = document.createElement('link');
     link.rel = 'stylesheet';
     link.href = filePath;
     document.head.appendChild(link);
-    //console.log(`[loadCSS] Arquivo CSS '${filePath}' carregado.`);
+    console.log(`[Utils] CSS carregado: ${filePath}`);
   } else {
-    //console.log(`[loadCSS] Arquivo CSS '${filePath}' já está carregado.`);
+    console.log(`[Utils] CSS já carregado: ${filePath}`);
   }
 };
+
 
 // Função para carregar e configurar o script necessário para uma página específica
 export const loadScriptForPage = (pageConfig) => {
@@ -1468,4 +2036,6 @@ export const loadScriptForPage = (pageConfig) => {
     }
   }
 };
+
+
 

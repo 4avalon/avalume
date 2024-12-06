@@ -1,68 +1,59 @@
-/* Estilo geral do header */
-header {
-  display: flex;
-  justify-content: space-between; /* Posiciona o menu e a busca em lados opostos */
-  align-items: center;
-  padding: 10px 20px; /* Espaçamento interno */
-  background-color: #001a33; /* Fundo azul escuro */
-}
-
-/* Estilo para o menu dinâmico */
-#nav-container {
-  flex: 1; /* Faz o menu ocupar o espaço disponível */
-  display: flex;
-  align-items: center; /* Alinha verticalmente os itens do menu */
-}
-
-/* Estilos para o container de busca */
+/* Estilo geral do container de busca */
 #search-container {
-  display: flex; /* Alinha o input e o botão horizontalmente */
-  align-items: center; /* Centraliza os elementos verticalmente */
-  gap: 10px; /* Espaçamento entre o input e o botão */
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 /* Estilo para o input */
 #search-input {
-  width: 200px; /* Tamanho fixo para o input */
+  width: 200px;
   padding: 8px;
   font-size: 1rem;
-  border: 2px solid #008000;
+  border: 2px solid var(--primary-color);
   border-radius: 5px;
-  transition: border-color 0.3s ease;
+  background-color: var(--foreground-color);
+  color: var(--text-color);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 #search-input:focus {
   outline: none;
-  border-color: #00cc44; /* Cor do foco */
+  border-color: var(--hover-color);
+  box-shadow: 0 0 8px var(--hover-color);
 }
 
-/* Estilo para o botão de pesquisa */
+/* Estilo para o botão de busca */
 #search-button {
   padding: 8px 16px;
   font-size: 1rem;
-  background-color: #004d00;
-  color: white;
-  border: 2px solid #004d00;
+  background-color: var(--primary-color);
+  color: var(--foreground-color);
+  border: 2px solid var(--primary-color);
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease, border-color 0.3s ease;
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }
 
 #search-button:hover {
-  background-color: #007f00;
-  border-color: #007f00;
+  background-color: var(--hover-color);
+  border-color: var(--hover-color);
+  color: var(--text-color);
 }
 
 /* Dropdown de resultados */
 #search-results-container {
-  margin-top: 10px; /* Espaçamento acima do dropdown */
-  width: 100%; /* Faz o dropdown ocupar toda a largura disponível */
-  padding: 10px;
-  background-color: #001a33; /* Fundo azul escuro */
-  border: 1px solid #004d00;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: var(--background-color);
+  border: 1px solid var(--border-color);
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
+  padding: 15px;
   z-index: 1000;
+  box-shadow: var(--box-shadow);
 }
 
 /* Botão de fechar no dropdown */
@@ -73,45 +64,52 @@ header {
   font-size: 1.2rem;
   font-weight: bold;
   cursor: pointer;
-  color: #ff5c5c; /* Vermelho */
+  color: var(--accent-color);
   transition: color 0.3s ease;
 }
 
 #close-search-dropdown:hover {
-  color: #ff0000; /* Vermelho intenso ao passar o mouse */
-}
-
-/* Resultados no dropdown */
-#search-results {
-  margin-top: 10px;
-  max-height: 200px; /* Define uma altura máxima para o dropdown */
-  overflow-y: auto; /* Adiciona rolagem se necessário */
-  text-align: left;
+  color: var(--highlight-color);
 }
 
 /* Estilo dos itens de resultado */
 .search-item {
-  padding: 10px;
-  margin: 5px 0;
-  background-color: #004080; /* Fundo azul */
-  border-radius: 5px;
+  padding: 12px;
+  margin: 10px 0;
+  background-color: var(--secondary-color);
+  border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  color: var(--text-color);
+  box-shadow: var(--box-shadow);
 }
 
 .search-item:hover {
-  background-color: #0059b3; /* Azul mais claro */
-  color: white;
+  background-color: var(--hover-color);
+  color: var(--foreground-color);
+  transform: scale(1.02);
 }
 
+/* Título dos resultados */
 .search-item h3 {
-  margin: 0;
-  font-size: 1.1rem;
-  color: #80dfff; /* Azul claro */
+  margin: 0 0 8px;
+  font-size: 1.2rem;
+  color: var(--link-color);
 }
 
+/* Trechos destacados nos resultados */
 .search-item p {
   margin: 5px 0 0;
-  font-size: 0.9rem;
-  color: #cceeff; /* Azul ainda mais claro */
+  font-size: 1rem;
+  color: var(--text-secondary-color);
+  line-height: 1.6;
+}
+
+/* Destaque das palavras buscadas */
+.search-item mark {
+  background-color: var(--highlight-color);
+  color: var(--text-color);
+  font-weight: bold;
+  border-radius: 3px;
+  padding: 0 3px;
 }

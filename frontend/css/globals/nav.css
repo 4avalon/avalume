@@ -4,7 +4,7 @@ nav {
   color: white;
   padding: 15px 20px;
   display: flex;
-  flex-direction: column; /* Adicionado para centralizar logo e menu */
+  flex-direction: column;
   align-items: center;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
@@ -17,9 +17,9 @@ nav.scrolled {
 nav .logo {
   font-size: 1.5rem;
   font-weight: bold;
-  color: #ecf0f1; /* Branco suave */
+  color: #ecf0f1;
   text-transform: uppercase;
-  margin-bottom: 10px; /* Espaço entre logo e menu */
+  margin-bottom: 10px;
 }
 
 /* Links do menu */
@@ -28,7 +28,7 @@ nav ul {
   margin: 0;
   padding: 0;
   display: flex;
-  justify-content: center; /* Centraliza os itens */
+  justify-content: center;
   gap: 20px;
 }
 
@@ -44,12 +44,12 @@ nav a {
 
 /* Efeito ao passar o mouse */
 nav a:hover {
-  background-color: #34495e; /* Azul mais claro */
-  color: #ecf0f1; /* Branco suave */
+  background-color: #34495e;
+  color: #ecf0f1;
 }
 nav a.active {
-  background-color: #3498db; /* Azul claro */
+  background-color: #3498db;
   color: white;
   font-weight: bold;
-  border-bottom: 2px solid white; /* Exemplo de efeito */
+  border-bottom: 2px solid white;
 }

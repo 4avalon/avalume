@@ -3,144 +3,115 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="data:,">
-  <title>Landpage - Avalume</title>
-
-  <!-- Estilos Globais -->
-  <link rel="stylesheet" href="./frontend/css/globals/reset.css">
-  <link rel="stylesheet" href="./frontend/css/globals/styles.css">
-  <link rel="stylesheet" href="./frontend/css/globals/theme.css">
+  <title>Avalume</title>
+  <link rel="icon" href="data:;base64,=">
+  <link rel="stylesheet" href="./frontend/css/dynamics/search.css">
 </head>
 <body>
-  <header>
-    <nav id="nav-container"></nav> <!-- Menu Dinâmico -->
-    <div id="search-container">
-      <input type="text" id="search-input" placeholder="Buscar...">
-      <button id="search-button">Pesquisar</button>
-    </div>
-  </header>
+  <!-- Containers Globais -->
+  <header id="nav-container"></header>
+  <main id="pages-container"></main>
 
-  <!-- Dropdown e Resultados -->
-  <div id="search-results-container">
-    <div id="search-dropdown">
-      <button id="close-search-dropdown">X</button>
-      <div id="search-results">
-        <p>Digite algo para buscar ou clique no botão.</p>
-      </div>
+  <div id="search-container">
+    <input type="text" id="search-input" placeholder="Digite aqui para buscar..." />
+    <button id="search-button">Buscar</button>
+    <div id="search-results-container" style="display: none;">
+      <button id="close-search-dropdown" aria-label="Fechar">&times;</button>
+      <div id="search-results"></div>
     </div>
   </div>
 
-  <!-- Conteúdo Dinâmico -->
-  <main id="dynamic-content"></main>
-
-  <!-- Rodapé -->
   <footer id="footer-container"></footer>
 
   <!-- Scripts -->
+  <script type="module" src="./frontend/js/core/main.js"></script>
   <script>
-    /**
-     * Config.js - Configurações Globais
-     */
-    const appConfig = {
-      siteMode: 'landpage',
-      theme: 'light',
-      enableSearch: true,
-      enableModal: true,
-      logLevel: 'debug',
-    };
+    document.addEventListener("DOMContentLoaded", () => {
+      console.log("[SearchHandler] Configurando busca...");
 
-    const log = (message, level = 'info') => {
-      const levels = ['debug', 'info', 'warn', 'error'];
-      if (levels.indexOf(level) >= levels.indexOf(appConfig.logLevel)) {
-        console[level](`[${level.toUpperCase()}] ${message}`);
-      }
-    };
-  </script>
+      const searchInput = document.querySelector("#search-input");
+      const searchButton = document.querySelector("#search-button");
+      const resultsContainer = document.querySelector("#search-results-container");
+      const resultsList = document.querySelector("#search-results");
+      const closeDropdownButton = document.querySelector("#close-search-dropdown");
 
-  <script>
-    /**
-     * Utils.js - Utilitários
-     */
-    const utils = {
-      async loadHTML(containerId, filePath) {
-        try {
-          const response = await fetch(filePath);
-          if (!response.ok) throw new Error(`Erro ao carregar ${filePath}`);
-          const container = document.getElementById(containerId);
-          if (container) {
-            container.innerHTML = await response.text();
-            log(`HTML carregado em '${containerId}' a partir de ${filePath}`, 'debug');
-          } else {
-            throw new Error(`Container com ID '${containerId}' não encontrado`);
-          }
-        } catch (error) {
-          log(`Erro ao carregar HTML: ${error.message}`, 'error');
-        }
-      },
+      // Fecha o dropdown
+      closeDropdownButton.addEventListener("click", () => {
+        resultsContainer.style.display = "none";
+      });
 
-      loadCSS(filePath) {
-        if (!document.querySelector(`link[href="${filePath}"]`)) {
-          const link = document.createElement('link');
-          link.rel = 'stylesheet';
-          link.href = filePath;
-          document.head.appendChild(link);
-          log(`CSS carregado de ${filePath}`, 'debug');
-        }
-      },
-    };
-  </script>
+      // Função para realizar a busca
+      function performSearch() {
+        const query = searchInput.value.trim().toLowerCase();
+        if (!query) return;
 
-  <script>
-    /**
-     * NavHandler.js - Gerenciador de Navegação
-     */
-    const navHandler = {
-      generateMenu() {
-        const menuConfig = [
-          { page: 'home', label: 'Home', href: '#home-section' },
-          { page: 'about', label: 'About Us', href: '#about-section' },
-          { page: 'contact', label: 'Contact', href: '#contact-section' },
-          { page: 'form', label: 'Form', href: '#form-section' },
-          { page: 'carousel', label: 'Carousel', href: '#carousel-section' },
+        console.log(`[SearchHandler] Buscando por: "${query}"`);
+        resultsList.innerHTML = ""; // Limpa os resultados anteriores
+
+        const pages = [
+          { name: "home", htmlPath: "./frontend/html/pages/home.html" },
+          { name: "about", htmlPath: "./frontend/html/pages/about.html" },
+          { name: "contact", htmlPath: "./frontend/html/pages/contact.html" },
         ];
 
-        const navContainer = document.getElementById('nav-container');
-        if (!navContainer) {
-          log('Elemento de navegação não encontrado', 'error');
-          return;
-        }
+        let foundResults = false;
 
-        const ul = document.createElement('ul');
-        menuConfig.forEach((item) => {
-          const li = document.createElement('li');
-          const a = document.createElement('a');
-          a.href = item.href;
-          a.textContent = item.label;
-          li.appendChild(a);
-          ul.appendChild(li);
+        // Verifica o conteúdo das páginas configuradas
+        const fetchPromises = pages.map((page) => {
+          return fetch(page.htmlPath)
+            .then((response) => response.text())
+            .then((html) => {
+              if (html.toLowerCase().includes(query)) {
+                const snippet = extractAndHighlightSnippet(html, query, 100); // Extrai um trecho do conteúdo e destaca o termo
+                const resultItem = document.createElement("div");
+                resultItem.className = "search-item";
+                resultItem.innerHTML = `
+                  <h3>${page.name.charAt(0).toUpperCase() + page.name.slice(1)}</h3>
+                  <p>${snippet}</p>
+                `;
+                resultItem.addEventListener("click", () => {
+                  window.location.hash = page.name; // Navega para a página
+                  resultsContainer.style.display = "none"; // Fecha o dropdown
+                });
+                resultsList.appendChild(resultItem);
+                foundResults = true;
+              }
+            });
         });
 
-        navContainer.appendChild(ul);
-        log('Menu gerado com sucesso', 'info');
-      },
-    };
-  </script>
+        Promise.all(fetchPromises).then(() => {
+          if (!foundResults) {
+            const noResultItem = document.createElement("div");
+            noResultItem.className = "search-item";
+            noResultItem.innerHTML = `<p>Nenhum resultado encontrado.</p>`;
+            resultsList.appendChild(noResultItem);
+          }
+          resultsContainer.style.display = "block"; // Mostra o dropdown
+        });
+      }
 
-  <script>
-    /**
-     * Inicialização
-     */
-    document.addEventListener('DOMContentLoaded', async () => {
-      log('Inicializando aplicação...', 'info');
+      // Extrai e destaca um trecho do conteúdo em torno da palavra-chave
+      function extractAndHighlightSnippet(content, keyword, length) {
+        const index = content.toLowerCase().indexOf(keyword);
+        if (index === -1) return "";
+        const start = Math.max(0, index - length / 2);
+        const end = Math.min(content.length, index + length / 2);
+        const snippet = content
+          .substring(start, end)
+          .replace(/<\/?[^>]+(>|$)/g, "") // Remove tags HTML
+          .replace(new RegExp(keyword, "gi"), (match) => `<mark>${match}</mark>`); // Destaca o termo pesquisado
+        return snippet;
+      }
 
-      // Carregar Navegação e Rodapé
-      await utils.loadHTML('footer-container', './frontend/html/globals/footer.html');
-      utils.loadCSS('./frontend/css/globals/footer.css');
+      // Evento de clique no botão de busca
+      searchButton.addEventListener("click", performSearch);
 
-      // Gerar menu
-      navHandler.generateMenu();
-
-      log('Aplicação inicializada com sucesso!', 'info');
+      // Evento de pressionar Enter no input
+      searchInput.addEventListener("keypress", (event) => {
+        if (event.key === "Enter") {
+          performSearch();
+        }
+      });
     });
   </script>
 </body>

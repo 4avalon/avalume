@@ -1,42 +1,32 @@
-// themeHandler.js
+import { getGlobalComponents, getPagesConfig } from '../core/config.js';
+import { loadHTML, loadCSS } from '../core/loader.js';
+    // Inicialização do Menu
+    function setupNav() {
+      console.log('[NavHandler] Iniciando menu...');
+      const { htmlPath, cssPath } = getGlobalComponents().nav;
 
-// Chave usada para armazenar o tema no localStorage
-const THEME_KEY = 'avalume-theme';
+      loadHTML('nav-container', htmlPath).then(() => {
+        loadCSS(cssPath);
+        setupMenuItems();
+      });
+    }
 
-// Aplica o tema no <html> com base no tema escolhido
-const applyTheme = (theme) => {
-  document.documentElement.setAttribute('data-theme', theme); // Define o tema como atributo no <html>
-  localStorage.setItem(THEME_KEY, theme); // Salva o tema no localStorage
-  console.log(`[ThemeHandler] Tema aplicado: ${theme}`);
-};
+    function setupMenuItems() {
+      console.log('[NavHandler] Gerando itens do menu...');
+      const menuList = document.querySelector('#menu-list');
+      if (!menuList) {
+        console.error('[NavHandler] Elemento "#menu-list" não encontrado no DOM.');
+        return;
+      }
 
-// Alterna entre temas claro e escuro
-const toggleTheme = () => {
-  const currentTheme = localStorage.getItem(THEME_KEY) || 'light'; // Obtém o tema atual
-  const newTheme = currentTheme === 'light' ? 'dark' : 'light'; // Alterna o tema
-  applyTheme(newTheme); // Aplica o novo tema
+      const pages = getPagesConfig();
+      menuList.innerHTML = '';
+      pages.forEach((page) => {
+        const listItem = document.createElement('li');
+        listItem.innerHTML = `<a href="#${page.name}">${page.name.charAt(0).toUpperCase() + page.name.slice(1)}</a>`;
+        menuList.appendChild(listItem);
+      });
+      console.log('[NavHandler] Itens do menu gerados com sucesso.');
+    }
 
-  // Atualiza o texto do botão, se existir
-  const themeToggleButton = document.getElementById('theme-toggle-button');
-  if (themeToggleButton) {
-    themeToggleButton.innerText = newTheme === 'light' ? 'Alternar para Escuro' : 'Alternar para Claro';
-  }
-};
-
-// Inicializa o tema com base no localStorage ou usa o padrão
-const initializeTheme = () => {
-  const savedTheme = localStorage.getItem(THEME_KEY) || 'light'; // Padrão é claro
-  applyTheme(savedTheme); // Aplica o tema salvo
-
-  // Configura o texto do botão de alternância, se existir
-  const themeToggleButton = document.getElementById('theme-toggle-button');
-  if (themeToggleButton) {
-    themeToggleButton.innerText = savedTheme === 'light' ? 'Alternar para Escuro' : 'Alternar para Claro';
-  }
-};
-
-// Exporta as funções para uso em outros arquivos
-export { initializeTheme, toggleTheme };
-
-// Inicializa o tema automaticamente ao carregar a página
-document.addEventListener('DOMContentLoaded', initializeTheme);
+    export { setupNav, setupMenuItems };

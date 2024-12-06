@@ -2,7 +2,7 @@
 
 /node_modules/
 /backend/
-
+/docs/
 # Logs
 logs
 *.log

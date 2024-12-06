@@ -1,10 +1,6 @@
 // pagesConfig.js
 export const pagesConfig = [
-    {
-    page: 'about',
-    htmlPath: './frontend/html/pages/about.html',
-    cssPath: './frontend/css/pages/about.css',
-  },
+
   {
     page: 'home',
     htmlPath: './frontend/html/pages/home.html',

@@ -48,25 +48,27 @@
       ];
     }
   // Configuração de Componentes Dinâmicos
-  function getDynamicComponentsConfig() {
-    return {
-      carousel: {
-        htmlPath: './frontend/html/dynamics/carousel.html',
-        cssPath: './frontend/css/dynamics/carousel.css',
-        jsPath: './frontend/js/dynamics/carouselHandler.js',
-      },
-      form: {
-        htmlPath: './frontend/html/dynamics/form.html',
-        cssPath: './frontend/css/dynamics/form.css',
-        jsPath: './frontend/js/dynamics/formHandler.js',
-      }
-      /**,
-            search: {
-    htmlPath: './frontend/html/dynamics/search.html',
-    cssPath: './frontend/css/dynamics/search.css',
-    jsPath: './frontend/js/dynamics/searchHandler.js',
-  }**/
-    };
-  }
+function getDynamicComponentsConfig() {
+  return {
+    carousel: {
+      htmlPath: './frontend/html/dynamics/carousel.html',
+      cssPath: './frontend/css/dynamics/carousel.css',
+      jsPath: './frontend/js/dynamics/carouselHandler.js',
+      initFunction: 'setupCarouselEvents', // Nome da função de inicialização
+    },
+    form: {
+      htmlPath: './frontend/html/dynamics/form.html',
+      cssPath: './frontend/css/dynamics/form.css',
+      jsPath: './frontend/js/dynamics/formHandler.js',
+      initFunction: 'setupFormEvents', // Nome da função de inicialização
+    },
+    search: {
+      htmlPath: './frontend/html/dynamics/search.html',
+      cssPath: './frontend/css/dynamics/search.css',
+      jsPath: './frontend/js/dynamics/searchHandler.js',
+      initFunction: 'setupSearchEvents', // Nome da função de inicialização
+    },
+  };
+}
 
 export { getConfig, getGlobalComponents, getPagesConfig, getDynamicComponentsConfig };

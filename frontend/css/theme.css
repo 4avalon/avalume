@@ -1,51 +1,65 @@
-/* Tema claro (padrão) */
+/* Tema colorido e vibrante (padrão) */
 :root {
   /* Cores base */
-  --background-color: #25ffff; /* Fundo principal */
-  --foreground-color: #f9f9f9; /* Fundo secundário */
-  --primary-color: #007acc; /* Cor primária */
-  --secondary-color: #004d99; /* Cor secundária */
-  --text-color: #333333; /* Texto principal */
-  --text-secondary-color: #555555; /* Texto secundário */
-  --border-color: #dddddd; /* Cor das bordas */
-  --link-color: #0066cc; /* Cor dos links */
-  --hover-color: #005299; /* Cor ao passar o mouse */
+  --background-color: #ffeb3b; /* Fundo amarelo vibrante */
+  --foreground-color: #ffffff; /* Fundo secundário branco */
+  --primary-color: #ff5722; /* Cor primária laranja vibrante */
+  --secondary-color: #03a9f4; /* Cor secundária azul claro */
+  --text-color: #212121; /* Texto principal */
+  --text-secondary-color: #4a4a4a; /* Texto secundário */
+  --border-color: #ff9800; /* Cor das bordas */
+  --link-color: #673ab7; /* Cor dos links (roxo vibrante) */
+  --hover-color: #c2185b; /* Rosa vibrante ao passar o mouse */
 
   /* Cores de destaque */
-  --accent-color: #ff9800; /* Cor de destaque */
-  --highlight-color: #ffe082; /* Destaque suave */
+  --accent-color: #00c853; /* Verde brilhante para destaque */
+  --highlight-color: #f44336; /* Vermelho vibrante para destaque suave */
 
   /* Sombras */
   --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra padrão */
-  --box-shadow-hover: 0 6px 10px rgba(0, 0, 0, 0.15); /* Sombra ao passar o mouse */
+  --box-shadow-hover: 0 6px 10px rgba(0, 0, 0, 0.2); /* Sombra ao passar o mouse */
 
   /* Gradientes */
-  --gradient-primary: linear-gradient(45deg, #007acc, #005299); /* Gradiente primário */
-  --gradient-secondary: linear-gradient(45deg, #004d99, #003366); /* Gradiente secundário */
+  --gradient-primary: linear-gradient(45deg, #ff5722, #ff9800); /* Gradiente primário laranja */
+  --gradient-secondary: linear-gradient(45deg, #03a9f4, #00e5ff); /* Gradiente secundário azul */
+
+  /* Ajuste para texto sobre fundo colorido */
+  --text-on-primary: #ffffff; /* Texto branco sobre cores primárias */
+  --text-on-secondary: #000000; /* Texto preto sobre cores secundárias */
+
+  /* nav e footer*/
+  --header-footer-background: #2c3e50; /* Fundo para menu e footer */
+  --header-footer-text-color: #ffffff; /* Cor do texto */
+  --header-footer-link-hover: #1abc9c; /* Cor do link ao passar o mouse */
+  --header-footer-border: #3498db; /* Cor da borda, se necessário */
 }
 
 /* Tema escuro */
 [data-theme='dark'] {
   /* Cores base */
-  --background-color: #1e1e1e; /* Fundo principal */
-  --foreground-color: #2a2a2a; /* Fundo secundário */
-  --primary-color: #1a73e8; /* Cor primária */
-  --secondary-color: #003366; /* Cor secundária */
-  --text-color: #e5e5e5; /* Texto principal */
-  --text-secondary-color: #bbbbbb; /* Texto secundário */
+  --background-color: #121212; /* Fundo preto */
+  --foreground-color: #1f1f1f; /* Fundo secundário escuro */
+  --primary-color: #bb86fc; /* Roxo brilhante */
+  --secondary-color: #03dac6; /* Azul esverdeado */
+  --text-color: #e0e0e0; /* Texto principal branco acinzentado */
+  --text-secondary-color: #b0b0b0; /* Texto secundário */
   --border-color: #444444; /* Cor das bordas */
-  --link-color: #4e9eff; /* Cor dos links */
-  --hover-color: #3b82f6; /* Cor ao passar o mouse */
+  --link-color: #81d4fa; /* Azul claro */
+  --hover-color: #ff8a65; /* Laranja suave ao passar o mouse */
 
   /* Cores de destaque */
-  --accent-color: #ff9800; /* Cor de destaque */
-  --highlight-color: #ffcc80; /* Destaque suave */
+  --accent-color: #03dac6; /* Azul esverdeado brilhante */
+  --highlight-color: #ff4081; /* Rosa neon para destaque suave */
 
   /* Sombras */
-  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Sombra padrão */
-  --box-shadow-hover: 0 6px 10px rgba(0, 0, 0, 0.4); /* Sombra ao passar o mouse */
+  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Sombra padrão */
+  --box-shadow-hover: 0 6px 10px rgba(0, 0, 0, 0.3); /* Sombra ao passar o mouse */
 
   /* Gradientes */
-  --gradient-primary: linear-gradient(45deg, #1a73e8, #3b82f6); /* Gradiente primário */
-  --gradient-secondary: linear-gradient(45deg, #003366, #1a73e8); /* Gradiente secundário */
+  --gradient-primary: linear-gradient(45deg, #bb86fc, #3700b3); /* Gradiente primário roxo */
+  --gradient-secondary: linear-gradient(45deg, #03dac6, #018786); /* Gradiente secundário azul-esverdeado */
+
+  /* Ajuste para texto sobre fundo colorido */
+  --text-on-primary: #ffffff; /* Texto branco sobre cores primárias */
+  --text-on-secondary: #000000; /* Texto preto sobre cores secundárias */
 }

@@ -27,30 +27,31 @@ Lista de Arquivos na Pasta "frontend":
 │   └── img
 ├── css
 │   ├── dynamics
+│   │   ├── carousel.css
+│   │   ├── form.css
 │   │   └── search.css
 │   ├── globals
 │   │   ├── footer.css
 │   │   └── nav.css
 │   ├── pages
 │   │   ├── about.css
-│   │   ├── carousel.css
 │   │   ├── contact.css
-│   │   ├── form.css
 │   │   └── home.css
 │   ├── reset.css
 │   ├── styles.css
 │   └── theme.css
 ├── html
 │   ├── dynamics
+│   │   ├── carousel.html
+│   │   ├── dropDown.html
+│   │   ├── form.html
 │   │   └── search.html
 │   ├── globals
 │   │   ├── footer.html
 │   │   └── nav.html
 │   └── pages
 │       ├── about.html
-│       ├── carousel.html
 │       ├── contact.html
-│       ├── form.html
 │       └── home.html
 └── js
     ├── core
@@ -59,14 +60,14 @@ Lista de Arquivos na Pasta "frontend":
     │   ├── main.js
     │   └── router.js
     ├── dynamics
+    │   ├── carouselHandler.js
+    │   ├── formHandler.js
     │   └── searchHandler.js
     ├── globals
     │   ├── footerHandler.js
     │   ├── navHandler.js
     │   └── themeHandler.js
     └── pages
-        ├── carouselHandler.js
-        └── formHandler.js
 
 REM Lista os arquivos na pasta backend
 Lista de Arquivos na Pasta "backend":

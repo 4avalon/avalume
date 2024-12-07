@@ -13,15 +13,15 @@
   font-size: 1rem;
   border: 2px solid var(--primary-color);
   border-radius: 5px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
   background-color: var(--foreground-color);
   color: var(--text-color);
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 #search-input:focus {
   outline: none;
   border-color: var(--hover-color);
-  box-shadow: 0 0 8px var(--hover-color);
+  box-shadow: var(--box-shadow-hover);
 }
 
 /* Estilo para o botão de busca */
@@ -39,7 +39,7 @@
 #search-button:hover {
   background-color: var(--hover-color);
   border-color: var(--hover-color);
-  color: var(--text-color);
+  color: var(--foreground-color);
 }
 
 /* Dropdown de resultados */
@@ -49,9 +49,9 @@
   left: 0;
   width: 100%;
   background-color: var(--background-color);
-  border: 1px solid var(--border-color);
-  border-radius: 8px;
-  padding: 15px;
+  border: 1px solid var(--secondary-color);
+  border-radius: 5px;
+  padding: 10px;
   z-index: 1000;
   box-shadow: var(--box-shadow);
 }
@@ -74,42 +74,37 @@
 
 /* Estilo dos itens de resultado */
 .search-item {
-  padding: 12px;
-  margin: 10px 0;
+  padding: 10px;
+  margin: 5px 0;
   background-color: var(--secondary-color);
-  border-radius: 8px;
+  border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  color: var(--text-color);
-  box-shadow: var(--box-shadow);
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .search-item:hover {
   background-color: var(--hover-color);
   color: var(--foreground-color);
-  transform: scale(1.02);
+  transform: scale(1.02); /* Efeito de leve zoom */
 }
 
-/* Título dos resultados */
 .search-item h3 {
-  margin: 0 0 8px;
-  font-size: 1.2rem;
-  color: var(--link-color);
+  margin: 0;
+  font-size: 1.1rem;
+  color: var(--text-color);
 }
 
-/* Trechos destacados nos resultados */
 .search-item p {
   margin: 5px 0 0;
-  font-size: 1rem;
+  font-size: 0.9rem;
   color: var(--text-secondary-color);
-  line-height: 1.6;
 }
 
-/* Destaque das palavras buscadas */
-.search-item mark {
-  background-color: var(--highlight-color);
-  color: var(--text-color);
+/* Destaque para as palavras encontradas */
+.search-item-highlight {
+  background-color: var(--accent-color);
+  color: var(--foreground-color);
   font-weight: bold;
+  padding: 2px 4px;
   border-radius: 3px;
-  padding: 0 3px;
 }

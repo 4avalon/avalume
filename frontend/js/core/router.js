@@ -34,7 +34,14 @@ function injectDynamicComponents() {
       loadHTML(placeholder.id, component.htmlPath).then(() => {
         loadCSS(component.cssPath);
         if (component.jsPath) {
-          loadHandler(component.jsPath);
+          loadHandler(component.jsPath).then(() => {
+            if (component.initFunction && typeof window[component.initFunction] === 'function') {
+              console.log(`[Router] Inicializando função para o componente: ${key}`);
+              window[component.initFunction](); // Chama a função de inicialização dinamicamente
+            } else {
+              console.warn(`[Router] Função ${component.initFunction} não encontrada para o componente: ${key}`);
+            }
+          });
         }
       });
     } else {
@@ -42,5 +49,7 @@ function injectDynamicComponents() {
     }
   }
 }
+
+
 
 export { navigateToPage };

@@ -1,70 +1,274 @@
+// frontend\css\dynamics\carousel.css
+
+/* Contêiner principal do carrossel */
+.carousel-container {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  height: 500px; /* Altura ajustada para maior impacto */
+  margin: 30px auto; /* Espaçamento ao redor */
+  overflow: hidden;
+  border-radius: 20px; /* Bordas mais arredondadas */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3); /* Sombra mais intensa */
+  background-color: var(--foreground-color); /* Fundo dinâmico */
+  display: flex;
+  align-items: center;
+}
+
+/* Faixa do carrossel */
+.carousel-track {
+  display: flex;
+  transition: transform 0.6s ease-in-out; /* Transição mais fluida */
+}
+
+/* Cada slide do carrossel */
+.carousel-slide {
+  min-width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Imagens dentro do slide */
+.carousel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 15px; /* Bordas arredondadas */
+  transition: transform 0.5s ease; /* Transição ao passar o mouse */
+}
+
+.carousel-slide img:hover {
+  transform: scale(1.01); /* Zoom suave ao passar o mouse */
+}
+
+/* Botões de navegação */
+.carousel-prev,
+.carousel-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.6); /* Fundo semi-transparente */
+  color: white;
+  border: none;
+  padding: 15px;
+  cursor: pointer;
+  border-radius: 50%;
+  z-index: 10;
+  font-size: 2rem; /* Aumentei o tamanho da seta */
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.carousel-prev:hover,
+.carousel-next:hover {
+  background-color: var(--primary-color);
+  box-shadow: 0 0 15px var(--primary-color); /* Sombra ao passar o mouse */
+}
+
+.carousel-prev {
+  left: 15px;
+}
+
+.carousel-next {
+  right: 15px;
+}
+
+/* Indicadores */
+.carousel-indicators {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 15px; /* Maior espaçamento entre as bolinhas */
+  z-index: 5;
+}
+
+.carousel-indicator {
+  width: 16px;
+  height: 16px;
+  background-color: var(--border-color); /* Fundo padrão */
+  border: 2px solid var(--primary-color); /* Borda destacada */
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.carousel-indicator:hover {
+  transform: scale(1.3); /* Zoom ao passar o mouse */
+  background-color: var(--primary-color); /* Cor de fundo ao hover */
+  border-color: var(--hover-color); /* Destaque na borda */
+  box-shadow: 0 0 12px var(--primary-color); /* Sombra visível no hover */
+}
+
+.carousel-indicator.active {
+  background-color: var(--primary-color); /* Fundo para indicador ativo */
+  border-color: var(--hover-color); /* Borda destacada */
+  transform: scale(1.8); /* Maior destaque para indicador ativo */
+  box-shadow: 0 0 20px var(--primary-color); /* Sombra mais forte para o ativo */
+}
+
+
+
+// frontend\css\dynamics\form.css
+
+/* Estilos para a seção Form */
+#contact-form-section {
+  min-height: 100vh; /* Ocupa pelo menos uma altura de viewport */
+  background-color: var(--foreground-color); /* Fundo dinâmico */
+  padding: 50px;
+  text-align: center;
+  font-family: 'Arial', sans-serif; /* Fonte padrão */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra para destaque */
+  border-radius: 10px;
+}
+
+/* Título da seção */
+#contact-form-section h2 {
+  font-size: 2.5em;
+  color: var(--primary-color); /* Cor dinâmica */
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+/* Subtítulo */
+#contact-form-section p {
+  font-size: 1.2em;
+  color: var(--text-color);
+  margin-bottom: 20px;
+}
+
+/* Formulário */
+#contact-form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: var(--background-color); /* Fundo do formulário */
+  border-radius: 10px; /* Bordas arredondadas */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Leve sombra */
+}
+
+/* Estilos dos campos de entrada */
+#contact-form input,
+#contact-form textarea {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 15px;
+  font-size: 1em;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  background-color: var(--foreground-color); /* Fundo dinâmico */
+  color: var(--text-color); /* Texto dinâmico */
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); /* Sombra interna */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efeitos ao focar nos campos */
+#contact-form input:focus,
+#contact-form textarea:focus {
+  outline: none;
+  border-color: var(--primary-color); /* Borda destacada */
+  box-shadow: 0 0 5px var(--primary-color); /* Efeito de foco */
+}
+
+/* Botão de envio */
+#contact-form button {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  font-size: 1.2em;
+  font-weight: bold;
+  background-color: var(--primary-color); /* Fundo dinâmico */
+  color: var(--background-color); /* Cor do texto */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Efeitos no botão ao passar o mouse */
+#contact-form button:hover {
+  background-color: var(--hover-color); /* Cor de hover dinâmica */
+  transform: scale(1.05); /* Leve efeito de zoom */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra ao hover */
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  #contact-form-section h2 {
+    font-size: 2em;
+  }
+
+  #contact-form {
+    padding: 15px;
+  }
+
+  #contact-form button {
+    font-size: 1em;
+  }
+}
+
+
+
 // frontend\css\dynamics\search.css
 
-/* Estilo geral do header */
-header {
-  display: flex;
-  justify-content: space-between; /* Posiciona o menu e a busca em lados opostos */
-  align-items: center;
-  padding: 10px 20px; /* Espaçamento interno */
-  background-color: #001a33; /* Fundo azul escuro */
-}
-
-/* Estilo para o menu dinâmico */
-#nav-container {
-  flex: 1; /* Faz o menu ocupar o espaço disponível */
-  display: flex;
-  align-items: center; /* Alinha verticalmente os itens do menu */
-}
-
-/* Estilos para o container de busca */
+/* Estilo geral do container de busca */
 #search-container {
-  display: flex; /* Alinha o input e o botão horizontalmente */
-  align-items: center; /* Centraliza os elementos verticalmente */
-  gap: 10px; /* Espaçamento entre o input e o botão */
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 /* Estilo para o input */
 #search-input {
-  width: 200px; /* Tamanho fixo para o input */
+  width: 200px;
   padding: 8px;
   font-size: 1rem;
-  border: 2px solid #008000;
+  border: 2px solid var(--primary-color);
   border-radius: 5px;
-  transition: border-color 0.3s ease;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  background-color: var(--foreground-color);
+  color: var(--text-color);
 }
 
 #search-input:focus {
   outline: none;
-  border-color: #00cc44; /* Cor do foco */
+  border-color: var(--hover-color);
+  box-shadow: var(--box-shadow-hover);
 }
 
-/* Estilo para o botão de pesquisa */
+/* Estilo para o botão de busca */
 #search-button {
   padding: 8px 16px;
   font-size: 1rem;
-  background-color: #004d00;
-  color: white;
-  border: 2px solid #004d00;
+  background-color: var(--primary-color);
+  color: var(--foreground-color);
+  border: 2px solid var(--primary-color);
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease, border-color 0.3s ease;
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }
 
 #search-button:hover {
-  background-color: #007f00;
-  border-color: #007f00;
+  background-color: var(--hover-color);
+  border-color: var(--hover-color);
+  color: var(--foreground-color);
 }
 
 /* Dropdown de resultados */
 #search-results-container {
-  margin-top: 10px; /* Espaçamento acima do dropdown */
-  width: 100%; /* Faz o dropdown ocupar toda a largura disponível */
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: var(--background-color);
+  border: 1px solid var(--secondary-color);
+  border-radius: 5px;
   padding: 10px;
-  background-color: #001a33; /* Fundo azul escuro */
-  border: 1px solid #004d00;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
   z-index: 1000;
+  box-shadow: var(--box-shadow);
 }
 
 /* Botão de fechar no dropdown */
@@ -75,133 +279,135 @@ header {
   font-size: 1.2rem;
   font-weight: bold;
   cursor: pointer;
-  color: #ff5c5c; /* Vermelho */
+  color: var(--accent-color);
   transition: color 0.3s ease;
 }
 
 #close-search-dropdown:hover {
-  color: #ff0000; /* Vermelho intenso ao passar o mouse */
-}
-
-/* Resultados no dropdown */
-#search-results {
-  margin-top: 10px;
-  max-height: 200px; /* Define uma altura máxima para o dropdown */
-  overflow-y: auto; /* Adiciona rolagem se necessário */
-  text-align: left;
+  color: var(--highlight-color);
 }
 
 /* Estilo dos itens de resultado */
 .search-item {
   padding: 10px;
   margin: 5px 0;
-  background-color: #004080; /* Fundo azul */
+  background-color: var(--secondary-color);
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .search-item:hover {
-  background-color: #0059b3; /* Azul mais claro */
-  color: white;
+  background-color: var(--hover-color);
+  color: var(--foreground-color);
+  transform: scale(1.02); /* Efeito de leve zoom */
 }
 
 .search-item h3 {
   margin: 0;
   font-size: 1.1rem;
-  color: #80dfff; /* Azul claro */
+  color: var(--text-color);
 }
 
 .search-item p {
   margin: 5px 0 0;
   font-size: 0.9rem;
-  color: #cceeff; /* Azul ainda mais claro */
+  color: var(--text-secondary-color);
+}
+
+/* Destaque para as palavras encontradas */
+.search-item-highlight {
+  background-color: var(--accent-color);
+  color: var(--foreground-color);
+  font-weight: bold;
+  padding: 2px 4px;
+  border-radius: 3px;
 }
 
 
 
 // frontend\css\globals\footer.css
 
-/* Estilo do Footer */
 footer {
-  background-color: #2c3e50; /* Azul escuro elegante */
-  color: #ecf0f1; /* Branco suave */
+  background-color: var(--header-footer-background); /* Fundo dinâmico */
+  color: var(--header-footer-text-color); /* Texto dinâmico */
   text-align: center;
   padding: 20px 0;
   font-size: 0.9rem;
-  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2); /* Sombra padrão */
+  border-top: 3px solid var(--header-footer-border); /* Destaque na borda superior */
 }
 
-/* Links no Footer */
 footer a {
   text-decoration: none;
-  color: #3498db; /* Azul claro */
+  color: var(--header-footer-text-color); /* Link com cor de texto padrão */
   margin: 0 10px;
-  transition: color 0.3s ease;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
 footer a:hover {
-  color: #1abc9c; /* Verde claro */
+  color: var(--header-footer-link-hover); /* Cor ao passar o mouse */
+  text-shadow: 0 1px 4px var(--header-footer-link-hover); /* Efeito de sombra */
 }
 
 
 
 // frontend\css\globals\nav.css
 
-/* Estilo do Nav */
 nav {
-  background-color: #2c3e50; /* Azul escuro elegante */
-  color: white;
+  background-color: var(--header-footer-background); /* Fundo dinâmico */
+  color: var(--header-footer-text-color); /* Cor do texto dinâmico */
   padding: 15px 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-nav.scrolled {
-  background-color: rgba(0, 0, 0, 0.8);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra padrão */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Logo */
+nav.scrolled {
+  background-color: rgba(0, 0, 0, 0.8); /* Fundo mais escuro ao rolar */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Sombra mais forte */
+}
+
 nav .logo {
   font-size: 1.5rem;
   font-weight: bold;
-  color: #ecf0f1;
+  color: var(--header-footer-text-color); /* Cor primária dinâmica */
   text-transform: uppercase;
   margin-bottom: 10px;
 }
 
-/* Links do menu */
 nav ul {
   list-style: none;
   margin: 0;
   padding: 0;
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 20px; /* Espaçamento entre os itens */
 }
 
 nav a {
   text-decoration: none;
-  color: white;
+  color: var(--header-footer-text-color); /* Cor do texto dinâmico */
   font-size: 1rem;
   font-weight: 500;
   padding: 10px 15px;
   border-radius: 5px;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
 }
 
-/* Efeito ao passar o mouse */
 nav a:hover {
-  background-color: #34495e;
-  color: #ecf0f1;
+  background-color: var(--header-footer-link-hover); /* Fundo ao passar o mouse */
+  color: var(--header-footer-background); /* Texto ajustado dinamicamente */
+  transform: scale(1.05); /* Efeito de zoom */
 }
+
 nav a.active {
-  background-color: #3498db;
-  color: white;
+  background-color: var(--header-footer-border); /* Fundo dinâmico para link ativo */
+  color: var(--header-footer-background); /* Texto branco dinâmico */
   font-weight: bold;
-  border-bottom: 2px solid white;
+  border-bottom: 2px solid var(--header-footer-background); /* Destaque na parte inferior */
 }
 
 
@@ -337,118 +543,6 @@ nav a.active {
 
 
 
-// frontend\css\pages\carousel.css
-
-/* Contêiner principal do carrossel */
-.carousel-container {
-  position: relative;
-  width: 100%;
-  max-width: 1000px;
-  height: 500px; /* Altura ajustada para maior impacto */
-  margin: 30px auto; /* Espaçamento ao redor */
-  overflow: hidden;
-  border-radius: 20px; /* Bordas mais arredondadas */
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3); /* Sombra mais intensa */
-  background-color: var(--foreground-color); /* Fundo dinâmico */
-  display: flex;
-  align-items: center;
-}
-
-/* Faixa do carrossel */
-.carousel-track {
-  display: flex;
-  transition: transform 0.6s ease-in-out; /* Transição mais fluida */
-}
-
-/* Cada slide do carrossel */
-.carousel-slide {
-  min-width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Imagens dentro do slide */
-.carousel-slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 15px; /* Bordas arredondadas */
-  transition: transform 0.5s ease; /* Transição ao passar o mouse */
-}
-
-.carousel-slide img:hover {
-  transform: scale(1.01); /* Zoom suave ao passar o mouse */
-}
-
-/* Botões de navegação */
-.carousel-prev,
-.carousel-next {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.6); /* Fundo semi-transparente */
-  color: white;
-  border: none;
-  padding: 15px;
-  cursor: pointer;
-  border-radius: 50%;
-  z-index: 10;
-  font-size: 2rem; /* Aumentei o tamanho da seta */
-  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.carousel-prev:hover,
-.carousel-next:hover {
-  background-color: var(--primary-color);
-  box-shadow: 0 0 15px var(--primary-color); /* Sombra ao passar o mouse */
-}
-
-.carousel-prev {
-  left: 15px;
-}
-
-.carousel-next {
-  right: 15px;
-}
-
-/* Indicadores */
-.carousel-indicators {
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 15px; /* Maior espaçamento entre as bolinhas */
-  z-index: 5;
-}
-
-.carousel-indicator {
-  width: 16px;
-  height: 16px;
-  background-color: var(--border-color); /* Fundo padrão */
-  border: 2px solid var(--primary-color); /* Borda destacada */
-  border-radius: 50%;
-  cursor: pointer;
-  transition: transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.carousel-indicator:hover {
-  transform: scale(1.3); /* Zoom ao passar o mouse */
-  background-color: var(--primary-color); /* Cor de fundo ao hover */
-  border-color: var(--hover-color); /* Destaque na borda */
-  box-shadow: 0 0 12px var(--primary-color); /* Sombra visível no hover */
-}
-
-.carousel-indicator.active {
-  background-color: var(--primary-color); /* Fundo para indicador ativo */
-  border-color: var(--hover-color); /* Borda destacada */
-  transform: scale(1.8); /* Maior destaque para indicador ativo */
-  box-shadow: 0 0 20px var(--primary-color); /* Sombra mais forte para o ativo */
-}
-
-
-
 // frontend\css\pages\contact.css
 
 /* Estilos para a seção Contact */
@@ -537,152 +631,78 @@ nav a.active {
 
 
 
-// frontend\css\pages\form.css
+// frontend\css\pages\home.css
 
-/* Estilos para a seção Form */
-#contact-form-section {
-  min-height: 100vh; /* Ocupa pelo menos uma altura de viewport */
-  background-color: var(--foreground-color); /* Fundo dinâmico */
-  padding: 50px;
-  text-align: center;
-  font-family: 'Arial', sans-serif; /* Fonte padrão */
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra para destaque */
-  border-radius: 10px;
-}
-
-/* Título da seção */
-#contact-form-section h2 {
-  font-size: 2.5em;
-  color: var(--primary-color); /* Cor dinâmica */
-  margin-bottom: 10px;
-  text-transform: uppercase;
-  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1); /* Sombra suave */
-}
-
-/* Subtítulo */
-#contact-form-section p {
-  font-size: 1.2em;
+/* Estilos gerais */
+body {
+  background-color: var(--background-color);
   color: var(--text-color);
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Seção Home */
+#home-section {
+  min-height: 100vh; /* Ocupa pelo menos a altura da viewport */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: var(--foreground-color);
+  padding: 50px;
+  box-shadow: var(--box-shadow);
+  border: 2px solid var(--border-color);
+}
+
+/* Título Principal */
+#home-section h1 {
+  font-size: 3em;
+  color: var(--primary-color);
   margin-bottom: 20px;
+  text-shadow: 2px 2px 4px var(--box-shadow-hover);
 }
 
-/* Formulário */
-#contact-form {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: var(--background-color); /* Fundo do formulário */
-  border-radius: 10px; /* Bordas arredondadas */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Leve sombra */
+/* Parágrafo */
+#home-section p {
+  font-size: 1.5em;
+  color: var(--text-secondary-color);
+  max-width: 800px;
+  line-height: 1.8;
+  text-shadow: 1px 1px 2px var(--box-shadow-hover);
 }
 
-/* Estilos dos campos de entrada */
-#contact-form input,
-#contact-form textarea {
-  width: 100%;
-  padding: 15px;
-  margin-bottom: 15px;
-  font-size: 1em;
-  border: 1px solid var(--border-color);
-  border-radius: 5px;
-  background-color: var(--foreground-color); /* Fundo dinâmico */
-  color: var(--text-color); /* Texto dinâmico */
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); /* Sombra interna */
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* Efeitos ao focar nos campos */
-#contact-form input:focus,
-#contact-form textarea:focus {
-  outline: none;
-  border-color: var(--primary-color); /* Borda destacada */
-  box-shadow: 0 0 5px var(--primary-color); /* Efeito de foco */
-}
-
-/* Botão de envio */
-#contact-form button {
-  display: block;
-  width: 100%;
-  padding: 15px;
+/* Botão de ação */
+#home-section .cta-button {
+  padding: 10px 20px;
   font-size: 1.2em;
-  font-weight: bold;
-  background-color: var(--primary-color); /* Fundo dinâmico */
-  color: var(--background-color); /* Cor do texto */
-  border: none;
+  color: var(--text-on-primary);
+  background: var(--gradient-primary);
+  border: 2px solid var(--primary-color);
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition: all 0.3s ease;
+  margin-top: 20px;
+  text-decoration: none;
 }
 
-/* Efeitos no botão ao passar o mouse */
-#contact-form button:hover {
-  background-color: var(--hover-color); /* Cor de hover dinâmica */
-  transform: scale(1.05); /* Leve efeito de zoom */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra ao hover */
+#home-section .cta-button:hover {
+  background: var(--gradient-secondary);
+  border-color: var(--secondary-color);
+  color: var(--text-on-secondary);
+  box-shadow: var(--box-shadow-hover);
 }
 
-/* Responsividade */
+/* Estilo responsivo */
 @media (max-width: 768px) {
-  #contact-form-section h2 {
+  #home-section h1 {
     font-size: 2em;
   }
 
-  #contact-form {
-    padding: 15px;
-  }
-
-  #contact-form button {
-    font-size: 1em;
-  }
-}
-
-
-
-// frontend\css\pages\home.css
-
-
-/* Estilos para a seção Home */
-
-#home-section {
-  min-height: 100vh; /* Ocupa pelo menos uma altura de viewport */
-  display: flex; /* Define layout flexível */
-  flex-direction: column; /* Alinha os elementos verticalmente */
-  justify-content: center; /* Centraliza verticalmente */
-  align-items: center; /* Centraliza horizontalmente */
-  background-color: var(--background-color); /* Corrigido */
-  padding: 50px; /* Espaçamento interno */
-  text-align: center; /* Centraliza o texto */
-  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave para profundidade */
-}
-
-/* Estilos para o título da seção */
-#home-section h1 {
-  font-size: 3em; /* Aumenta o tamanho do título */
-  color: var(--primary-color); /* Usar variável do tema */
-  margin-bottom: 20px; /* Espaço abaixo do título */
-  font-family: 'Arial', sans-serif; /* Tipografia mais limpa */
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Sombra suave no texto */
-}
-
-/* Estilos para o parágrafo da seção */
-#home-section p {
-  font-size: 1.5em; /* Texto maior para maior legibilidade */
-  color: var(--text-color); /* Usar variável do tema */
-  max-width: 800px; /* Limita a largura máxima do texto */
-  line-height: 1.8; /* Espaçamento entre linhas */
-  font-family: 'Georgia', serif; /* Tipografia elegante */
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Sombra suave no texto */
-}
-
-/* Estilo responsivo para telas menores */
-@media (max-width: 768px) {
-  #home-section h1 {
-    font-size: 2em; /* Ajusta o tamanho do título em telas menores */
-  }
-
   #home-section p {
-    font-size: 1.2em; /* Ajusta o tamanho do texto em telas menores */
-    padding: 0 20px; /* Reduz o espaçamento lateral */
+    font-size: 1.2em;
+    padding: 0 20px;
   }
 }
 
@@ -753,12 +773,14 @@ body {
   line-height: 1.6; /* Espaçamento entre linhas */
   color: var(--text-color); /* Cor do texto principal */
   background-color: var(--background-color); /* Cor de fundo geral */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Transição suave */
 }
 
 /* Links */
 a {
   text-decoration: none; /* Remove sublinhado */
   color: var(--link-color); /* Cor dos links */
+  transition: color 0.3s ease; /* Transição suave */
 }
 
 a:hover {
@@ -769,16 +791,18 @@ a:hover {
 /* Botões */
 button {
   background-color: var(--primary-color); /* Fundo */
-  color: white; /* Texto */
+  color: var(--text-on-primary); /* Texto com contraste dinâmico */
   border: none; /* Sem borda */
   border-radius: 4px; /* Borda arredondada */
   padding: 10px 15px; /* Espaçamento interno */
   cursor: pointer; /* Indica que o botão é clicável */
   font-size: 1em; /* Tamanho do texto */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Transição suave */
 }
 
 button:hover {
   background-color: var(--hover-color); /* Fundo ao passar o mouse */
+  color: var(--text-on-secondary); /* Ajusta o texto para contraste dinâmico */
 }
 
 /* Layout geral */
@@ -793,6 +817,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 20px; /* Espaçamento inferior */
   font-weight: 600; /* Peso da fonte */
   color: var(--text-color); /* Garante a cor do texto */
+  transition: color 0.3s ease; /* Transição suave */
 }
 
 /* Listas */
@@ -804,6 +829,7 @@ ul {
 ul li {
   margin-bottom: 10px; /* Espaçamento entre itens */
   color: var(--text-secondary-color); /* Texto secundário */
+  transition: color 0.3s ease; /* Transição suave */
 }
 
 /* Imagens */
@@ -823,81 +849,160 @@ input, textarea, select {
   font-size: 1em; /* Tamanho do texto */
   background-color: var(--foreground-color); /* Fundo */
   color: var(--text-color); /* Texto */
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease; /* Transições suaves */
 }
 
 input:focus, textarea:focus, select:focus {
   outline: none; /* Remove o contorno padrão */
   border-color: var(--primary-color); /* Realce na borda */
-  box-shadow: 0 0 5px rgba(0, 122, 204, 0.5); /* Adiciona um leve brilho */
+  box-shadow: 0 0 5px var(--primary-color); /* Adiciona um leve brilho */
 }
 
 
 
 // frontend\css\theme.css
 
-/* Tema claro (padrão) */
+/* Tema colorido e vibrante (padrão) */
 :root {
   /* Cores base */
-  --background-color: #25ffff; /* Fundo principal */
-  --foreground-color: #f9f9f9; /* Fundo secundário */
-  --primary-color: #007acc; /* Cor primária */
-  --secondary-color: #004d99; /* Cor secundária */
-  --text-color: #333333; /* Texto principal */
-  --text-secondary-color: #555555; /* Texto secundário */
-  --border-color: #dddddd; /* Cor das bordas */
-  --link-color: #0066cc; /* Cor dos links */
-  --hover-color: #005299; /* Cor ao passar o mouse */
+  --background-color: #ffeb3b; /* Fundo amarelo vibrante */
+  --foreground-color: #ffffff; /* Fundo secundário branco */
+  --primary-color: #ff5722; /* Cor primária laranja vibrante */
+  --secondary-color: #03a9f4; /* Cor secundária azul claro */
+  --text-color: #212121; /* Texto principal */
+  --text-secondary-color: #4a4a4a; /* Texto secundário */
+  --border-color: #ff9800; /* Cor das bordas */
+  --link-color: #673ab7; /* Cor dos links (roxo vibrante) */
+  --hover-color: #c2185b; /* Rosa vibrante ao passar o mouse */
 
   /* Cores de destaque */
-  --accent-color: #ff9800; /* Cor de destaque */
-  --highlight-color: #ffe082; /* Destaque suave */
+  --accent-color: #00c853; /* Verde brilhante para destaque */
+  --highlight-color: #f44336; /* Vermelho vibrante para destaque suave */
 
   /* Sombras */
   --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra padrão */
-  --box-shadow-hover: 0 6px 10px rgba(0, 0, 0, 0.15); /* Sombra ao passar o mouse */
+  --box-shadow-hover: 0 6px 10px rgba(0, 0, 0, 0.2); /* Sombra ao passar o mouse */
 
   /* Gradientes */
-  --gradient-primary: linear-gradient(45deg, #007acc, #005299); /* Gradiente primário */
-  --gradient-secondary: linear-gradient(45deg, #004d99, #003366); /* Gradiente secundário */
+  --gradient-primary: linear-gradient(45deg, #ff5722, #ff9800); /* Gradiente primário laranja */
+  --gradient-secondary: linear-gradient(45deg, #03a9f4, #00e5ff); /* Gradiente secundário azul */
+
+  /* Ajuste para texto sobre fundo colorido */
+  --text-on-primary: #ffffff; /* Texto branco sobre cores primárias */
+  --text-on-secondary: #000000; /* Texto preto sobre cores secundárias */
+
+  /* nav e footer*/
+  --header-footer-background: #2c3e50; /* Fundo para menu e footer */
+  --header-footer-text-color: #ffffff; /* Cor do texto */
+  --header-footer-link-hover: #1abc9c; /* Cor do link ao passar o mouse */
+  --header-footer-border: #3498db; /* Cor da borda, se necessário */
 }
 
 /* Tema escuro */
 [data-theme='dark'] {
   /* Cores base */
-  --background-color: #1e1e1e; /* Fundo principal */
-  --foreground-color: #2a2a2a; /* Fundo secundário */
-  --primary-color: #1a73e8; /* Cor primária */
-  --secondary-color: #003366; /* Cor secundária */
-  --text-color: #e5e5e5; /* Texto principal */
-  --text-secondary-color: #bbbbbb; /* Texto secundário */
+  --background-color: #121212; /* Fundo preto */
+  --foreground-color: #1f1f1f; /* Fundo secundário escuro */
+  --primary-color: #bb86fc; /* Roxo brilhante */
+  --secondary-color: #03dac6; /* Azul esverdeado */
+  --text-color: #e0e0e0; /* Texto principal branco acinzentado */
+  --text-secondary-color: #b0b0b0; /* Texto secundário */
   --border-color: #444444; /* Cor das bordas */
-  --link-color: #4e9eff; /* Cor dos links */
-  --hover-color: #3b82f6; /* Cor ao passar o mouse */
+  --link-color: #81d4fa; /* Azul claro */
+  --hover-color: #ff8a65; /* Laranja suave ao passar o mouse */
 
   /* Cores de destaque */
-  --accent-color: #ff9800; /* Cor de destaque */
-  --highlight-color: #ffcc80; /* Destaque suave */
+  --accent-color: #03dac6; /* Azul esverdeado brilhante */
+  --highlight-color: #ff4081; /* Rosa neon para destaque suave */
 
   /* Sombras */
-  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Sombra padrão */
-  --box-shadow-hover: 0 6px 10px rgba(0, 0, 0, 0.4); /* Sombra ao passar o mouse */
+  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Sombra padrão */
+  --box-shadow-hover: 0 6px 10px rgba(0, 0, 0, 0.3); /* Sombra ao passar o mouse */
 
   /* Gradientes */
-  --gradient-primary: linear-gradient(45deg, #1a73e8, #3b82f6); /* Gradiente primário */
-  --gradient-secondary: linear-gradient(45deg, #003366, #1a73e8); /* Gradiente secundário */
+  --gradient-primary: linear-gradient(45deg, #bb86fc, #3700b3); /* Gradiente primário roxo */
+  --gradient-secondary: linear-gradient(45deg, #03dac6, #018786); /* Gradiente secundário azul-esverdeado */
+
+  /* Ajuste para texto sobre fundo colorido */
+  --text-on-primary: #ffffff; /* Texto branco sobre cores primárias */
+  --text-on-secondary: #000000; /* Texto preto sobre cores secundárias */
 }
+
+
+
+// frontend\html\dynamics\carousel.html
+
+<section id="carousel-section">
+  <main class="container">
+    <div class="carousel-container">
+      <div class="carousel-track">
+        <div class="carousel-slide">
+          <img src="./frontend/assets/carousel/img1.jpg" alt="Imagem 1">
+        </div>
+        <div class="carousel-slide">
+          <img src="./frontend/assets/carousel/img2.jpg" alt="Imagem 2">
+        </div>
+        <div class="carousel-slide">
+          <img src="./frontend/assets/carousel/img3.jpg" alt="Imagem 3">
+        </div>
+        <div class="carousel-slide">
+          <img src="./frontend/assets/carousel/img4.jpg" alt="Imagem 4">
+        </div>
+        <div class="carousel-slide">
+          <img src="./frontend/assets/carousel/img5.jpg" alt="Imagem 5">
+        </div>
+        <div class="carousel-slide">
+          <img src="./frontend/assets/carousel/img6.jpg" alt="Imagem 6">
+        </div>
+      </div>
+      <button class="carousel-prev" aria-label="Anterior">&lt;</button>
+      <button class="carousel-next" aria-label="Próximo">&gt;</button>
+      <div class="carousel-indicators"></div>
+    </div>
+  </main>
+</section>
+
+
+
+// frontend\html\dynamics\dropDown.html
+
+<div id="search-results-container" style="display: none;">
+    <button id="close-search-dropdown">×</button>
+    <div id="search-results"></div>
+  </div>
+
+
+// frontend\html\dynamics\form.html
+
+<section id="contact-form-section">
+  <main class="container">
+    <form id="contact-form">
+      <label for="name">Nome:</label>
+      <input type="text" id="name" name="name" placeholder="Digite seu nome">
+
+      <label for="email">E-mail:</label>
+      <input type="email" id="email" name="email" placeholder="Digite seu e-mail">
+
+      <label for="message">Mensagem:</label>
+      <textarea id="message" name="message" placeholder="Digite sua mensagem"></textarea>
+
+      <button type="submit">Enviar</button>
+    </form>
+  </main>
+</section>
 
 
 
 // frontend\html\dynamics\search.html
 
-<nav>
-  <div class="logo">Avalume</div>
-  <ul id="menu-list">
-    <!-- Os itens do menu serão gerados aqui dinamicamente -->
-  </ul>
-    <button id="theme-toggle-button">Alternar Tema</button>
-</nav>
+<div id="search-container">
+  <input type="text" id="search-input" placeholder="Digite aqui para buscar..." />
+  <button id="search-button">Buscar</button>
+  <div id="search-results-container" style="display: none;">
+    <button id="close-search-dropdown" aria-label="Fechar">&times;</button>
+    <div id="search-results"></div>
+  </div>
+</div>
 
 
 
@@ -921,6 +1026,7 @@ input:focus, textarea:focus, select:focus {
   <ul id="menu-list">
     <!-- Os itens do menu serão gerados aqui dinamicamente -->
   </ul>
+  <div id="search-placeholder"></div>      
 </nav>
 
 
@@ -975,44 +1081,6 @@ input:focus, textarea:focus, select:focus {
 
 
 
-// frontend\html\pages\carousel.html
-
-<section id="carousel-section">
-  <header>
-    <h2>Galeria</h2>
-    <p>Confira algumas imagens incríveis em nosso carrossel.</p>
-  </header>
-  <main class="container">
-    <div class="carousel-container">
-      <div class="carousel-track">
-        <div class="carousel-slide">
-          <img src="./frontend/assets/carousel/img1.jpg" alt="Imagem 1">
-        </div>
-        <div class="carousel-slide">
-          <img src="./frontend/assets/carousel/img2.jpg" alt="Imagem 2">
-        </div>
-        <div class="carousel-slide">
-          <img src="./frontend/assets/carousel/img3.jpg" alt="Imagem 3">
-        </div>
-        <div class="carousel-slide">
-          <img src="./frontend/assets/carousel/img4.jpg" alt="Imagem 4">
-        </div>
-        <div class="carousel-slide">
-          <img src="./frontend/assets/carousel/img5.jpg" alt="Imagem 5">
-        </div>
-        <div class="carousel-slide">
-          <img src="./frontend/assets/carousel/img6.jpg" alt="Imagem 6">
-        </div>
-      </div>
-      <button class="carousel-prev" aria-label="Anterior">&lt;</button>
-      <button class="carousel-next" aria-label="Próximo">&gt;</button>
-      <div class="carousel-indicators"></div>
-    </div>
-  </main>
-</section>
-
-
-
 // frontend\html\pages\contact.html
 
 <section id="contact-section">
@@ -1021,11 +1089,12 @@ input:focus, textarea:focus, select:focus {
     <h2>Estamos aqui para ajudar!</h2>
   </header>
   <main class="container">
+            <div id="form-placeholder"></div>
+
     <!-- Descrição -->
     <p>
       Tem dúvidas, sugestões ou precisa de suporte? Entre em contato conosco por um dos meios abaixo. Nossa equipe está pronta para atendê-lo!
     </p>
-
     <!-- Meios de Contato -->
     <div class="contact-options">
       <div class="contact-item">
@@ -1046,31 +1115,6 @@ input:focus, textarea:focus, select:focus {
 
 
 
-// frontend\html\pages\form.html
-
-<section id="contact-form-section">
-  <header>
-    <h2>Fale Conosco</h2>
-    <p>Envie-nos uma mensagem. Estamos aqui para ajudar!</p>
-  </header>
-  <main class="container">
-    <form id="contact-form">
-      <label for="name">Nome:</label>
-      <input type="text" id="name" name="name" placeholder="Digite seu nome2">
-
-      <label for="email">E-mail:</label>
-      <input type="email" id="email" name="email" placeholder="Digite seu e-mail">
-
-      <label for="message">Mensagem:</label>
-      <textarea id="message" name="message" placeholder="Digite sua mensagem"></textarea>
-
-      <button type="submit">Enviar</button>
-    </form>
-  </main>
-</section>
-
-
-
 // frontend\html\pages\home.html
 
 <section id="home-section">
@@ -1078,8 +1122,9 @@ input:focus, textarea:focus, select:focus {
     <h1>Bem-vindo à Home</h1>
   </header>
   <main>
-    <p>Este é o conteúdo da página inicial. Bem feito não?7</p>
-  </main>
+        <div id="carousel-placeholder"></div>    
+        <p>Este é o conteúdo da página inicial. Bem feito não?7</p>
+     </main>
 </section>
 
 
@@ -1121,28 +1166,42 @@ input:focus, textarea:focus, select:focus {
         { 
         name: 'home', 
         htmlPath: './frontend/html/pages/home.html', 
-        cssPath: './frontend/css/pages/home.css' },
+        cssPath: './frontend/css/pages/home.css' 
+        },
         { 
         name: 'about', 
         htmlPath: './frontend/html/pages/about.html', 
-        cssPath: './frontend/css/pages/about.css' },
+        cssPath: './frontend/css/pages/about.css' 
+        },
         { 
         name: 'contact', 
         htmlPath: './frontend/html/pages/contact.html', 
-        cssPath: './frontend/css/pages/contact.css' },
-        { 
-        name: 'carousel', 
-        htmlPath: './frontend/html/pages/carousel.html', 
-        cssPath: './frontend/css/pages/carousel.css', 
-        handlerPath: './frontend/js/pages/carouselHandler.js' },
-        { 
-        name: 'form', 
-        htmlPath: './frontend/html/pages/form.html', 
-        cssPath: './frontend/css/pages/form.css', 
-        handlerPath: './frontend/js/pages/formHandler.js' },
+        cssPath: './frontend/css/pages/contact.css' 
+        },
       ];
     }
-export { getGlobalComponents, getPagesConfig };
+  // Configuração de Componentes Dinâmicos
+  function getDynamicComponentsConfig() {
+    return {
+      carousel: {
+        htmlPath: './frontend/html/dynamics/carousel.html',
+        cssPath: './frontend/css/dynamics/carousel.css',
+        jsPath: './frontend/js/dynamics/carouselHandler.js',
+      },
+      form: {
+        htmlPath: './frontend/html/dynamics/form.html',
+        cssPath: './frontend/css/dynamics/form.css',
+        jsPath: './frontend/js/dynamics/formHandler.js',
+      },
+          search: {
+    htmlPath: './frontend/html/dynamics/search.html',
+    cssPath: './frontend/css/dynamics/search.css',
+    jsPath: './frontend/js/dynamics/searchHandler.js',
+  }
+    };
+  }
+
+export { getConfig, getGlobalComponents, getPagesConfig, getDynamicComponentsConfig };
 
 
 // frontend\js\core\loader.js
@@ -1241,7 +1300,7 @@ import { navigateToPage } from './router.js';
 
 // Inicialização
 function initialize() {
-   console.log('[Main] Inicializando aplicação...');
+   //console.log('[Main] Inicializando aplicação...');
   loadCSS('./frontend/css/reset.css');
   loadCSS('./frontend/css/theme.css');
   loadCSS('./frontend/css/styles.css');
@@ -1260,7 +1319,7 @@ window.addEventListener('hashchange', navigateToPage);
 
 // frontend\js\core\router.js
 
-import { getPagesConfig } from './config.js';
+import { getPagesConfig, getDynamicComponentsConfig } from './config.js';
 import { loadHTML, loadCSS, loadHandler } from './loader.js';
 
     // Navegação Entre Páginas
@@ -1276,120 +1335,45 @@ import { loadHTML, loadCSS, loadHandler } from './loader.js';
 
     loadHTML('pages-container', page.htmlPath).then(() => {
       loadCSS(page.cssPath);
+       // Após carregar a página, injetar componentes dinâmicos se necessário
+    injectDynamicComponents();
       if (page.handlerPath) {
         loadHandler(page.handlerPath);
       }
       });
   }
+
+// Injeção de Componentes Dinâmicos
+function injectDynamicComponents() {
+  console.log('[Router] Injetando componentes dinâmicos...');
+
+  const dynamicComponents = getDynamicComponentsConfig();
+  for (const [key, component] of Object.entries(dynamicComponents)) {
+    const placeholder = document.querySelector(`#${key}-placeholder`);
+    if (placeholder) {
+      console.log(`[Router] Injetando componente: ${key}`);
+      loadHTML(placeholder.id, component.htmlPath).then(() => {
+        console.log(`[Router] HTML carregado para o componente: ${key}`);
+        loadCSS(component.cssPath);
+        if (component.jsPath) {
+          console.log(`[Router] Tentando carregar handler para o componente: ${key}`);
+          loadHandler(component.jsPath);
+        }
+      });
+    } else {
+      console.log(`[Router] Componente dinâmico "${key}" não utilizado nesta página.`);
+    }
+  }
+}
+
+
 export { navigateToPage };
 
 
-// frontend\js\dynamics\searchHandler.js
-
-// menuGenerator.js
-import { pagesConfig } from '../pagesConfig.js'; // Importa a configuração das páginas
-
-export const generateMenu = () => {
-  const menuList = document.querySelector('#menu-list'); // Seleciona o container do menu
-  if (!menuList) {
-    console.error('Elemento com ID "menu-list" não encontrado no DOM.');
-    return;
-  }
-
-  // Limpa o menu antes de gerar os itens
-  menuList.innerHTML = '';
-
-  // Percorre o pagesConfig e cria os itens do menu
-  pagesConfig.forEach((page) => {
-    const listItem = document.createElement('li');
-    listItem.innerHTML = `<a href="#${page.page}-section" data-page="${page.page}">${capitalize(page.page)}</a>`;
-    menuList.appendChild(listItem);
-  });
-};
-
-// Função auxiliar para capitalizar as primeiras letras dos textos
-const capitalize = (text) => text.charAt(0).toUpperCase() + text.slice(1);
-
-
-
-// frontend\js\globals\footerHandler.js
-
-// frontend/js/globals/footerHandler.js
-
-import { getGlobalComponents } from '../core/config.js';
-import { loadHTML, loadCSS } from '../core/loader.js';
-
-/**
- * Inicializa o rodapé, carregando o HTML e o CSS correspondentes.
- */
-function setupFooter() {
-  console.log('[FooterHandler] Iniciando rodapé...');
-  const { htmlPath, cssPath } = getGlobalComponents().footer;
-
-  loadHTML('footer-container', htmlPath).then(() => {
-    loadCSS(cssPath);
-    console.log('[FooterHandler] Rodapé carregado com sucesso.');
-  });
-}
-
-// Exporta a função para ser utilizada no arquivo principal
-export { setupFooter };
-
-
-
-// frontend\js\globals\navHandler.js
-
-import { getGlobalComponents, getPagesConfig } from '../core/config.js';
-import { loadHTML, loadCSS } from '../core/loader.js';
-    // Inicialização do Menu
-    function setupNav() {
-      console.log('[NavHandler] Iniciando menu...');
-      const { htmlPath, cssPath } = getGlobalComponents().nav;
-
-      loadHTML('nav-container', htmlPath).then(() => {
-        loadCSS(cssPath);
-        setupMenuItems();
-      });
-    }
-
-    function setupMenuItems() {
-      console.log('[NavHandler] Gerando itens do menu...');
-      const menuList = document.querySelector('#menu-list');
-      if (!menuList) {
-        console.error('[NavHandler] Elemento "#menu-list" não encontrado no DOM.');
-        return;
-      }
-
-      const pages = getPagesConfig();
-      menuList.innerHTML = '';
-      pages.forEach((page) => {
-        const listItem = document.createElement('li');
-        listItem.innerHTML = `<a href="#${page.name}">${page.name.charAt(0).toUpperCase() + page.name.slice(1)}</a>`;
-        menuList.appendChild(listItem);
-      });
-      console.log('[NavHandler] Itens do menu gerados com sucesso.');
-    }
-
-    export { setupNav, setupMenuItems };
-
-
-// frontend\js\globals\themeHandler.js
-
-
-    // Adiciona funcionalidade de troca de tema
-    const toggleButton = document.getElementById('theme-toggle');
-    toggleButton.addEventListener('click', () => {
-      const currentTheme = document.documentElement.getAttribute('data-theme');
-      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-      document.documentElement.setAttribute('data-theme', newTheme);
-    });
-
-
-
-// frontend\js\pages\carouselHandler.js
+// frontend\js\dynamics\carouselHandler.js
 
 function setupCarouselEvents() {
-  console.log('[CarouselHandler] Inicializando o carrossel...');
+  //console.log('[CarouselHandler] Inicializando o carrossel...');
 
   const track = document.querySelector('.carousel-track');
   const slides = Array.from(track.children);
@@ -1398,7 +1382,7 @@ function setupCarouselEvents() {
   const indicatorsContainer = document.querySelector('.carousel-indicators');
 
   if (!track || !slides.length || !nextButton || !prevButton || !indicatorsContainer) {
-    console.error('[CarouselHandler] Elementos necessários não foram encontrados.');
+    //console.error('[CarouselHandler] Elementos necessários não foram encontrados.');
     return;
   }
 
@@ -1446,7 +1430,7 @@ function setupCarouselEvents() {
     });
   });
 
-  console.log('[CarouselHandler] Eventos configurados com sucesso.');
+  //console.log('[CarouselHandler] Eventos configurados com sucesso.');
 }
 
 // Torna a função acessível globalmente
@@ -1454,29 +1438,29 @@ window.setupCarouselEvents = setupCarouselEvents;
 
 
 
-// frontend\js\pages\formHandler.js
+// frontend\js\dynamics\formHandler.js
 
 function setupFormEvents() {
-  console.log('[FormHandler] Configurando eventos do formulário...');
+  //console.log('[FormHandler] Configurando eventos do formulário...');
 
   const form = document.getElementById('contact-form-section');
   if (form) {
     form.addEventListener('submit', (event) => {
       // Impede o comportamento padrão do formulário (reload da página)
       event.preventDefault();
-      console.log('[FormHandler] Evento de submit capturado.');
+      //console.log('[FormHandler] Evento de submit capturado.');
 
       // Captura os valores dos campos
       const name = document.getElementById('name').value.trim();
       const email = document.getElementById('email').value.trim();
       const message = document.getElementById('message').value.trim();
 
-      console.log('[FormHandler] Valores capturados:', { name, email, message });
+      //console.log('[FormHandler] Valores capturados:', { name, email, message });
 
       // Validação simples
       if (!name || !email || !message) {
         alert('Preencha todos os campos antes de enviar.');
-        console.warn('[FormHandler] Validação falhou. Campos vazios detectados.');
+        //console.warn('[FormHandler] Validação falhou. Campos vazios detectados.');
         return;
       }
 
@@ -1485,17 +1469,192 @@ function setupFormEvents() {
       const textMessage = `Nome: ${name}\nE-mail: ${email}\nMensagem: ${message}`;
       const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(textMessage)}`;
 
-      console.log('[FormHandler] URL do WhatsApp gerada:', whatsappURL);
+      //console.log('[FormHandler] URL do WhatsApp gerada:', whatsappURL);
 
       // Redireciona para o WhatsApp
       window.open(whatsappURL, '_blank');
-      console.log('[FormHandler] Redirecionamento para o WhatsApp iniciado.');
+      //console.log('[FormHandler] Redirecionamento para o WhatsApp iniciado.');
     });
   } else {
-    console.error('[FormHandler] Formulário não encontrado!');
+    //console.error('[FormHandler] Formulário não encontrado!');
   }
 }
 
 // Expõe a função globalmente
 window.setupFormEvents = setupFormEvents;
+
+
+
+// frontend\js\dynamics\searchHandler.js
+
+import { getPagesConfig } from "../core/config.js";
+
+function setupSearchEvents() {
+  console.log("[SearchHandler] Configurando eventos de busca...");
+
+  // Seleciona os elementos do DOM
+  const searchInput = document.querySelector("#search-input");
+  const searchButton = document.querySelector("#search-button");
+  const resultsContainer = document.querySelector("#search-results-container");
+  const resultsList = document.querySelector("#search-results");
+  const closeDropdownButton = document.querySelector("#close-search-dropdown");
+
+  // Verifica se todos os elementos necessários existem
+  if (!searchInput || !searchButton || !resultsContainer || !resultsList || !closeDropdownButton) {
+    console.error("[SearchHandler] Elementos de busca não encontrados no DOM.");
+    return;
+  }
+
+  // Fecha o dropdown de resultados
+  closeDropdownButton.addEventListener("click", () => {
+    resultsContainer.style.display = "none";
+  });
+
+  // Função para realizar a busca
+  function performSearch() {
+    const query = searchInput.value.trim().toLowerCase();
+    if (!query) return;
+
+    console.log(`[SearchHandler] Buscando por: "${query}"`);
+    resultsList.innerHTML = ""; // Limpa os resultados anteriores
+
+    const pages = getPagesConfig();
+
+    let foundResults = false;
+
+    // Mapeia todas as páginas para verificar o conteúdo
+    const fetchPromises = pages.map((page) => {
+      return fetch(page.htmlPath)
+        .then((response) => response.text())
+        .then((html) => {
+          if (html.toLowerCase().includes(query)) {
+            const snippet = extractAndHighlightSnippet(html, query, 100);
+            const resultItem = document.createElement("div");
+            resultItem.className = "search-item";
+            resultItem.innerHTML = `
+              <h3>${page.name.charAt(0).toUpperCase() + page.name.slice(1)}</h3>
+              <p>${snippet}</p>
+            `;
+            resultItem.addEventListener("click", () => {
+              window.location.hash = page.name; // Navega para a página
+              resultsContainer.style.display = "none"; // Fecha o dropdown
+            });
+            resultsList.appendChild(resultItem);
+            foundResults = true;
+          }
+        });
+    });
+
+    // Processa os resultados
+    Promise.all(fetchPromises).then(() => {
+      if (!foundResults) {
+        const noResultItem = document.createElement("div");
+        noResultItem.className = "search-item";
+        noResultItem.innerHTML = `<p>Nenhum resultado encontrado.</p>`;
+        resultsList.appendChild(noResultItem);
+      }
+      resultsContainer.style.display = "block"; // Mostra o dropdown
+    });
+  }
+
+  // Função para extrair e destacar os trechos encontrados
+  function extractAndHighlightSnippet(content, keyword, length) {
+    const index = content.toLowerCase().indexOf(keyword);
+    if (index === -1) return "";
+    const start = Math.max(0, index - length / 2);
+    const end = Math.min(content.length, index + length / 2);
+    const snippet = content
+      .substring(start, end)
+      .replace(/<\/?[^>]+(>|$)/g, "") // Remove tags HTML
+      .replace(new RegExp(keyword, "gi"), (match) => `<mark>${match}</mark>`); // Destaca o termo pesquisado
+    return snippet;
+  }
+
+  // Configura eventos para o botão e o input
+  searchButton.addEventListener("click", performSearch);
+  searchInput.addEventListener("keypress", (event) => {
+    if (event.key === "Enter") {
+      performSearch();
+    }
+  });
+}
+
+// Expõe a função globalmente
+window.setupSearchEvents = setupSearchEvents;
+
+export { setupSearchEvents };
+
+
+
+// frontend\js\globals\footerHandler.js
+
+// frontend/js/globals/footerHandler.js
+
+import { getGlobalComponents } from '../core/config.js';
+import { loadHTML, loadCSS } from '../core/loader.js';
+
+/**
+ * Inicializa o rodapé, carregando o HTML e o CSS correspondentes.
+ */
+function setupFooter() {
+  //console.log('[FooterHandler] Iniciando rodapé...');
+  const { htmlPath, cssPath } = getGlobalComponents().footer;
+
+  loadHTML('footer-container', htmlPath).then(() => {
+    loadCSS(cssPath);
+    //console.log('[FooterHandler] Rodapé carregado com sucesso.');
+  });
+}
+
+// Exporta a função para ser utilizada no arquivo principal
+export { setupFooter };
+
+
+
+// frontend\js\globals\navHandler.js
+
+import { getGlobalComponents, getPagesConfig } from '../core/config.js';
+import { loadHTML, loadCSS } from '../core/loader.js';
+    // Inicialização do Menu
+    function setupNav() {
+      //console.log('[NavHandler] Iniciando menu...');
+      const { htmlPath, cssPath } = getGlobalComponents().nav;
+
+      loadHTML('nav-container', htmlPath).then(() => {
+        loadCSS(cssPath);
+        setupMenuItems();
+      });
+    }
+
+    function setupMenuItems() {
+      //console.log('[NavHandler] Gerando itens do menu...');
+      const menuList = document.querySelector('#menu-list');
+      if (!menuList) {
+        //console.error('[NavHandler] Elemento "#menu-list" não encontrado no DOM.');
+        return;
+      }
+
+      const pages = getPagesConfig();
+      menuList.innerHTML = '';
+      pages.forEach((page) => {
+        const listItem = document.createElement('li');
+        listItem.innerHTML = `<a href="#${page.name}">${page.name.charAt(0).toUpperCase() + page.name.slice(1)}</a>`;
+        menuList.appendChild(listItem);
+      });
+      //console.log('[NavHandler] Itens do menu gerados com sucesso.');
+    }
+
+    export { setupNav, setupMenuItems };
+
+
+// frontend\js\globals\themeHandler.js
+
+
+    // Adiciona funcionalidade de troca de tema
+    const toggleButton = document.getElementById('theme-toggle');
+    toggleButton.addEventListener('click', () => {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', newTheme);
+    });
 

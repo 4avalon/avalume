@@ -1,21 +1,21 @@
-/* Estilo do Footer */
 footer {
-  background-color: #2c3e50; /* Azul escuro elegante */
-  color: #ecf0f1; /* Branco suave */
+  background-color: var(--header-footer-background); /* Fundo dinâmico */
+  color: var(--header-footer-text-color); /* Texto dinâmico */
   text-align: center;
   padding: 20px 0;
   font-size: 0.9rem;
-  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2); /* Sombra padrão */
+  border-top: 3px solid var(--header-footer-border); /* Destaque na borda superior */
 }
 
-/* Links no Footer */
 footer a {
   text-decoration: none;
-  color: #3498db; /* Azul claro */
+  color: var(--header-footer-text-color); /* Link com cor de texto padrão */
   margin: 0 10px;
-  transition: color 0.3s ease;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
 footer a:hover {
-  color: #1abc9c; /* Verde claro */
+  color: var(--header-footer-link-hover); /* Cor ao passar o mouse */
+  text-shadow: 0 1px 4px var(--header-footer-link-hover); /* Efeito de sombra */
 }

@@ -35,48 +35,34 @@
     }
 
     // Carregamento de Handlers
-    function loadHandler(path) {
-      console.log(`[HandlerLoader] Tentando carregar handler de: ${path}`);
-      
-      // Verifica se o script já foi carregado
-      const existingScript = document.querySelector(`script[src="${path}"]`);
-      if (existingScript) {
-        console.log(`[HandlerLoader] Handler já carregado: ${path}`);
-        return;
-      }
+   function loadHandler(path) {
+  console.log(`[HandlerLoader] Tentando carregar handler de: ${path}`);
 
-      const script = document.createElement('script');
-      script.type = 'module';
-      script.src = path;
-
-      script.onload = () => {
-        console.log(`[HandlerLoader] Handler carregado com sucesso: ${path}`);
-        
-        // Gera o nome da função baseado no nome do arquivo
-        const rawFileName = path.split('/').pop(); // Obtém o nome do arquivo
-        console.log(`[HandlerLoader] Nome bruto do arquivo: ${rawFileName}`);
-        
-        const functionName = `setup${rawFileName
-          .replace('.js', '') // Remove a extensão .js
-          .replace(/^\w/, (c) => c.toUpperCase()) // Coloca a primeira letra em maiúscula
-          .replace(/Handler$/, 'Events')}`; // Substitui "Handler" por "Events"
-
-        console.log(`[HandlerLoader] Função esperada: ${functionName}`);
-
-        // Verifica se a função existe globalmente
-        if (typeof window[functionName] === 'function') {
-          console.log(`[HandlerLoader] Inicializando a função: ${functionName}`);
-          window[functionName](); // Chama a função
-        } else {
-          console.warn(`[HandlerLoader] Função ${functionName} não encontrada no handler.`);
-          console.warn(`[HandlerLoader] Certifique-se de que a função está exposta globalmente como window.${functionName}`);
-        }
-      };
-
-      script.onerror = () => console.error(`[HandlerLoader] Erro ao carregar handler: ${path}`);
-      document.body.appendChild(script);
-
-      console.log(`[HandlerLoader] Script adicionado ao DOM para carregar: ${path}`);
+  return new Promise((resolve, reject) => {
+    const existingScript = document.querySelector(`script[src="${path}"]`);
+    if (existingScript) {
+      console.log(`[HandlerLoader] Handler já carregado: ${path}`);
+      resolve();
+      return;
     }
+
+    const script = document.createElement('script');
+    script.type = 'module';
+    script.src = path;
+
+    script.onload = () => {
+      console.log(`[HandlerLoader] Handler carregado com sucesso: ${path}`);
+      resolve();
+    };
+
+    script.onerror = () => {
+      console.error(`[HandlerLoader] Erro ao carregar handler: ${path}`);
+      reject(new Error(`Erro ao carregar handler: ${path}`));
+    };
+
+    document.body.appendChild(script);
+  });
+}
+
 
 export { loadHTML, loadCSS, loadHandler };

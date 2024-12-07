@@ -12,107 +12,13 @@
   <header id="nav-container"></header>
   <main id="pages-container"></main>
 
-  <div id="search-container">
-    <input type="text" id="search-input" placeholder="Digite aqui para buscar..." />
-    <button id="search-button">Buscar</button>
-    <div id="search-results-container" style="display: none;">
-      <button id="close-search-dropdown" aria-label="Fechar">&times;</button>
-      <div id="search-results"></div>
-    </div>
-  </div>
 
   <footer id="footer-container"></footer>
 
   <!-- Scripts -->
   <script type="module" src="./frontend/js/core/main.js"></script>
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      console.log("[SearchHandler] Configurando busca...");
-
-      const searchInput = document.querySelector("#search-input");
-      const searchButton = document.querySelector("#search-button");
-      const resultsContainer = document.querySelector("#search-results-container");
-      const resultsList = document.querySelector("#search-results");
-      const closeDropdownButton = document.querySelector("#close-search-dropdown");
-
-      // Fecha o dropdown
-      closeDropdownButton.addEventListener("click", () => {
-        resultsContainer.style.display = "none";
-      });
-
-      // Função para realizar a busca
-      function performSearch() {
-        const query = searchInput.value.trim().toLowerCase();
-        if (!query) return;
-
-        console.log(`[SearchHandler] Buscando por: "${query}"`);
-        resultsList.innerHTML = ""; // Limpa os resultados anteriores
-
-        const pages = [
-          { name: "home", htmlPath: "./frontend/html/pages/home.html" },
-          { name: "about", htmlPath: "./frontend/html/pages/about.html" },
-          { name: "contact", htmlPath: "./frontend/html/pages/contact.html" },
-        ];
-
-        let foundResults = false;
-
-        // Verifica o conteúdo das páginas configuradas
-        const fetchPromises = pages.map((page) => {
-          return fetch(page.htmlPath)
-            .then((response) => response.text())
-            .then((html) => {
-              if (html.toLowerCase().includes(query)) {
-                const snippet = extractAndHighlightSnippet(html, query, 100); // Extrai um trecho do conteúdo e destaca o termo
-                const resultItem = document.createElement("div");
-                resultItem.className = "search-item";
-                resultItem.innerHTML = `
-                  <h3>${page.name.charAt(0).toUpperCase() + page.name.slice(1)}</h3>
-                  <p>${snippet}</p>
-                `;
-                resultItem.addEventListener("click", () => {
-                  window.location.hash = page.name; // Navega para a página
-                  resultsContainer.style.display = "none"; // Fecha o dropdown
-                });
-                resultsList.appendChild(resultItem);
-                foundResults = true;
-              }
-            });
-        });
-
-        Promise.all(fetchPromises).then(() => {
-          if (!foundResults) {
-            const noResultItem = document.createElement("div");
-            noResultItem.className = "search-item";
-            noResultItem.innerHTML = `<p>Nenhum resultado encontrado.</p>`;
-            resultsList.appendChild(noResultItem);
-          }
-          resultsContainer.style.display = "block"; // Mostra o dropdown
-        });
-      }
-
-      // Extrai e destaca um trecho do conteúdo em torno da palavra-chave
-      function extractAndHighlightSnippet(content, keyword, length) {
-        const index = content.toLowerCase().indexOf(keyword);
-        if (index === -1) return "";
-        const start = Math.max(0, index - length / 2);
-        const end = Math.min(content.length, index + length / 2);
-        const snippet = content
-          .substring(start, end)
-          .replace(/<\/?[^>]+(>|$)/g, "") // Remove tags HTML
-          .replace(new RegExp(keyword, "gi"), (match) => `<mark>${match}</mark>`); // Destaca o termo pesquisado
-        return snippet;
-      }
-
-      // Evento de clique no botão de busca
-      searchButton.addEventListener("click", performSearch);
-
-      // Evento de pressionar Enter no input
-      searchInput.addEventListener("keypress", (event) => {
-        if (event.key === "Enter") {
-          performSearch();
-        }
-      });
-    });
+   
   </script>
 </body>
 </html>

@@ -1,5 +1,5 @@
 function setupCarouselEvents() {
-  console.log('[CarouselHandler] Inicializando o carrossel...');
+  //console.log('[CarouselHandler] Inicializando o carrossel...');
 
   const track = document.querySelector('.carousel-track');
   const slides = Array.from(track.children);
@@ -8,7 +8,7 @@ function setupCarouselEvents() {
   const indicatorsContainer = document.querySelector('.carousel-indicators');
 
   if (!track || !slides.length || !nextButton || !prevButton || !indicatorsContainer) {
-    console.error('[CarouselHandler] Elementos necessários não foram encontrados.');
+    //console.error('[CarouselHandler] Elementos necessários não foram encontrados.');
     return;
   }
 
@@ -56,7 +56,7 @@ function setupCarouselEvents() {
     });
   });
 
-  console.log('[CarouselHandler] Eventos configurados com sucesso.');
+  //console.log('[CarouselHandler] Eventos configurados com sucesso.');
 }
 
 // Torna a função acessível globalmente

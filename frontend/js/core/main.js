@@ -6,7 +6,7 @@ import { navigateToPage } from './router.js';
 
 // Inicialização
 function initialize() {
-   console.log('[Main] Inicializando aplicação...');
+   //console.log('[Main] Inicializando aplicação...');
   loadCSS('./frontend/css/reset.css');
   loadCSS('./frontend/css/theme.css');
   loadCSS('./frontend/css/styles.css');

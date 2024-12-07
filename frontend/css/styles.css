@@ -5,12 +5,14 @@ body {
   line-height: 1.6; /* Espaçamento entre linhas */
   color: var(--text-color); /* Cor do texto principal */
   background-color: var(--background-color); /* Cor de fundo geral */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Transição suave */
 }
 
 /* Links */
 a {
   text-decoration: none; /* Remove sublinhado */
   color: var(--link-color); /* Cor dos links */
+  transition: color 0.3s ease; /* Transição suave */
 }
 
 a:hover {
@@ -21,16 +23,18 @@ a:hover {
 /* Botões */
 button {
   background-color: var(--primary-color); /* Fundo */
-  color: white; /* Texto */
+  color: var(--text-on-primary); /* Texto com contraste dinâmico */
   border: none; /* Sem borda */
   border-radius: 4px; /* Borda arredondada */
   padding: 10px 15px; /* Espaçamento interno */
   cursor: pointer; /* Indica que o botão é clicável */
   font-size: 1em; /* Tamanho do texto */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Transição suave */
 }
 
 button:hover {
   background-color: var(--hover-color); /* Fundo ao passar o mouse */
+  color: var(--text-on-secondary); /* Ajusta o texto para contraste dinâmico */
 }
 
 /* Layout geral */
@@ -45,6 +49,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 20px; /* Espaçamento inferior */
   font-weight: 600; /* Peso da fonte */
   color: var(--text-color); /* Garante a cor do texto */
+  transition: color 0.3s ease; /* Transição suave */
 }
 
 /* Listas */
@@ -56,6 +61,7 @@ ul {
 ul li {
   margin-bottom: 10px; /* Espaçamento entre itens */
   color: var(--text-secondary-color); /* Texto secundário */
+  transition: color 0.3s ease; /* Transição suave */
 }
 
 /* Imagens */
@@ -75,10 +81,11 @@ input, textarea, select {
   font-size: 1em; /* Tamanho do texto */
   background-color: var(--foreground-color); /* Fundo */
   color: var(--text-color); /* Texto */
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease; /* Transições suaves */
 }
 
 input:focus, textarea:focus, select:focus {
   outline: none; /* Remove o contorno padrão */
   border-color: var(--primary-color); /* Realce na borda */
-  box-shadow: 0 0 5px rgba(0, 122, 204, 0.5); /* Adiciona um leve brilho */
+  box-shadow: 0 0 5px var(--primary-color); /* Adiciona um leve brilho */
 }

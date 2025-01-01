@@ -45,6 +45,12 @@
         htmlPath: './frontend/html/pages/contact.html', 
         cssPath: './frontend/css/pages/contact.css' 
         },
+        { 
+        name: 'login', 
+        htmlPath: './frontend/html/pages/login.html', 
+        cssPath: './frontend/css/pages/login.css',
+        jsPath: './frontend/js/dynamics/loginHandler.js'
+        },
       ];
     }
   // Configuração de Componentes Dinâmicos
@@ -67,6 +73,18 @@ function getDynamicComponentsConfig() {
       cssPath: './frontend/css/dynamics/search.css',
       jsPath: './frontend/js/dynamics/searchHandler.js',
       initFunction: 'setupSearchEvents', // Nome da função de inicialização
+    },
+        profile: {
+      htmlPath: './frontend/html/dynamics/profile.html',
+      cssPath: './frontend/css/dynamics/profile.css',
+      jsPath: './frontend/js/dynamics/profileHandler.js',
+      initFunction: 'setuProfileEvents', // Nome da função de inicialização
+    },
+        register: {
+      htmlPath: './frontend/html/dynamics/register.html',
+      cssPath: './frontend/css/dynamics/register.css',
+      jsPath: './frontend/js/dynamics/registerHandler.js',
+      initFunction: 'setupRegisterEvents', // Nome da função de inicialização
     },
   };
 }

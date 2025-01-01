@@ -211,14 +211,151 @@
 
 
 
+// frontend\css\dynamics\login.css
+
+/* frontend/css/dynamics/login.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--theme-bg-color);
+    color: var(--theme-text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+form {
+    background: var(--theme-card-bg-color);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+form label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid var(--theme-border-color);
+    border-radius: 4px;
+}
+
+form button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background: var(--theme-accent-color);
+    color: var(--theme-text-on-accent);
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+form button:hover {
+    background: var(--theme-accent-color-hover);
+}
+
+
+
+// frontend\css\dynamics\profile.css
+
+/* frontend/css/dynamics/profile.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--theme-bg-color);
+    color: var(--theme-text-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.profile-info {
+    background: var(--theme-card-bg-color);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.profile-info p {
+    margin: 10px 0;
+}
+
+
+
+// frontend\css\dynamics\register.css
+
+/* frontend/css/dynamics/register.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--theme-bg-color);
+    color: var(--theme-text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+form {
+    background: var(--theme-card-bg-color);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+form label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid var(--theme-border-color);
+    border-radius: 4px;
+}
+
+form button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background: var(--theme-accent-color);
+    color: var(--theme-text-on-accent);
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+form button:hover {
+    background: var(--theme-accent-color-hover);
+}
+
+
+
 // frontend\css\dynamics\search.css
 
 /* Estilo geral do container de busca */
 #search-container {
-  position: relative;
   display: flex;
   align-items: center;
-  gap: 10px;
+  margin-left: auto; /* Move para o lado direito do menu */
+  gap: 8px; /* Espaçamento entre input e botão */
 }
 
 /* Estilo para o input */
@@ -232,6 +369,7 @@
   background-color: var(--foreground-color);
   color: var(--text-color);
 }
+
 
 #search-input:focus {
   outline: none;
@@ -257,11 +395,9 @@
   color: var(--foreground-color);
 }
 
+
 /* Dropdown de resultados */
 #search-results-container {
-  position: absolute;
-  top: 100%;
-  left: 0;
   width: 100%;
   background-color: var(--background-color);
   border: 1px solid var(--secondary-color);
@@ -409,6 +545,7 @@ nav a.active {
   font-weight: bold;
   border-bottom: 2px solid var(--header-footer-background); /* Destaque na parte inferior */
 }
+
 
 
 
@@ -766,6 +903,18 @@ body {
 
 // frontend\css\styles.css
 
+/* Container pai */
+#header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Espaço entre itens */
+}
+
+/* Search container */
+#search-container {
+  margin-left: auto;
+}
+
 /* Estilo geral do corpo */
 body {
   font-family: 'Arial', sans-serif; /* Fonte padrão */
@@ -993,15 +1142,98 @@ input:focus, textarea:focus, select:focus {
 
 
 
+// frontend\html\dynamics\Login.html
+
+<!-- frontend/html/dynamics/login.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="../../css/dynamics/form.css">
+</head>
+<body>
+    <div class="login-container">
+        <h1>Login</h1>
+        <form id="loginForm">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            
+            <button type="submit">Login</button>
+        </form>
+        <p>Não tem uma conta? <a href="register.html">Registre-se</a></p>
+    </div>
+    <script src="../../js/dynamics/loginHandler.js"></script>
+</body>
+</html>
+
+
+
+// frontend\html\dynamics\Perfil.html
+
+<!-- frontend/html/dynamics/profile.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil</title>
+</head>
+<body>
+    <h1>Bem-vindo ao seu perfil!</h1>
+    <div id="profile-info">
+        <!-- Informações do perfil serão exibidas aqui -->
+    </div>
+    <script src="../../js/dynamics/profileHandler.js"></script>
+</body>
+</html>
+
+
+
+// frontend\html\dynamics\Registro.html
+
+<!-- frontend/html/dynamics/register.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar</title>
+</head>
+<body>
+    <h1>Registrar</h1>
+    <form id="register-form">
+        <label for="username">Usuário:</label>
+        <input type="text" id="username" name="username" required>
+        
+        <label for="password">Senha:</label>
+        <input type="password" id="password" name="password" required>
+        
+        <button type="submit">Registrar</button>
+    </form>
+    <div id="register-message"></div>
+    <script src="../../js/dynamics/registerHandler.js"></script>
+</body>
+</html>
+
+
+
 // frontend\html\dynamics\search.html
 
 <div id="search-container">
   <input type="text" id="search-input" placeholder="Digite aqui para buscar..." />
   <button id="search-button">Buscar</button>
+  <!-- 
   <div id="search-results-container" style="display: none;">
     <button id="close-search-dropdown" aria-label="Fechar">&times;</button>
     <div id="search-results"></div>
   </div>
+
+  -->
 </div>
 
 
@@ -1024,11 +1256,11 @@ input:focus, textarea:focus, select:focus {
 <nav>
   <div class="logo">Avalume</div>
   <ul id="menu-list">
-    <!-- Os itens do menu serão gerados aqui dinamicamente -->
-  </ul>
-  <div id="search-placeholder"></div>      
-</nav>
+        <!-- Os itens do menu serão gerados aqui dinamicamente --> 
 
+  </ul>
+  <div id="search-placeholder"></div> 
+</nav>
 
 
 // frontend\html\pages\about.html
@@ -1129,6 +1361,39 @@ input:focus, textarea:focus, select:focus {
 
 
 
+// frontend\js\core\api.js
+
+// frontend/js/core/api.js
+
+const API_BASE_URL = 'http://localhost:3000'; // Ajuste conforme necessário
+
+async function apiRequest(endpoint, method = 'GET', data = null) {
+    const headers = { 'Content-Type': 'application/json' };
+    const token = localStorage.getItem('authToken');
+    if (token) {
+        headers['Authorization'] = `Bearer ${token}`;
+    }
+
+    const options = {
+        method,
+        headers,
+    };
+
+    if (data) {
+        options.body = JSON.stringify(data);
+    }
+
+    const response = await fetch(`${API_BASE_URL}${endpoint}`, options);
+    if (!response.ok) {
+        throw new Error(`Erro na requisição: ${response.statusText}`);
+    }
+    return response.json();
+}
+
+export { apiRequest };
+
+
+
 // frontend\js\core\config.js
 
 // config.js
@@ -1181,25 +1446,46 @@ input:focus, textarea:focus, select:focus {
       ];
     }
   // Configuração de Componentes Dinâmicos
-  function getDynamicComponentsConfig() {
-    return {
-      carousel: {
-        htmlPath: './frontend/html/dynamics/carousel.html',
-        cssPath: './frontend/css/dynamics/carousel.css',
-        jsPath: './frontend/js/dynamics/carouselHandler.js',
-      },
-      form: {
-        htmlPath: './frontend/html/dynamics/form.html',
-        cssPath: './frontend/css/dynamics/form.css',
-        jsPath: './frontend/js/dynamics/formHandler.js',
-      },
-          search: {
-    htmlPath: './frontend/html/dynamics/search.html',
-    cssPath: './frontend/css/dynamics/search.css',
-    jsPath: './frontend/js/dynamics/searchHandler.js',
-  }
-    };
-  }
+function getDynamicComponentsConfig() {
+  return {
+    carousel: {
+      htmlPath: './frontend/html/dynamics/carousel.html',
+      cssPath: './frontend/css/dynamics/carousel.css',
+      jsPath: './frontend/js/dynamics/carouselHandler.js',
+      initFunction: 'setupCarouselEvents', // Nome da função de inicialização
+    },
+    form: {
+      htmlPath: './frontend/html/dynamics/form.html',
+      cssPath: './frontend/css/dynamics/form.css',
+      jsPath: './frontend/js/dynamics/formHandler.js',
+      initFunction: 'setupFormEvents', // Nome da função de inicialização
+    },
+    search: {
+      htmlPath: './frontend/html/dynamics/search.html',
+      cssPath: './frontend/css/dynamics/search.css',
+      jsPath: './frontend/js/dynamics/searchHandler.js',
+      initFunction: 'setupSearchEvents', // Nome da função de inicialização
+    },
+        profile: {
+      htmlPath: './frontend/html/dynamics/profile.html',
+      cssPath: './frontend/css/dynamics/profile.css',
+      jsPath: './frontend/js/dynamics/profileHandler.js',
+      initFunction: 'setuProfileEvents', // Nome da função de inicialização
+    },
+        register: {
+      htmlPath: './frontend/html/dynamics/register.html',
+      cssPath: './frontend/css/dynamics/register.css',
+      jsPath: './frontend/js/dynamics/registerHandler.js',
+      initFunction: 'setupRegisterEvents', // Nome da função de inicialização
+    },
+        login: {
+      htmlPath: './frontend/html/dynamics/login.html',
+      cssPath: './frontend/css/dynamics/login.css',
+      jsPath: './frontend/js/dynamics/loginHandler.js',
+      initFunction: 'setupLoginEvents', // Nome da função de inicialização
+    },
+  };
+}
 
 export { getConfig, getGlobalComponents, getPagesConfig, getDynamicComponentsConfig };
 
@@ -1243,49 +1529,35 @@ export { getConfig, getGlobalComponents, getPagesConfig, getDynamicComponentsCon
     }
 
     // Carregamento de Handlers
-    function loadHandler(path) {
-      console.log(`[HandlerLoader] Tentando carregar handler de: ${path}`);
-      
-      // Verifica se o script já foi carregado
-      const existingScript = document.querySelector(`script[src="${path}"]`);
-      if (existingScript) {
-        console.log(`[HandlerLoader] Handler já carregado: ${path}`);
-        return;
-      }
+   function loadHandler(path) {
+  console.log(`[HandlerLoader] Tentando carregar handler de: ${path}`);
 
-      const script = document.createElement('script');
-      script.type = 'module';
-      script.src = path;
-
-      script.onload = () => {
-        console.log(`[HandlerLoader] Handler carregado com sucesso: ${path}`);
-        
-        // Gera o nome da função baseado no nome do arquivo
-        const rawFileName = path.split('/').pop(); // Obtém o nome do arquivo
-        console.log(`[HandlerLoader] Nome bruto do arquivo: ${rawFileName}`);
-        
-        const functionName = `setup${rawFileName
-          .replace('.js', '') // Remove a extensão .js
-          .replace(/^\w/, (c) => c.toUpperCase()) // Coloca a primeira letra em maiúscula
-          .replace(/Handler$/, 'Events')}`; // Substitui "Handler" por "Events"
-
-        console.log(`[HandlerLoader] Função esperada: ${functionName}`);
-
-        // Verifica se a função existe globalmente
-        if (typeof window[functionName] === 'function') {
-          console.log(`[HandlerLoader] Inicializando a função: ${functionName}`);
-          window[functionName](); // Chama a função
-        } else {
-          console.warn(`[HandlerLoader] Função ${functionName} não encontrada no handler.`);
-          console.warn(`[HandlerLoader] Certifique-se de que a função está exposta globalmente como window.${functionName}`);
-        }
-      };
-
-      script.onerror = () => console.error(`[HandlerLoader] Erro ao carregar handler: ${path}`);
-      document.body.appendChild(script);
-
-      console.log(`[HandlerLoader] Script adicionado ao DOM para carregar: ${path}`);
+  return new Promise((resolve, reject) => {
+    const existingScript = document.querySelector(`script[src="${path}"]`);
+    if (existingScript) {
+      console.log(`[HandlerLoader] Handler já carregado: ${path}`);
+      resolve();
+      return;
     }
+
+    const script = document.createElement('script');
+    script.type = 'module';
+    script.src = path;
+
+    script.onload = () => {
+      console.log(`[HandlerLoader] Handler carregado com sucesso: ${path}`);
+      resolve();
+    };
+
+    script.onerror = () => {
+      console.error(`[HandlerLoader] Erro ao carregar handler: ${path}`);
+      reject(new Error(`Erro ao carregar handler: ${path}`));
+    };
+
+    document.body.appendChild(script);
+  });
+}
+
 
 export { loadHTML, loadCSS, loadHandler };
 
@@ -1314,6 +1586,7 @@ function initialize() {
 // Eventos
 document.addEventListener('DOMContentLoaded', initialize);
 window.addEventListener('hashchange', navigateToPage);
+
 
 
 
@@ -1353,11 +1626,16 @@ function injectDynamicComponents() {
     if (placeholder) {
       console.log(`[Router] Injetando componente: ${key}`);
       loadHTML(placeholder.id, component.htmlPath).then(() => {
-        console.log(`[Router] HTML carregado para o componente: ${key}`);
         loadCSS(component.cssPath);
         if (component.jsPath) {
-          console.log(`[Router] Tentando carregar handler para o componente: ${key}`);
-          loadHandler(component.jsPath);
+          loadHandler(component.jsPath).then(() => {
+            if (component.initFunction && typeof window[component.initFunction] === 'function') {
+              console.log(`[Router] Inicializando função para o componente: ${key}`);
+              window[component.initFunction](); // Chama a função de inicialização dinamicamente
+            } else {
+              console.warn(`[Router] Função ${component.initFunction} não encontrada para o componente: ${key}`);
+            }
+          });
         }
       });
     } else {
@@ -1365,6 +1643,7 @@ function injectDynamicComponents() {
     }
   }
 }
+
 
 
 export { navigateToPage };
@@ -1482,6 +1761,128 @@ function setupFormEvents() {
 
 // Expõe a função globalmente
 window.setupFormEvents = setupFormEvents;
+
+
+
+// frontend\js\dynamics\loginHandler.js
+
+// frontend/js/dynamics/loginHandler.js
+import { apiRequest } from '../core/api.js';
+
+function setupLoginEvents() {
+    const loginForm = document.querySelector('#loginForm');
+
+    if (loginForm) {
+        loginForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(loginForm);
+            const username = formData.get('username');
+            const password = formData.get('password');
+
+            // Validação simples
+            if (!username || !password) {
+                alert('Por favor, preencha todos os campos.');
+                return;
+            }
+
+            try {
+                const response = await apiRequest('/auth/login', 'POST', { username, password });
+
+                // Armazenar token e redirecionar
+                localStorage.setItem('authToken', response.token);
+                alert(`Bem-vindo, ${response.username}!`);
+                window.location.hash = '#profile'; // Navegação sem recarregar
+            } catch (err) {
+                console.error(err.message);
+                if (err.response && err.response.status === 401) {
+                    alert('Credenciais inválidas.');
+                } else {
+                    alert('Erro inesperado. Tente novamente.');
+                }
+            }
+        });
+    }
+}
+
+// Exporta a função principal
+export default setupLoginEvents;
+
+
+
+// frontend\js\dynamics\profileHandler.js
+
+// frontend/js/dynamics/profileHandler.js
+import { apiRequest } from '../core/api.js';
+
+function setupProfileEvents() {
+    document.addEventListener('DOMContentLoaded', async () => {
+        try {
+            const token = localStorage.getItem('authToken');
+            if (!token) {
+                alert('Você não está logado. Redirecionando para a página de login.');
+                window.location.hash = '#login';
+                return;
+            }
+
+            const response = await apiRequest('/profile', 'GET', null, { Authorization: `Bearer ${token}` });
+            const profileElement = document.querySelector('#profileInfo');
+
+            if (profileElement) {
+                profileElement.innerHTML = `
+                    <h2>Bem-vindo, ${response.username}!</h2>
+                    <p>ID do usuário: ${response.id}</p>
+                    <p>${response.isAdmin ? 'Administrador' : 'Usuário comum'}</p>
+                `;
+            }
+        } catch (err) {
+            console.error(err.message);
+            alert('Erro ao carregar perfil. Redirecionando para login.');
+            localStorage.removeItem('authToken');
+            window.location.hash = '#login';
+        }
+    });
+}
+
+// Exporta a função principal
+export default setupProfileEvents;
+
+
+
+// frontend\js\dynamics\registerHandler.js
+
+// frontend/js/dynamics/registerHandler.js
+import { apiRequest } from '../core/api.js';
+
+function setupRegisterEvents() {
+    const registerForm = document.querySelector('#registerForm');
+
+    if (registerForm) {
+        registerForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(registerForm);
+            const username = formData.get('username');
+            const password = formData.get('password');
+
+            // Validação simples
+            if (!username || !password) {
+                alert('Por favor, preencha todos os campos.');
+                return;
+            }
+
+            try {
+                const response = await apiRequest('/auth/register', 'POST', { username, password });
+                alert('Cadastro bem-sucedido! Redirecionando para o login.');
+                window.location.hash = '#login';
+            } catch (err) {
+                console.error(err.message);
+                alert('Erro ao registrar. Tente novamente.');
+            }
+        });
+    }
+}
+
+// Exporta a função principal
+export default setupRegisterEvents;
 
 
 

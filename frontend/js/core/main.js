@@ -20,3 +20,4 @@ function initialize() {
 // Eventos
 document.addEventListener('DOMContentLoaded', initialize);
 window.addEventListener('hashchange', navigateToPage);
+

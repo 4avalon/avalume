@@ -2,7 +2,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const projectDir = 'C:/Users/roger/OneDrive/Documentos/Servidor_Local_Phy/Avalon/Projetos/avalume';
+const projectDir = __dirname; // Diretório atual do arquivo em execução
 const backendDir = path.join(projectDir, 'backend');
 const frontendDir = path.join(projectDir, 'frontend');
 const backendOutputFile = path.join(projectDir, 'backend.txt');
@@ -11,11 +11,20 @@ const treeOutputFile = path.join(projectDir, 'tree.txt');
 
 // Extensões permitidas
 const allowedExtensions = ['.html', '.css', '.js'];
+// Diretórios a serem ignorados
+const ignoredDirs = ['node_modules', '.git', '.env'];
 
+// Função para listar arquivos, ignorando diretórios especificados
 function listFiles(dir, fileList = []) {
     const files = fs.readdirSync(dir);
     files.forEach(file => {
         const filePath = path.join(dir, file);
+
+        // Ignorar diretórios especificados
+        if (ignoredDirs.includes(file)) {
+            return; // Pule para o próximo
+        }
+
         const ext = path.extname(file); // Obtém a extensão do arquivo
         if (fs.statSync(filePath).isDirectory()) {
             listFiles(filePath, fileList); // Recursão para subpastas
@@ -40,7 +49,7 @@ function generateOutput(fileList, outputFile, projectDir) {
 // Função para listar arquivos no diretório raiz
 function listRootFiles(dir) {
     return fs.readdirSync(dir, { withFileTypes: true })
-        .filter(item => !item.isDirectory())
+        .filter(item => !item.isDirectory() && !ignoredDirs.includes(item.name))
         .map(file => file.name);
 }
 
@@ -50,6 +59,11 @@ function generateTree(dir, prefix = '') {
     let treeOutput = '';
 
     entries.forEach((entry, index) => {
+        // Ignorar diretórios especificados
+        if (ignoredDirs.includes(entry.name)) {
+            return;
+        }
+
         const isLast = index === entries.length - 1;
         const connector = isLast ? '└── ' : '├── ';
         treeOutput += `${prefix}${connector}${entry.name}\n`;
@@ -72,7 +86,7 @@ function generateTreeFile(treeFile, projectDir) {
     treeContent += 'REM Lista os arquivos apenas no diretório raiz do projeto\n';
     treeContent += 'Lista de Arquivos no Diretório Principal:\n';
     treeContent += listRootFiles(projectDir).join('\n') + '\n';
-    treeContent += 'node_modules\nbackend\nfrontend\n\n';
+    treeContent += 'backend\nfrontend\n\n'; // node_modules ignorado explicitamente
 
     // Lista os arquivos na pasta frontend
     if (fs.existsSync(frontendDir)) {

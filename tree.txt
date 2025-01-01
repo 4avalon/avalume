@@ -1,4 +1,4 @@
-cd /d "C:/Users/roger/OneDrive/Documentos/Servidor_Local_Phy/Avalon/Projetos/avalume"
+cd /d "C:\Users\roger\OneDrive\Documentos\Servidor_Local_Phy\Avalon\Projetos\avalume"
 
 REM Lista os arquivos apenas no diretório raiz do projeto
 Lista de Arquivos no Diretório Principal:
@@ -10,7 +10,6 @@ index.html
 README.txt
 saveAsText.js
 tree.txt
-node_modules
 backend
 frontend
 
@@ -29,6 +28,9 @@ Lista de Arquivos na Pasta "frontend":
 │   ├── dynamics
 │   │   ├── carousel.css
 │   │   ├── form.css
+│   │   ├── login.css
+│   │   ├── profile.css
+│   │   ├── register.css
 │   │   └── search.css
 │   ├── globals
 │   │   ├── footer.css
@@ -45,6 +47,9 @@ Lista de Arquivos na Pasta "frontend":
 │   │   ├── carousel.html
 │   │   ├── dropDown.html
 │   │   ├── form.html
+│   │   ├── Login.html
+│   │   ├── Perfil.html
+│   │   ├── Registro.html
 │   │   └── search.html
 │   ├── globals
 │   │   ├── footer.html
@@ -55,6 +60,7 @@ Lista de Arquivos na Pasta "frontend":
 │       └── home.html
 └── js
     ├── core
+    │   ├── api.js
     │   ├── config.js
     │   ├── loader.js
     │   ├── main.js
@@ -62,6 +68,9 @@ Lista de Arquivos na Pasta "frontend":
     ├── dynamics
     │   ├── carouselHandler.js
     │   ├── formHandler.js
+    │   ├── loginHandler.js
+    │   ├── profileHandler.js
+    │   ├── registerHandler.js
     │   └── searchHandler.js
     ├── globals
     │   ├── footerHandler.js
@@ -71,4 +80,19 @@ Lista de Arquivos na Pasta "frontend":
 
 REM Lista os arquivos na pasta backend
 Lista de Arquivos na Pasta "backend":
+├── database
+│   ├── database.sqlite
+│   └── db.js
+├── index.js
+├── middlewares
+│   ├── authenticateToken.js
+│   └── checkAdmin.js
+├── package-lock.json
+├── package.json
+├── routes
+│   ├── admin.js
+│   ├── auth.js
+│   └── profile.js
+└── utils
+    └── jwtUtils.js
 

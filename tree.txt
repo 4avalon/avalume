@@ -1,0 +1,117 @@
+cd /d "C:\4Avalon\Projetos\avalume"
+
+REM Lista os arquivos apenas no diretório raiz do projeto
+Lista de Arquivos no Diretório Principal:
+.gitignore
+ava-swod-vision.webp
+ava-sword-vision.jpg
+backend.txt
+frontend.txt
+index.html
+map.js
+README.txt
+saveAsText.js
+tree.txt
+backend
+frontend
+
+REM Lista os arquivos na pasta frontend
+Lista de Arquivos na Pasta "frontend":
+├── assets
+│   └── icons
+│       └── avamap.ico
+├── core
+│   ├── config.js
+│   ├── dynamics.js
+│   ├── index.js
+│   ├── loader.js
+│   └── path.js
+├── dynamics
+│   ├── carousel
+│   │   ├── carousel.css
+│   │   ├── carousel.html
+│   │   ├── carouselHandler.js
+│   │   └── img
+│   │       ├── img1.jpg
+│   │       ├── img2.jpg
+│   │       ├── img3.jpg
+│   │       ├── img4.jpg
+│   │       ├── img5.jpg
+│   │       └── img6.jpg
+│   ├── form
+│   │   ├── form.css
+│   │   ├── form.html
+│   │   └── formHandler.js
+│   ├── login
+│   │   ├── login.css
+│   │   ├── login.html
+│   │   ├── loginHandler.js
+│   │   └── loginPanel.html
+│   └── search
+│       ├── dropDown.html
+│       ├── search.css
+│       ├── search.html
+│       └── searchHandler.js
+├── globals
+│   ├── footer
+│   │   ├── footer.css
+│   │   ├── footer.html
+│   │   └── footerHandler.js
+│   ├── nav
+│   │   ├── nav.css
+│   │   ├── nav.html
+│   │   └── navHandler.js
+│   └── theme
+│       ├── reset.css
+│       ├── styles.css
+│       ├── theme.css
+│       └── themeHandler.js
+└── pages
+    ├── about
+    │   ├── about.css
+    │   └── about.html
+    ├── avamap
+    │   ├── avamap.css
+    │   ├── avamap.html
+    │   ├── avamap.js
+    │   ├── avamapHandler.js
+    │   └── avamapHandler1.0.js
+    ├── contact
+    │   ├── contact.css
+    │   └── contact.html
+    ├── home
+    │   ├── home.css
+    │   └── home.html
+    ├── login
+    │   ├── login.css
+    │   └── login.html
+    ├── profile
+    │   ├── profile.css
+    │   ├── profile.html
+    │   └── profileHandler.js
+    └── theme
+        ├── theme.css
+        └── theme.html
+
+REM Lista os arquivos na pasta backend
+Lista de Arquivos na Pasta "backend":
+├── data
+│   └── projectsDir.js
+├── database
+│   ├── database.sqlite
+│   └── db.js
+├── index.js
+├── middlewares
+│   ├── authenticateToken.js
+│   └── checkAdmin.js
+├── package-lock.json
+├── package.json
+├── routes
+│   ├── admin.js
+│   ├── api.js
+│   ├── auth.js
+│   └── profile.js
+└── utils
+    ├── fileUtils.js
+    └── jwtUtils.js
+

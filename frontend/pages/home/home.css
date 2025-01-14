@@ -1,0 +1,65 @@
+/* Estilos gerais */
+
+/* Seção Home */
+#home-section {
+  min-height: 100vh; /* Ocupa pelo menos a altura da viewport */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: var(--foreground-color);
+  padding: 50px;
+  box-shadow: var(--box-shadow);
+  border: 2px solid var(--border-color);
+}
+
+/* Título Principal */
+#home-section h1 {
+  font-size: 3em;
+  color: var(--primary-color);
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px var(--box-shadow-hover);
+}
+
+/* Parágrafo */
+#home-section p {
+  font-size: 1.5em;
+  color: var(--text-secondary-color);
+  max-width: 800px;
+  line-height: 1.8;
+  text-shadow: 1px 1px 2px var(--box-shadow-hover);
+}
+
+/* Botão de ação */
+#home-section .cta-button {
+  padding: 10px 20px;
+  font-size: 1.2em;
+  color: var(--text-on-primary);
+  background: var(--gradient-primary);
+  border: 2px solid var(--primary-color);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 20px;
+  text-decoration: none;
+}
+
+#home-section .cta-button:hover {
+  background: var(--gradient-secondary);
+  border-color: var(--secondary-color);
+  color: var(--text-on-secondary);
+  box-shadow: var(--box-shadow-hover);
+}
+
+/* Estilo responsivo */
+@media (max-width: 768px) {
+  #home-section h1 {
+    font-size: 2em;
+  }
+
+  #home-section p {
+    font-size: 1.2em;
+    padding: 0 20px;
+  }
+}

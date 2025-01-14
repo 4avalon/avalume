@@ -1,0 +1,211 @@
+/* Escopo exclusivo para a página AvaMap */
+#avamap-section {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Ocupa toda a altura da tela */
+}
+
+/* Cabeçalho */
+#avamap-header {
+  background-color: #0056b3;
+  color: #ffffff;
+  padding: 10px;
+  text-align: center;
+  font-size: 1.8em;
+  font-weight: bold;
+}
+
+/* Filtros no cabeçalho */
+#filter-container {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.filter-button {
+  padding: 8px 15px;
+  background-color: #004080;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.filter-button.active {
+  background-color: #002b59;
+}
+
+.filter-button:hover {
+  background-color: #00366d;
+}
+
+/* Layout principal */
+#avamap-main {
+  display: grid;
+  grid-template-columns: 1fr 2fr; /* Tree ocupa 1/3 da tela, Conteúdo 2/3 */
+  gap: 10px;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* Árvore do Projeto */
+#tree-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Itens internos em colunas */
+  gap: 10px;
+  background-color: #f8f9ff;
+  
+
+  border-right: 1px solid #ccc;
+  padding: 10px;
+  overflow-y: auto;
+  height: 100%;
+}
+
+#tree-container h2 {
+  grid-column: 1 / -1; /* Garante que o título ocupa toda a largura */
+  font-size: 1.4em;
+  margin-bottom: 10px;
+  color: #002b59;
+  font-weight: bold;
+}
+
+/* Lista da árvore principal */
+#tree-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Itens do nível principal em colunas */
+  gap: 15px; /* Espaço maior entre os grupos principais */
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#tree-list > li {
+  background-color: #e0eaff;
+  border: 2px solid #bccde0;
+  border-radius: 5px;
+  padding: 8px;
+  font-size: 1.1em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#tree-list > li:hover {
+  background-color: #d1e2ff;
+  transform: scale(1.02);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Subníveis */
+#tree-list li ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Itens em subníveis distribuídos em colunas */
+  gap: 10px;
+  padding: 10px;
+  background-color: #f0f4ff;
+  border-radius: 5px;
+  border: 1px solid #d0e0f0;
+}
+
+#tree-list li ul > li {
+  font-size: 0.9em;
+  background-color: #ffffff;
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+#tree-list li ul > li:hover {
+  background-color: #dfffd6;
+  transform: scale(1.02);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Conteúdo */
+#text-container {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  background-color: #ffffff;
+  overflow-y: auto;
+}
+
+#text-container h2 {
+  font-size: 1.4em;
+  margin-bottom: 10px;
+  color: #004080;
+  font-weight: bold;
+}
+
+.text-box {
+  flex: 1;
+  position: relative;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: #f9f9f9;
+  overflow-y: auto;
+  font-size: 1.1em;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+/* Botão de cópia */
+.copy-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  font-size: 1em;
+  cursor: pointer;
+  z-index: 10;
+  transition: background-color 0.2s, transform 0.2s ease;
+}
+
+.copy-button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+.copy-confirmation {
+  display: none;
+  position: absolute;
+  top: 50px;
+  left: 10px;
+  background-color: #28a745;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.9em;
+  z-index: 10;
+}
+
+/* Itens Ativos (Verde) */
+.green {
+  background-color: #d4f8d4 !important;
+  border: 1px solid #a4e5a4 !important;
+  color: #2d572d;
+  font-weight: bold;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.green:hover {
+  background-color: #c8f2c8 !important;
+  border-color: #91d991 !important;
+}
+
+
+

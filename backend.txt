@@ -1,0 +1,283 @@
+// backend\data\projectsDir.js
+
+const path = require('path');
+
+// Ajuste o caminho para a pasta correta
+const PROJECTS_DIR = path.join(__dirname, '..', '..', '..');
+console.log('PROJECTS_DIR:', PROJECTS_DIR); // Log para validar novamente
+
+module.exports = { PROJECTS_DIR };
+
+
+
+// backend\database\db.js
+
+const sqlite3 = require('sqlite3').verbose();
+const path = require('path');
+
+const dbPath = process.env.DATABASE_PATH || path.join(__dirname, 'database.sqlite');
+const db = new sqlite3.Database(dbPath);
+
+db.serialize(() => {
+    db.run(`
+        CREATE TABLE IF NOT EXISTS users (
+            id INTEGER PRIMARY KEY,
+            username TEXT,
+            password TEXT,
+            isAdmin INTEGER DEFAULT 0
+        )
+    `);
+});
+
+module.exports = db;
+
+
+
+// backend\index.js
+
+const express = require('express');
+const cors = require('cors'); // Importa o CORS
+const app = express();
+const authRoutes = require('./routes/auth');
+const profileRoutes = require('./routes/profile');
+const adminRoutes = require('./routes/admin');
+
+require('dotenv').config(); // Carregar variáveis do arquivo .env
+
+// Middleware para aceitar JSON
+app.use(express.json());
+app.use(cors()); // Adiciona o middleware CORS
+
+
+// Rotas
+app.use('/auth', authRoutes);
+app.use('/profile', profileRoutes);
+app.use('/admin', adminRoutes);
+
+// Rota principal
+app.get('/', (req, res) => res.send('Servidor funcionando!'));
+
+// Configurar porta
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Servidor rodando na porta ${PORT}`));
+
+
+
+// backend\middlewares\authenticateToken.js
+
+const jwt = require('jsonwebtoken');
+const db = require('../database/db');
+
+const authenticateToken = (req, res, next) => {
+    const authHeader = req.headers['authorization'];
+    const token = authHeader && authHeader.split(' ')[1];
+    if (!token) return res.status(401).send('Token não fornecido!');
+
+    jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+        if (err) return res.status(403).send('Token inválido!');
+        const query = "SELECT * FROM users WHERE id = ?";
+        db.get(query, [decoded.id], (err, row) => {
+            if (err || !row) return res.status(403).send('Usuário não encontrado!');
+            req.user = { id: row.id, username: row.username, isAdmin: row.isAdmin };
+            next();
+        });
+    });
+};
+
+module.exports = authenticateToken;
+
+
+
+// backend\middlewares\checkAdmin.js
+
+const checkAdmin = (req, res, next) => {
+    if (!req.user.isAdmin) {
+        return res.status(403).send('Acesso negado. Somente administradores podem acessar esta rota.');
+    }
+    next();
+};
+
+module.exports = checkAdmin;
+
+
+
+// backend\routes\admin.js
+
+const express = require('express');
+const authenticateToken = require('../middlewares/authenticateToken');
+const checkAdmin = require('../middlewares/checkAdmin');
+const db = require('../database/db');
+
+const router = express.Router();
+
+// Rota administrativa
+router.get('/', authenticateToken, checkAdmin, (req, res) => {
+    res.send('Bem-vindo à área administrativa!');
+});
+
+// Rota para listar usuários
+router.get('/users', authenticateToken, checkAdmin, (req, res) => {
+    const query = "SELECT id, username, isAdmin FROM users";
+    db.all(query, [], (err, rows) => {
+        if (err) {
+            return res.status(500).send('Erro ao buscar usuários.');
+        }
+        res.json(rows);
+    });
+});
+
+module.exports = router;
+
+
+
+// backend\routes\api.js
+
+app.get('/api/projects', (req, res) => {
+    res.json([{ name: 'AvaMap', description: 'Mapa dos Projetos' }]);
+});
+
+
+
+// backend\routes\auth.js
+
+const express = require('express');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+const db = require('../database/db');
+
+const router = express.Router();
+
+// Rota de registro
+router.post('/register', async (req, res) => {
+    const { username, password } = req.body;
+    console.log("Recebendo tentativa de registro:", { username }); // Log para registro
+    if (!username || !password) {
+        return res.status(400).send('Username e senha são obrigatórios!');
+    }
+
+    try {
+        const hashedPassword = await bcrypt.hash(password, 10);
+        const query = "INSERT INTO users (username, password) VALUES (?, ?)";
+        db.run(query, [username, hashedPassword], function (err) {
+            if (err) {
+                return res.status(500).send('Erro ao registrar usuário.');
+            }
+            res.send(`Usuário registrado com ID: ${this.lastID}`);
+        });
+    } catch (err) {
+        res.status(500).send('Erro ao hashear a senha.');
+    }
+});
+
+// Rota de login
+router.post('/login', async (req, res) => {
+    const { username, password } = req.body;
+    console.log("Recebendo tentativa de login:", { username }); // Log para login
+    if (!username || !password) {
+        return res.status(400).send('Username e senha são obrigatórios!');
+    }
+
+    const query = "SELECT * FROM users WHERE username = ?";
+    db.get(query, [username], async (err, row) => {
+        if (err) {
+            console.error("Erro no banco de dados:", err);
+            return res.status(500).send('Erro interno do servidor.');
+        }
+
+        if (!row || !(await bcrypt.compare(password, row.password))) {
+            console.warn("Login inválido para usuário:", username);
+            return res.status(401).send('Credenciais inválidas!');
+        }
+
+        const token = jwt.sign({ id: row.id, username: row.username }, process.env.JWT_SECRET, { expiresIn: '1h' });
+        res.json({ message: `Bem-vindo, ${row.username}!`, isAdmin: row.isAdmin === 1, token });
+    });
+});
+
+// Rota de logout
+const invalidTokens = new Set();
+
+router.post('/logout', (req, res) => {
+    const token = req.headers['authorization']?.split(' ')[1];
+    if (!token) {
+        return res.status(400).send('Token não fornecido!');
+    }
+    invalidTokens.add(token);
+    console.log("Logout efetuado para token:", token); // Log para logout
+    res.send('Logout efetuado com sucesso!');
+});
+
+module.exports = router;
+
+
+
+// backend\routes\profile.js
+
+const express = require('express');
+const authenticateToken = require('../middlewares/authenticateToken');
+
+const router = express.Router();
+
+// Rota do perfil
+router.get('/', authenticateToken, (req, res) => {
+    res.send(`Bem-vindo ao perfil, ${req.user.username}!`);
+});
+
+module.exports = router;
+
+
+
+// backend\utils\fileUtils.js
+
+// backend/utils/fileUtils.js
+const fs = require('fs');
+const path = require('path');
+
+function listProjects(directory) {
+    try {
+        return fs.readdirSync(directory)
+            .filter((item) => 
+                fs.statSync(path.join(directory, item)).isDirectory() && item !== '.git'
+            )
+            .map((project) => ({ name: project, description: 'Projeto disponível' }));
+    } catch (err) {
+        console.error('Erro ao listar projetos:', err);
+        throw err;
+    }
+}
+
+
+
+/**
+ * Gera a árvore de arquivos de um projeto específico.
+ */
+function getProjectTree(projectPath) {
+    const tree = [];
+
+    function buildTree(currentPath) {
+        const items = fs.readdirSync(currentPath, { withFileTypes: true });
+        return items.map((item) => {
+            const fullPath = path.join(currentPath, item.name);
+            return item.isDirectory()
+                ? { name: item.name, type: 'directory', children: buildTree(fullPath) }
+                : { name: item.name, type: 'file' };
+        });
+    }
+
+    return buildTree(projectPath);
+}
+
+module.exports = { listProjects, getProjectTree };
+
+
+
+// backend\utils\jwtUtils.js
+
+const jwt = require('jsonwebtoken');
+
+const generateToken = (payload) => {
+    return jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1h' });
+};
+
+module.exports = { generateToken };
+

@@ -1,0 +1,46 @@
+/* Centraliza e estiliza o contêiner do perfil */
+#profile-container {
+  font-family: Arial, sans-serif;
+  background: #ffffff;
+  padding: 20px;
+  display: flex;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 100%;
+  max-width: 400px; /* Define um limite para o tamanho */
+  margin: auto; /* Centraliza horizontalmente */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Centraliza verticalmente */
+}
+
+/* Estilo do título */
+#profile-container h1 {
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  color: #007acc;
+}
+
+/* Estilo do texto do ID do usuário */
+#profile-container p {
+  font-size: 1rem;
+  margin-bottom: 20px;
+  color: #666;
+}
+
+/* Estilo do botão de logout */
+#logout-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  background-color: #d9534f;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+#logout-button:hover {
+  background-color: #c9302c;
+}

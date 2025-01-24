@@ -2,7 +2,7 @@ const path = require('path');
 const fs = require('fs');
 
 const basePath = path.join(__dirname, '..', '..', '..'); // Caminho raiz do projeto
-const baseURL = '/AvaMap'; // URL base para o ambiente web
+const baseURL = '/avalume'; // URL base para o ambiente web
 
 function listDirectoryContents(dirPath, webPath) {
     if (!fs.existsSync(dirPath)) {
@@ -38,7 +38,7 @@ function listDirectoryContents(dirPath, webPath) {
 
 function generateAvamapJSON(outputPath) {
     const projectStructure = {
-        name: 'Avamap',
+        name: 'avalume',
         type: 'project',
         children: [
             {

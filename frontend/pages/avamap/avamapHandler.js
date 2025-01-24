@@ -9,7 +9,7 @@ function setupAvamapEvents() {
 
     treeContainer.innerHTML = '';
 
-    fetch('/AvaMap/avamap.json')
+    fetch('/avalume/avamap.json')
         .then(response => {
             if (!response.ok) {
                 throw new Error(`Erro HTTP! Status: ${response.status}`);
